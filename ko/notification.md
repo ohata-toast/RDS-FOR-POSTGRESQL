@@ -68,18 +68,20 @@
 | Network out BPS            | KB/sec             |
 | Database Connection Status | 접속 불가: 0, 접속 가능: 1 |
 | Queries Per Second         | counts/sec         |
-| Sum Connection             | counts             |
-| Active Session             | counts             |
-| Idle Session               | counts             |
-| Transactions               | counts             |
-| Database Activity Select   | counts/min         |
-| Database Activity Insert   | counts/min         |
-| Database Activity Update   | counts/min         |
-| Database Activity Delete   | counts/min         |
+| Lock Tables                | counts/sec         |
 | Cache Hit Ratio            | %                  |
-| Lock Tables                | counts             |
-| Conflict/Deadlock          | counts/min         |
-| Slow Query                 | counts/min         |
+| Idle Connection            | counts/sec         |
+| Active Connection          | counts/sec         |
+| Total Connection           | counts/sec         |
+| Fetched Tuple Count        | counts/sec         |
+| Returned Tuple Count       | counts/sec         |
+| Inserted Tuple Count       | counts/sec         |
+| Updated Tuple Count        | counts/sec         |
+| Deleted Tuple Count        | counts/sec         |
+| Transaction Commit         | counts/sec         |
+| Transaction Rollback       | counts/sec         |
+| Deadlock                   | counts/sec         |
+| Conflict                   | counts/sec         |
 
 ### 감시 설정 추가
 
