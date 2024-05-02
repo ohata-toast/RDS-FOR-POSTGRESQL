@@ -28,9 +28,9 @@ NHN Cloud는 물리 하드웨어 문제로 생기는 장애에 대비하기 위�
 
 아래에 명시된 버전을 사용할 수 있습니다.
 
-| 버전                   | 비고                                                        |
-|----------------------|-----------------------------------------------------------|
-| PostgreSQL 14.6      |                                                           |
+| 버전                   | 비고 |
+|----------------------|----|
+| PostgreSQL 14.6      |    |
 
 
 ### DB 인스턴스 타입
@@ -115,14 +115,13 @@ DB 인스턴스 생성 시 기본 알림을 설정할 수 있습니다. 기본 �
 
 웹 콘솔에서 생성된 DB 인스턴스를 확인할 수 있습니다. DB 인스턴스 그룹 단위로 묶어서 보거나, 개별 DB 인스턴스로 볼 수 있습니다.
 
-![db-instance-list_ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-list_ko.png)
+![db-instance-list](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-list.png)
 
 ❶ DB 인스턴스 화면 모드를 변경할 수 있습니다.
-❷ 버튼을 클릭하여 그룹 안에 속한 DB 인스턴스를 펼치거나 접을 수 있습니다.
-❸ 가장 최근 수집된 모니터링 지표를 보여줍니다.
-❹ 현재 상태를 볼 수 있습니다.
-❺ 진행 중인 작업이 있으면 스피너가 나타납니다.
-❻ 검색 조건을 변경할 수 있습니다.
+❷ 가장 최근 수집된 모니터링 지표를 보여줍니다.
+❸ 현재 상태를 볼 수 있습니다.
+❹ 진행 중인 작업이 있으면 스피너가 나타납니다.
+❺ 검색 조건을 변경할 수 있습니다.
 
 DB 인스턴스의 상태는 아래와 같은 값들로 구성되며, 사용자의 행위와 현재 상태에 따라 변경됩니다.
 
@@ -137,15 +136,16 @@ DB 인스턴스의 상태는 아래와 같은 값들로 구성되며, 사용자�
 
 변경할 수 있는 검색 조건은 아래와 같습니다.
 
-![db-instance-filter_ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-filter_ko.png)
+![db-instance-filter](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-filter.png)
 
-❶ 파라미터 변경 사항 적용이 필요한 DB 인스턴스를 필터링 조건으로 검색할 수 있습니다.
+❶ DB 인스턴스 상태를 필터링 조건으로 검색할 수 있습니다.
+❷ 가용성 영역을 필터링 조건으로 검색할 수 있습니다.
 
 ## DB 인스턴스 상세
 
 DB 인스턴스를 선택하면 상세 정보를 볼 수 있습니다.
 
-![db-instance-detail_ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-detail_ko.png)
+![db-instance-detail](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail.png)
 
 ❶ 접속 정보의 도메인을 클릭하면 IP 주소를 확인할 수 있는 팝업 창이 나타납니다.
 ❷ DB 보안 그룹을 클릭하면 DB 보안 규칙을 확인할 수 있는 팝업 창이 나타납니다.
@@ -168,7 +168,7 @@ DB 인스턴스의 로그 탭에서는 각종 로그 파일을 보거나 다운�
 | postgresql.log | 100MB 40개 | 고정    |
 | backup.log     | 데일리 10개   | 고정    |
 
-![db-instance-detail-log_ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-detail-log_ko.png)
+![db-instance-detail-log](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail-log.png)
 
 ❶ **로그 보기**를 클릭하면 로그 파일의 내용을 확인할 수 있는 팝업 화면이 나타납니다. 최대 65,535Bytes의 로그를 확인할 수 있습니다.
 ❷ **가져오기**를 클릭하면 DB 인스턴스의 로그 파일을 다운로드할 수 있도록 요청합니다.
@@ -186,7 +186,7 @@ DB 인스턴스의 **DB & 사용자** 탭에서는 DB엔진에 생성된 Databas
 
 #### Database 생성
 
-![db-instance-detail-schema_ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-detail-schema_ko.png)
+![db-instance-detail-database](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail-database.png)
 
 ❶ **생성**을 클릭하면 Database의 이름을 입력할 수 있는 팝업 창이 나타납니다.
 ❷ Database 이름을 입력한 뒤 **확인**을 클릭하여 Database를 생성할 수 있습니다.
@@ -198,21 +198,22 @@ Database 이름은 아래와 같은 제약 사항이 있습니다.
 
 #### Database 수정
 
-![db-instance-detail-user-modify-ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-detail-user-modify-ko.png)
+![db-instance-detail-database-modify-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail-database-modify.png)
 
 ❶ 수정할 Database 행의 **수정**을 클릭하면 Database 정보를 수정할 수 있는 팝업 화면이 나타납니다.
 ❷ **확인**을 클릭하여 삭제를 요청할 수 있습니다.
+❸ 변경 예정 DB 접근 제어 즉시 적용을 체크하면 DB 접근 제어 규칙에도 수정사항이 즉시 적용 됩니다. 
 
 #### Database 삭제
 
-![db-instance-detail-schema-delete-ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-detail-schema-delete-ko.png)
+![db-instance-detail-database-delete-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail-database-delete.png)
 
-❶ 삭제할 Database를 선택 후 드롭다운 메뉴를 클릭합니다.
-❷ **삭제** 메뉴를 클릭하면 삭제 확인 팝업 화면이 나타납니다. **확인**을 클릭하여 삭제를 요청할 수 있습니다.
+❶ 삭제할 Database를 선택 후 **삭제**를 클릭하면 삭제 확인 팝업 화면이 나타납니다. 
+❷ **삭제**를 클릭하여 삭제를 요청할 수 있습니다.
 
 #### 사용자 생성
 
-![db-instance-detail-user-create-ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-detail-user-create-ko.png)
+![db-instance-detail-user-create-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail-dbuser.png)
 
 ❶ **+ 생성**을 클릭하면 사용자 추가 팝업 화면이 나타납니다.
 ❷ 사용자 ID를 입력합니다.
@@ -235,14 +236,15 @@ Database 이름은 아래와 같은 제약 사항이 있습니다.
 
 #### 사용자 수정
 
-![db-instance-detail-user-modify-ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-detail-user-modify-ko.png)
+![db-instance-detail-user-modify-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail-dbuser-modify.png)
 
 ❶ 수정할 사용자 행의 **수정**을 클릭하면 사용자 정보를 수정할 수 있는 팝업 화면이 나타납니다.
 ❷ Password를 입력하지 않으면 변경되지 않습니다.
+❸ 변경 예정 DB 접근 제어 즉시 적용을 체크하면 DB 접근 제어 규칙에도 수정사항이 즉시 적용 됩니다.
 
 #### 사용자 삭제
 
-![db-instance-detail-user-delete-ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-detail-user-delete-ko.png)
+![db-instance-detail-user-delete-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail-dbuser-delete.png)
 
 ❶ 삭제할 사용자를 선택 후 드롭다운 메뉴를 클릭합니다.
 ❷ **삭제**를 클릭하면 **삭제 확인** 팝업 화면이 나타납니다. **확인**을 클릭하여 삭제를 요청할 수 있습니다.
@@ -250,6 +252,8 @@ Database 이름은 아래와 같은 제약 사항이 있습니다.
 ### DB 접근 제어
 
 DB 인스턴스의 **DB 접근 제어** 탭에서는 특정 Database와 사용자에 대한 DB엔진 접근 규칙을 조회 및 제어할 수 있습니다. 여기에 설정한 규칙은 `pg_hba.conf` 파일에 적용됩니다.
+
+![db-instance-detail-hba-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail-hba.png)
 
 ❶ 접근 제어 규칙에 대한 적용 상태를 볼 수 있습니다.
 ❷ 진행 중인 작업이 있으면 스피너가 나타납니다.
@@ -265,6 +269,8 @@ DB 인스턴스의 **DB 접근 제어** 탭에서는 특정 Database와 사용�
 | APPLIED            | NONE   | 적용됨           |
 
 #### DB 접근 제어 규칙 추가
+
+![db-instance-detail-hba-create-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail-hba-create.png)
 
 ❶ **+ 생성**을 클릭하면 DB 접근 제어 규칙 추가 팝업 화면이 나타납니다.
 ❷ 규칙 적용 대상을 전체 대상으로 지정하거나 특정 Database나 사용자를 선택해서 지정할 수 있습니다.
@@ -287,12 +293,16 @@ DB 인스턴스의 **DB 접근 제어** 탭에서는 특정 Database와 사용�
 
 #### DB 접근 제어 규칙 수정
 
+![db-instance-detail-hba-modify-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail-hba-modify.png)
+
 ❶ 수정할 접근 제어 규칙 행의 **수정**을 클릭하면 기존 정보를 수정할 수 있는 팝업 화면이 나타납니다.
 ❷ 수정한 규칙은 **변경사항 적용**을 클릭해 DB 인스턴스에 접근 제어 설정을 적용해야 합니다.
 
 #### DB 접근 제어 규칙 삭제
 
-❶ 삭제할 사용자를 선택 후 **삭제**를 클릭합니다.
+![db-instance-detail-hba-delete-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-detail-hba-delete.png)
+
+❶ 삭제할 사용자를 선택 후 **삭제**를 클릭하면 삭제 확인 팝업 화면이 나타납니다.
 ❷ 삭제한 규칙은 **변경사항 적용**을 클릭해 DB 인스턴스에 접근 제어 설정을 적용해야 합니다.
 
 ## DB 인스턴스 수정
@@ -343,7 +353,7 @@ DB 인스턴스에 연결된 파라미터 그룹의 설정이 변경되어도 �
 
 다음 방법 중 하나를 사용하여 DB 인스턴스에 파라미터 그룹의 변경 사항을 적용할 수 있습니다.
 
-![db-instance-list-parameter-ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-list-parameter-ko.png)
+![db-instance-list-apply-parameter-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-list-apply-parameter.png)
 
 ❶ 대상 DB 인스턴스의 **파라미터**를 클릭하거나
 ❷ 대상 DB 인스턴스를 선택한 후 드롭다운 메뉴에서 **파라미터 그룹 변경 사항 적용** 메뉴를 클릭하거나
@@ -357,7 +367,7 @@ PostgreSQL을 재시작하고자 할 때, DB 인스턴스를 재시작할 수 �
 
 DB 인스턴스 재시작을 하려면 웹 콘솔에서
 
-![db-instance-restart-ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-restart-ko.png)
+![db-instance-restart-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-list-restart.png)
 
 ❶ 재시작을 원하는 DB 인스턴스를 선택 후 드롭다운 메뉴에서 **DB 인스턴스 재시작** 메뉴를 클릭합니다.
 
@@ -370,7 +380,7 @@ DB 인스턴스의 PostgreSQL이 정상 동작하지 않는 경우 강제로 재
 
 DB 인스턴스 강제 재시작을 하려면 웹 콘솔에서
 
-![db-instance-restart-force-ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-restart-force-ko.png)
+![db-instance-forcerestart-ko](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-list-forcerestart.png)
 
 ❶ 강제 재시작을 원하는 DB 인스턴스를 선택 후 드롭다운 메뉴에서 **DB 인스턴스 강제 재시작** 메뉴를 클릭합니다.
 
@@ -384,18 +394,18 @@ DB 인스턴스 강제 재시작을 하려면 웹 콘솔에서
 * NHN Cloud RDS의 인스턴스를 준비하여 사용합니다.
 * 내보낼 데이터를 저장하게 될 외부 인스턴스, 또는 로컬 클라이언트가 설치된 컴퓨터의 용량이 충분히 확보되어 있는지 확인합니다.
 * NHN Cloud의 외부로 데이터를 내보내야 할 경우 Floating IP를 생성하여 데이터를 내보낼 RDS 인스턴스에 연결합니다.
-* 아래의 PostgreSQLdump 명령어를 통하여 외부로 데이터를 내보냅니다.
+* 아래의 pg_dump 명령어를 통하여 외부로 데이터를 내보냅니다.
 
 #### 파일로 내보낼 경우
 
 ```
-PostgreSQLdump -h{rds_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --routines --events --triggers --databases {database_name1, database_name2, ...} > {local_path_and_file_name}
+pg_dump -h{rds_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --routines --events --triggers --databases {database_name1, database_name2, ...} > {local_path_and_file_name}
 ```
 
 #### NHN Cloud RDS 외부의 PostgreSQL DB로 내보낼 경우
 
 ```
-PostgreSQLdump -h{rds_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --routines --events --triggers --databases {database_name1, database_name2, ...} | PostgreSQL -h{external_db_host} -u{external_db_id} -p{external_db_password} --port={external_db_port}
+pg_dump -h{rds_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --routines --events --triggers --databases {database_name1, database_name2, ...} | postgresql -h{external_db_host} -u{external_db_id} -p{external_db_password} --port={external_db_port}
 ```
 
 ### pg_dump를 이용하여 가져오기
@@ -424,11 +434,11 @@ DB 인스턴스 마이그레이션은 NHN Cloud 콘솔에서 시작할 수 있�
 
 이름 옆에 마이그레이션 버튼이 있는 DB 인스턴스가 점검 대상 인스턴스입니다.
 
-![rds_planed_migration_0](https://static.toastoven.net/prod_rds/planned_migration_alarm/image0_kr.png)
+![db-instance-planned-migration](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-planned-migration.png)
 
 마이그레이션 버튼 위에 마우스 포인터를 올리면 자세한 점검 일정을 확인할 수 있습니다.
 
-![rds_planed_migration_1](https://static.toastoven.net/prod_rds/planned_migration_alarm/image1_kr.png)
+![db-instance-planned-migration-popup](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-planned-migration-popup.png)
 
 #### 2. 점검 대상 DB 인스턴스에 접속 중인 응용 프로그램을 종료해야 합니다.
 
@@ -437,13 +447,13 @@ DB에 연결된 서비스에 영향을 주지 않도록 적절한 조치를 취�
 
 #### 3. 점검 대상 DB 인스턴스를 선택하고 마이그레이션 버튼을 클릭한 후 DB 인스턴스 마이그레이션 확인을 묻는 창이 나타나면 확인 버튼을 클릭합니다.
 
-![rds_planed_migration_2](https://static.toastoven.net/prod_rds/planned_migration_alarm/image2_kr.png)
+![db-instance-planned-migration-confirm](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-planned-migration-confirm.png)
 
 #### 4. DB 인스턴스 마이그레이션이 끝날 때까지 대기합니다.
 
 DB 인스턴스 상태가 변경되지 않는다면 '새로 고침'하십시오.
 
-![rds_planed_migration_3](https://static.toastoven.net/prod_rds/planned_migration_alarm/image3_kr.png)
+![db-instance-planned-migration-status](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/db-instance-planned-migration-status.png)
 
 DB 인스턴스가 마이그레이션되는 동안에는 아무런 조작을 할 수 없습니다.
 DB 인스턴스 마이그레이션이 정상적으로 완료되지 않으면 자동으로 관리자에게 보고되며, NHN Cloud에서 별도로 연락을 드립니다.
