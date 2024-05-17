@@ -61,7 +61,7 @@ DB 인스턴스의 각종 성능 지표를 차트 형태로 볼 수 있습니다
 | 데이터 스토리지 결함                | disk fault status                                                                                                          | 비정상: 0, 정상: 1                          |
 | Database Connection Status | PostgreSQL status                                                                                                          | 접속 불가: 0, 접속 가능: 1                     |
 | Queries Per Second         | qps (counts/sec)                                                                                                           |                                        |
-| Connection                 | idle (counts)<br/>active (counts)<br/>active (counts)<br/>max (counts)                                                     |                                        |
+| Connection                 | idle (counts)<br/>active (counts)<br/>total (counts)<br/>max (counts)                                                      |                                        |
 | Tuple Count                | fetched (counts/sec)<br/>returned (counts/sec)<br/>inserted (counts/sec)<br/>updated (counts/sec)<br/>deleted (counts/sec) |                                        |
 | Lock Tables                | count (counts/sec)                                                                                                         |                                        |
 | Transaction                | commit (counts/sec)<br/>rollback (counts/sec)                                                                              |                                        |
