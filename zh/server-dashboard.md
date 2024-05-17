@@ -26,7 +26,7 @@
 
 ### 레이아웃에 차트 추가
 
-![server-dashboard-chart-add](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/server-dashboard-layout-chart-add.png)
+![server-dashboard-chart-add](https://static.toastoven.net/prod_rds_postgres/24.06.11/ko/server-dashboard-chart-add.png)
 
 ❶ 원하는 레이아웃을 선택합니다.
 ❷ **차트 추가**를 누르면 차트를 추가할 수 있는 팝업창이 나타납니다.
