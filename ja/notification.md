@@ -11,7 +11,7 @@
 
 ![user-group-create](https://static.toastoven.net/prod_rds_postgres/20240611/user-group-create-ko.png)
 
-❶ **사용자 그룹 생성**을 누르면 사용자 그룹을 생성할 수 있는 팝업 화면이 나타납니다.
+❶ **+ 사용자 그룹 생성**을 누르면 사용자 그룹을 생성할 수 있는 팝업 화면이 나타납니다.
 ❷ 사용자 그룹 이름을 입력합니다.
 
 사용자 그룹 이름은 아래와 같은 제약 사항이 있습니다.
@@ -36,7 +36,7 @@
 
 ![notification-group.png](https://static.toastoven.net/prod_rds_postgres/20240611/notification-group-ko.png)
 
-❶ **그룹 만들기**를 누르면 알림 그룹을 생성할 수 있는 팝업 화면이 나타납니다.
+❶ **+ 알림 그룹 생성**을 누르면 알림 그룹을 생성할 수 있는 팝업 화면이 나타납니다.
 ❷ 알림 그룹 이름을 입력합니다.
 
 알림 그룹 이름은 아래와 같은 제약 사항이 있습니다.
@@ -102,7 +102,7 @@
 ![notification-group-watchdog.png](https://static.toastoven.net/prod_rds_postgres/20240611/notification-group-watchdog-ko.png)
 
 ❶ **감시 설정**을 누르면 감시 설정을 변경할 수 있는 팝업 화면이 나타납니다.
-❷ **감시 설정 추가** 를 눌러 신규 감시 설정을 추가합니다.
+❷ **+ 감시 설정 추가**를 눌러 신규 감시 설정을 추가합니다.
 ❸ 감시할 항목과 비교 방법, 임곗값, 지속 시간을 입력한 뒤 **추가**를 클릭합니다.
 
 ### 감시 설정 변경 및 삭제

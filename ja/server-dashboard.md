@@ -18,8 +18,8 @@
 
 ![server-dashboard-layout](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-layout-ko.png)
 
-❶ **레이아웃 관리**를 누르면 레이아웃을 관리하는 팝업창이 나타납니다.
-❷ **레이아웃 만들기**를 눌러 레이아웃을 생성할 수 있습니다.
+❶ **레이아웃 관리**를 누르면 레이아웃을 관리하는 팝업 화면이 나타납니다.
+❷ **+ 레이아웃 만들기**를 눌러 레이아웃을 생성할 수 있습니다.
 - 레이아웃 이름을 입력한 뒤 **생성**을 눌러 레이아웃을 생성합니다.
 ❸ 버튼을 클릭하면 추가된 레이아웃을 변경할 수 있습니다.
 ❹ 버튼을 클릭하면 추가된 레이아웃을 삭제할 수 있습니다.
@@ -29,9 +29,9 @@
 ![server-dashboard-chart-add](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-chart-add-ko.png)
 
 ❶ 원하는 레이아웃을 선택합니다.
-❷ **차트 추가**를 누르면 차트를 추가할 수 있는 팝업창이 나타납니다.
-❸ 체크박스를 선택하여 추가할 차트를 여러 개 선택할 수 있습니다.
-❹ 차트 이름을 클릭하면 왼쪽 영역에 차트 미리 보기가 나타납니다.
+❷ **+ 차트 추가**를 누르면 차트를 추가할 수 있는 팝업 화면이 나타납니다.
+❸ 체크박스를 선택하여 추가할 지표를 여러 개 선택할 수 있습니다.
+❹ 지표 이름을 클릭하면 왼쪽 미리 보기 영역에 차트가 나타납니다.
 ❺ **추가**를 클릭하면 선택된 차트가 모두 추가됩니다.
 
 ### 레이아웃의 차트 변경 및 삭제
@@ -76,12 +76,12 @@ DB 인스턴스의 각종 성능 지표를 차트 형태로 볼 수 있습니다
 
 ![server-dashboard-group-add](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-group-add-ko.png)
 
-❶ **+ 그룹 추가**를 클릭하면 그룹을 생성할 수 있는 팝업창이 나타납니다.
+❶ **+ 그룹 추가**를 클릭하면 그룹을 생성할 수 있는 팝업 화면이 나타납니다.
 ❷ 서버 그룹에 추가할 DB 인스턴스를 선택합니다.
 
 ### 서버 그룹 설정
 
-서버 대시보드 왼쪽의 서버 목록에 DB 인스턴스와 서버 그룹이 함께 나타납니다
+서버 대시보드 왼쪽의 서버 목록에 DB 인스턴스와 서버 그룹이 함께 나타납니다.
 
 ![server-dashboard-group-manage](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-group-manage-ko.png)
 
