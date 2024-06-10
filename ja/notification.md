@@ -99,7 +99,7 @@
 
 ### 감시 설정 추가
 
-![notification-group-watchdog.png](https://static.toastoven.net/prod_rds_postgres/20240611/notification-group-watchdog-ko.png)
+![notification-group-watchdog](https://static.toastoven.net/prod_rds_postgres/20240611/notification-group-watchdog-ko.png)
 
 ❶ **감시 설정**을 누르면 감시 설정을 변경할 수 있는 팝업 화면이 나타납니다.
 ❷ **+ 감시 설정 추가**를 눌러 신규 감시 설정을 추가합니다.
