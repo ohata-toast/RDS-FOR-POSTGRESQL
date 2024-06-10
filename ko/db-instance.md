@@ -275,7 +275,7 @@ DB 인스턴스의 **접근 제어** 탭에서는 특정 데이터베이스와 �
 
 #### 접근 제어 규칙 추가
 
-![db-instance-detail-hba-create-ko](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-detail-hba-create.png)
+![db-instance-detail-hba-create](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-detail-hba-create-ko.png)
 
 ❶ **+ 생성**을 클릭하면 접근 제어 규칙 추가 팝업 화면이 나타납니다.
 ❷ 규칙 적용 대상을 전체 대상으로 지정하거나 특정 데이터베이스나 사용자를 선택해서 지정할 수 있습니다.
