@@ -9,7 +9,7 @@ You can manage users who receive notifications as groups. Notification target mu
 
 ### Create a User Group
 
-![user-group-create](https://static.toastoven.net/prod_rds_postgres/20240611/user-group-create-ko.png)
+![user-group-create](https://static.toastoven.net/prod_rds_postgres/20240611/user-group-create-en.png)
 
 ❶ When you click **+ Create User Group**, a pop-up screen to create a user group appears.
 ❷ Enter a user group name.
@@ -22,7 +22,7 @@ User group names have the following restrictions.
 
 * If you select as an entire project member, send a notification to the entire project member at that time when you send a notification.
 
-![user-group-custom](https://static.toastoven.net/prod_rds_postgres/20240611/user-group-custom-ko.png)
+![user-group-custom](https://static.toastoven.net/prod_rds_postgres/20240611/user-group-custom-en.png)
 
 ❹ Click **+ Add** to display a pop-up screen where you can add project members to notify.
 ❺ You can select a notification target to delete and click **Delete** to exclude it from the notification target.
@@ -34,7 +34,7 @@ You can receive notifications about performance metrics through the notification
 
 ### Create Notification Group
 
-![notification-group.png](https://static.toastoven.net/prod_rds_postgres/20240611/notification-group-ko.png)
+![notification-group.png](https://static.toastoven.net/prod_rds_postgres/20240611/notification-group-en.png)
 
 ❶ Click **+ Create Notification Group** to display a pop-up screen where you can create notification groups.
 ❷ Enter the notification group name.
@@ -99,7 +99,7 @@ Performance metrics that can be monitored are as follows.
 
 ### Add Monitoring Setting
 
-![notification-group-watchdog](https://static.toastoven.net/prod_rds_postgres/20240611/notification-group-watchdog-ko.png)
+![notification-group-watchdog](https://static.toastoven.net/prod_rds_postgres/20240611/notification-group-watchdog-en.png)
 
 ❶ Click **Monitoring Settings** to display a pop-up screen that allows you to change your monitoring settings.
 ❷ Click **+ Add Monitoring Setting** to add new monitoring settings.

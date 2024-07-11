@@ -15,13 +15,13 @@ RDS for PostgreSQL uses the pg_basebackup tool to back up databases. To restore 
 
 The following settings are applied to backup and it applies to both auto and manual backups.
 
-![backup-config](https://static.toastoven.net/prod_rds_postgres/20240611/backup-config-ko.png)
+![backup-config](https://static.toastoven.net/prod_rds_postgres/20240611/backup-config-en.png)
 
 ### Manual Backup
 
 If you want to permanently store a database at a specific point in time, you can perform a backup manually from the web console. Unlike auto backups, manual backups are not deleted when a DB instance is deleted unless you explicitly delete the backup. To perform a manual backup from the web console
 
-![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-detail-backup-ko.png)
+![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-detail-backup-en.png)
 
 ❶ After selecting the DB instance to back up, click **Backup**, and **Create Backup** and the pop-up screen appears.
     - If you click **Backup** without selecting DB instance, you can select DB instance from the drop-down menu within the **Create Backup** pop-up screen.
@@ -32,7 +32,7 @@ If you want to permanently store a database at a specific point in time, you can
 
 Or, on the **Backup** tab,
 
-![backup-create](https://static.toastoven.net/prod_rds_postgres/20240611/backup-create-ko.png)
+![backup-create](https://static.toastoven.net/prod_rds_postgres/20240611/backup-create-en.png)
 
 ❶ Click **+ Create Backup** and the **Create Backup** pop-up screen will appear.
 ❷ Select the DB instance on which to perform the backup.
@@ -42,7 +42,7 @@ Or, on the **Backup** tab,
 
 Even when performing manual backups, auto backups can be performed if necessary for restore jobs or depending on the auto backup schedule. If you set the backup retention period for DB instance to 1 day or longer, auto backups are activated, and backups are performed at the specified time. auto backups have the same life cycle as DB instances. When a DB instance is deleted, all archived auto backups are deleted. The settings that Auto Backup supports are as follows.
 
-![backup-config](https://static.toastoven.net/prod_rds_postgres/20240611/backup-config-ko.png)
+![backup-config](https://static.toastoven.net/prod_rds_postgres/20240611/backup-config-en.png)
 
 **Backup Retention Period**
 
@@ -76,13 +76,13 @@ You can use backup to restore data to any point in time. Restoration always crea
 
 You do not need the original DB instance that performed the backup by restoring only the backup file. To restore a snapshot from the web console
 
-![db-instance-detail-backup-restore](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-detail-backup-restore-ko.png)
+![db-instance-detail-backup-restore](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-detail-backup-restore-en.png)
 
 ❶ Select the backup file you want to restore on the details tab of the dB instance, and then click **Snapshot Restore** to go to the Restore DB instance screen.
 
 Or
 
-![backup-restore](https://static.toastoven.net/prod_rds_postgres/20240611/backup-restore-ko.png)
+![backup-restore](https://static.toastoven.net/prod_rds_postgres/20240611/backup-restore-en.png)
 
 ❶ On the Backup tab, select the backup file you want to restore and then click **Snapshot Restore**.
 
@@ -96,7 +96,7 @@ You can use point-in-time restoration to restore to a specific point-in-time or 
 
 To restore a point in time from web console
 
-![db-instance-pitr](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-ko.png)
+![db-instance-pitr](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-en.png)
 
 ❶ Select the DB instance you want to restore to a point in time and click **Point In Time Restore** to go to the page where you can set up a point in time restore.
 
@@ -104,11 +104,11 @@ To restore a point in time from web console
 
 When restoring with Timestamp, perform the restore based on the backup file closest to the selected time point and apply the WAL log to the desired time point.
 
-![db-instance-pitr-01](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-01-ko.png)
+![db-instance-pitr-01](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-01-en.png)
 
 ❶ Select a restore method.
 
-![db-instance-pitr-02](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-02-ko.png)
+![db-instance-pitr-02](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-02-en.png)
 
 ❷ Select a time to restore. You can restore it to the most recent point in time, or enter the specific point in time that you want.
 
@@ -117,6 +117,6 @@ When restoring with Timestamp, perform the restore based on the backup file clos
 
 During the restore process using the WAL log location, the restore is performed based on the backup file closest to the location you entered, and then WAL log of the original instance applies to the desired location.
 
-![db-instance-pitr-03](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-03-ko.png)
+![db-instance-pitr-03](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-03-en.png)
 
 ❸ Enter a specific location for WAL log.
