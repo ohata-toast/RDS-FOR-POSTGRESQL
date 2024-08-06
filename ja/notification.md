@@ -9,9 +9,9 @@
 
 ### ユーザーグループの作成
 
-![user-group-create](https://static.toastoven.net/prod_rds_postgres/20240611/user-group-create-ja.png)
+![user-group-create](https://static.toastoven.net/prod_rds_postgres/20240813/user-group-create-ja.png)
 
-❶ **+ ユーザーグループ作成** を押すと、ユーザーグループを作成できるポップアップ画面が表示されます。
+❶ **+ ユーザーグループ作成** を押すと、ユーザーグループを作成できるポップアップウィンドウが表示されます。
 ❷ユーザーグループ名を入力します。
 
 ユーザーグループ名には以下のような制約があります。
@@ -22,9 +22,9 @@
 
 * 全プロジェクトメンバーを選択した場合、アラームを送信する際、当時の全プロジェクトメンバーを対象にアラームを送信します。
 
-![user-group-custom](https://static.toastoven.net/prod_rds_postgres/20240611/user-group-custom-ja.png)
+![user-group-custom](https://static.toastoven.net/prod_rds_postgres/20240813/user-group-custom-ja.png)
 
-❹ **+追加**を押すと、プロジェクトメンバーを通知対象に追加できるポップアップ画面が表示されます。
+❹ **+追加**を押すと、プロジェクトメンバーを通知対象に追加できるポップアップウィンドウが表示されます。
 ❺削除する通知対象を選択した後、**削除**を押して通知対象から除外できます。
 ❻ **確認**を押してユーザーグループを追加します。
 
@@ -34,9 +34,9 @@
 
 ### 通知グループの作成
 
-![notification-group.png](https://static.toastoven.net/prod_rds_postgres/20240611/notification-group-ja.png)
+![notification-group.png](https://static.toastoven.net/prod_rds_postgres/20240813/notification-group-ja.png)
 
-❶ **+通知グループ作成**を押すと、通知グループを作成できるポップアップ画面が表示されます。
+❶ **+通知グループ作成**を押すと、通知グループを作成できるポップアップウィンドウが表示されます。
 ❷通知グループ名を入力します。
 
 通知グループ名には以下のような制約があります。
@@ -96,12 +96,14 @@
 | Transaction Rollback       | counts/sec         |
 | Deadlock                   | counts/sec         |
 | Conflict                   | counts/sec         |
+| 複製遅延(秒)                   | seconds            |
+| 複製遅延(バイト)                 | MB                 |
 
 ### 監視設定の追加
 
-![notification-group-watchdog](https://static.toastoven.net/prod_rds_postgres/20240611/notification-group-watchdog-ja.png)
+![notification-group-watchdog](https://static.toastoven.net/prod_rds_postgres/20240813/notification-group-watchdog-ja.png)
 
-❶ **監視設定**を押すと、監視設定を変更できるポップアップ画面が表示されます。
+❶ **監視設定**を押すと、監視設定を変更できるポップアップウィンドウが表示されます。
 ❷ **+ 監視設定の追加**を押して、新規監視設定を追加します。
 ❸監視する項目と比較方法、しきい値、持続時間を入力した後、**追加**をクリックします。
 

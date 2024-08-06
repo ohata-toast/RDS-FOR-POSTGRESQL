@@ -2,7 +2,7 @@
 
 ## イベント
 
-イベントはRDS for PostgreSQLやユーザーによって発生した重要なイベントを意味します。イベントはイベントタイプ、発生日時、発生元ソースとメッセージで構成されます。イベントはWebコンソールで照会可能で、イベントの種類と発生するイベントは下記の通りです。
+イベントはRDS for PostgreSQLやユーザーによって発生した重要なイベントを意味します。イベントはイベントタイプ、発生日時、発生元ソースとメッセージで構成されます。イベントはコンソールで照会可能で、イベントの種類と発生するイベントは下記の通りです。
 
 | イベントコード                | イベントタイプ            | 説明                |
 |-------------------------|---------------------|---------------------|
@@ -71,13 +71,42 @@
 | DB_INSTANCE_28_01       | DB_INSTANCE         | DBインスタンス正常化       |
 | DB_INSTANCE_29_01       | DB_INSTANCE         | DBインスタンス容量不足      |
 | DB_INSTANCE_30_01       | DB_INSTANCE         | DBインスタンス接続失敗     |
+| DB_INSTANCE_31_00       | DB_INSTANCE         | DBインスタンス複製開始      |
+| DB_INSTANCE_31_01       | DB_INSTANCE         | DBインスタンス複製完了     |
+| DB_INSTANCE_31_04       | DB_INSTANCE         | DBインスタンス複製失敗     |
+| DB_INSTANCE_32_00       | DB_INSTANCE         | DBインスタンス昇格開始      |
+| DB_INSTANCE_32_01       | DB_INSTANCE         | DBインスタンス昇格完了     |
+| DB_INSTANCE_32_04       | DB_INSTANCE         | DBインスタンス昇格失敗     |
+| DB_INSTANCE_33_00       | DB_INSTANCE         | DBインスタンス強制昇格開始   |
+| DB_INSTANCE_33_01       | DB_INSTANCE         | DBインスタンス強制昇格完了  |
+| DB_INSTANCE_33_04       | DB_INSTANCE         | DBインスタンス強制昇格失敗  |
+| DB_INSTANCE_34_00       | DB_INSTANCE         | DBインスタンス複製再構築開始  |
+| DB_INSTANCE_34_01       | DB_INSTANCE         | DBインスタンス複製再構築開始  |
+| DB_INSTANCE_34_04       | DB_INSTANCE         | DBインスタンス複製再構築開始  |
+| DB_INSTANCE_35_00       | DB_INSTANCE         | DBインスタンス複製遅延     |
+| DB_INSTANCE_35_01       | DB_INSTANCE         | DBインスタンス複製遅延終了  |
+| DB_INSTANCE_36_00       | DB_INSTANCE         | DBインスタンス複製中断     |
 | DB_SECURITY_GROUP_01_01 | DB_SECURITY_GROUP   | DBセキュリティグループ作成       |
 | DB_SECURITY_GROUP_02_00 | DB_SECURITY_GROUP   | DBセキュリティグループ変更開始     |
 | DB_SECURITY_GROUP_02_01 | DB_SECURITY_GROUP   | DBセキュリティグループ変更完了    |
 | DB_SECURITY_GROUP_02_04 | DB_SECURITY_GROUP   | DBセキュリティグループ変更失敗    |
 | DB_SECURITY_GROUP_03_01 | DB_SECURITY_GROUP   | DBセキュリティグループ削除       |
+| TENANT_05_04            | TENANT              | リードレプリカ作成制限      |
 | TENANT_01_04            | TENANT              | CPUコア数制限       |
 | TENANT_02_04            | TENANT              | RAM容量制限	          |
 | TENANT_03_04            | TENANT              | 個別ボリュームサイズ制限       |
 | TENANT_04_04            | TENANT              | プロジェクト全体のボリュームサイズ制限  |
 | JOB_01_04               | JOB                 | Job実行失敗         |
+
+### イベント購読
+
+イベントを購読すると、イベント発生時に電子メールやSMSで通知を受けることができます。イベント購読に接続されたユーザーグループのユーザーに通知を送信します。イベントタイプ、イベントコード、イベントソースで細分化して購読できます。しばらく通知を中断する場合は、イベント購読を無効に修正します。有効にしない場合、通知を送信しません。
+
+![event-subscription](https://static.toastoven.net/prod_rds_postgres/20240813/event-subscription-ko.png)
+
+* ❶ **イベント購読登録**を押すと、イベント購読を登録できるポップアップウィンドウが表示されます。
+* ❷購読するイベントの種類を選択します。イベントタイプによって選択できるイベントコードが変更されます。
+* ❸購読するイベントコードを選択します。
+* ❹購読するイベントソースを選択します。
+* ❺イベント通知を受け取るユーザーグループを選択します。
+* ❻有効にするかどうかを選択します。**いいえ**を選択した場合、イベント発生通知を送信しません。

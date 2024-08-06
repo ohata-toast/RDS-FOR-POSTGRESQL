@@ -16,9 +16,9 @@
 
 レイアウトを利用してチャートのサイズと位置を表示できます。サービス起動時に`基本システム指標`と`基本PostgreSQL指標`がデフォルトのレイアウトとして提供されます。デフォルトのレイアウトは変更または削除することはできません。また、チャートの追加や変更、削除を行うこともできません。チャートでデフォルトのレイアウトに含まれていない情報を見たい場合は、新しいレイアウトを作成してチャートを追加できます。
 
-![server-dashboard-layout](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-layout-ja.png)
+![server-dashboard-layout](https://static.toastoven.net/prod_rds_postgres/20240813/server-dashboard-layout-ja.png)
 
-❶ **レイアウト管理**を押すと、レイアウトを管理するポップアップ画面が表示されます。
+❶ **レイアウト管理**を押すと、レイアウトを管理するポップアップウィンドウが表示されます。
 ❷ **+ レイアウトの作成**を押すと、レイアウトを作成できます。
 - レイアウト名を入力した後、**作成**を押してレイアウトを作成します。
 ❸ボタンをクリックすると、追加したレイアウトを変更できます。
@@ -26,17 +26,17 @@
 
 ### レイアウトにチャートを追加
 
-![server-dashboard-chart-add](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-chart-add-ja.png)
+![server-dashboard-chart-add](https://static.toastoven.net/prod_rds_postgres/20240813/server-dashboard-chart-add-ja.png)
 
 ❶レイアウトを選択します。
-❷ **+チャート追加**を押すと、チャートを追加できるポップアップ画面が表示されます。
+❷ **+チャート追加**を押すと、チャートを追加できるポップアップウィンドウが表示されます。
 ❸チェックボックスを選択して追加する指標を複数選択できます。
 ❹指標名をクリックすると、左側のプレビューエリアにチャートが表示されます。
 ❺ **追加**をクリックすると、選択したチャートがすべて追加されます。
 
 ### レイアウトのチャート変更及び削除
 
-![server-dashboard-chart-manage](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-chart-manage-ja.png)
+![server-dashboard-chart-manage](https://static.toastoven.net/prod_rds_postgres/20240813/server-dashboard-chart-manage-ja.png)
 
 ❶チャートの上部領域をクリックした後、ドラッグ＆ドロップして位置を移動できます。
 ❷チャートの右下の領域をドラッグ＆ドロップして、チャートのサイズを変更できます。
@@ -67,6 +67,8 @@ DBインスタンスの各種性能指標をチャート形式で閲覧できま
 | Transaction                | commit (counts/sec)<br/>rollback (counts/sec)                                                                              |                                        |
 | Deadlock/Conflict          | deadlock (counts/sec)<br/>conflict (counts/sec)                                                                            |                                        |
 | Cache Hit Ratio            | %                                                                                                                          |                                        |
+| 複製遅延(秒)                   | seconds                                                                                                                    |                                        |
+| 複製遅延(バイト)                 | bytes                                                                                                                      |                                        |
 
 ## サーバーグループ
 
@@ -74,20 +76,20 @@ DBインスタンスの各種性能指標をチャート形式で閲覧できま
 
 ### サーバーグループの作成
 
-![server-dashboard-group-add](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-group-add-ja.png)
+![server-dashboard-group-add](https://static.toastoven.net/prod_rds_postgres/20240813/server-dashboard-group-add-ja.png)
 
-❶ **+グループ追加**をクリックすると、グループを作成できるポップアップ画面が表示されます。
+❶ **+グループ追加**をクリックすると、グループを作成できるポップアップウィンドウが表示されます。
 ❷サーバーグループに追加するDBインスタンスを選択します。
 
 ### サーバーグループの設定
 
 サーバーダッシュボード左側のサーバーリストにDBインスタンスとサーバーグループが一緒に表示されます。
 
-![server-dashboard-group-manage](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-group-manage-ja.png)
+![server-dashboard-group-manage](https://static.toastoven.net/prod_rds_postgres/20240813/server-dashboard-group-manage-ja.png)
 
 ❶ **+**, **-**を押してサーバーグループを展開したり、閉じたりすることができます。
 ❷サーバーグループに属するDBインスタンスをクリックすると、チャートに表示される色を変更できる色選択ポップアップが表示されます。
 
-![server-dashboard-group-menu](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-group-menu-ja.png)
+![server-dashboard-group-menu](https://static.toastoven.net/prod_rds_postgres/20240813/server-dashboard-group-menu-ja.png)
 
 ❶ **：**サーバーリストの各項目の右側に表示されるメニューアイコンをクリックすると、サーバーグループを変更または削除できます。
