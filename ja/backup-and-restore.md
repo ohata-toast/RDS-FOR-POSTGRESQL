@@ -2,7 +2,7 @@
 
 ## バックアップ
 
-障害状況に備えて、DBインスタンスのデータベースを復旧できるように事前に準備できます。必要なときにWebコンソールでバックアップを実行したり、定期的にバックアップが実行されるように設定できます。バックアップが実行されている間は、当該DBインスタンスのストレージの性能低下が発生する可能性があります。サービスに影響を与えないように、サービスの負荷が少ない時間にバックアップすることを推奨します。
+障害状況に備えて、DBインスタンスのデータベースを復旧できるように事前に準備できます。必要なときにコンソールでバックアップを実行したり、定期的にバックアップが実行されるように設定できます。バックアップが実行されている間は、当該DBインスタンスのストレージの性能低下が発生する可能性があります。サービスに影響を与えないように、サービスの負荷が少ない時間にバックアップすることを推奨します。
 
 RDS for PostgreSQLではpg_basebackupツールを利用してデータベースをバックアップします。外部PostgreSQLのバックアップに復元したり、RDS for PostgreSQLのバックアップに復元するためには、RDS for PostgreSQLで使うpg_basebackupと同じバージョンを使う必要があります。DBエンジンのバージョンに基づくpg_basebackupのバージョンは次のとおりです。
 
@@ -19,12 +19,12 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 ### 手動バックアップ
 
-特定の時点のデータベースを永続的に保存するには、Webコンソールで手動バックアップを行います。手動バックアップは、自動バックアップと違って、明示的にバックアップを削除しない限り、DBインスタンスが削除される時に一緒に削除されません。 Webコンソールで手動バックアップを実行するには
+特定の時点のデータベースを永続的に保存するには、コンソールで手動バックアップを行います。手動バックアップは、自動バックアップと違って、明示的にバックアップを削除しない限り、DBインスタンスが削除される時に一緒に削除されません。 コンソールで手動バックアップを実行するには
 
 ![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-detail-backup-ja.png)
 
-❶バックアップするDBインスタンスを選択した後、**バックアップ**をクリックすると、**バックアップ作成** ポップアップ画面が表示されます。
-- DBインスタンスを選択せずに**バックアップ**をクリックすると、**バックアップ作成**ポップアップ画面内のドロップダウンメニューからDBインスタンスを選択できます。
+❶バックアップするDBインスタンスを選択した後、**バックアップ**をクリックすると、**バックアップ作成** ポップアップウィンドウが表示されます。
+- DBインスタンスを選択せずに**バックアップ**をクリックすると、**バックアップ作成**ポップアップウィンドウ内のドロップダウンメニューからDBインスタンスを選択できます。
 ❷バックアップの名前を入力します。以下のような制約事項があります。
 
 * バックアップ名は、リージョンごとに固有の名前でなければなりません。
@@ -32,9 +32,9 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 または**バックアップ**タブで
 
-![backup-create](https://static.toastoven.net/prod_rds_postgres/20240611/backup-create-ja.png)
+![backup-create](https://static.toastoven.net/prod_rds_postgres/20240813/backup-create-ja.png)
 
-❶ **+ バックアップ作成**をクリックすると、**バックアップ作成**ポップアップ画面が表示されます。
+❶ **+ バックアップ作成**をクリックすると、**バックアップ作成**ポップアップウィンドウが表示されます。
 ❷バックアップを実行するDBインスタンスを選択します。
 ❸バックアップの名前を入力した後、**作成**をクリックすると、バックアップの作成をリクエストできます。
 
@@ -74,15 +74,15 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 ### スナップショット復元
 
-バックアップファイルだけで復元するため、バックアップを実行した元のDBインスタンスが必要ありません。 Webコンソールでスナップショットを復元するには
+バックアップファイルだけで復元するため、バックアップを実行した元のDBインスタンスが必要ありません。 コンソールでスナップショットを復元するには
 
-![db-instance-detail-backup-restore](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-detail-backup-restore-ja.png)
+![db-instance-detail-backup-restore](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-backup-restore-ja.png)
 
 ❶DBインスタンスの詳細タブで復元するバックアップファイルを選択した後、**スナップショット復元**をクリックすると、DBインスタンスの復元画面に移動します。
 
 または
 
-![backup-restore](https://static.toastoven.net/prod_rds_postgres/20240611/backup-restore-ja.png)
+![backup-restore](https://static.toastoven.net/prod_rds_postgres/20240813/backup-restore-ja.png)
 
 ❶バックアップタブで復元するバックアップファイルを選択した後、**スナップショット復元**をクリックします。
 
@@ -96,7 +96,7 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 Webコンソールで時点復元を行うには
 
-![db-instance-pitr](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-ja.png)
+![db-instance-pitr](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-pitr-ja.png)
 
 ❶時点復元するDBインスタンスを選択した後、**時点復元**をクリックすると、時点復元を設定できるページに移動します。
 
