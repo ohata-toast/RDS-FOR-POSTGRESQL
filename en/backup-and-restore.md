@@ -21,7 +21,7 @@ The following settings are applied to backup and it applies to both auto and man
 
 If you want to permanently store a database at a specific point in time, you can perform a backup manually from the console. Unlike auto backups, manual backups are not deleted when a DB instance is deleted unless you explicitly delete the backup. To perform a manual backup from the console
 
-![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-detail-backup-en.png)
+![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-backup-en.png)
 
 ❶ After selecting the DB instance to back up, click **Backup**, and **Create Backup** and the pop-up window appears.
     - If you click **Backup** without selecting DB instance, you can select DB instance from the drop-down menu within the **Create Backup** pop-up window.
@@ -32,7 +32,7 @@ If you want to permanently store a database at a specific point in time, you can
 
 Or, on the **Backup** tab,
 
-![backup-create](https://static.toastoven.net/prod_rds_postgres/20240611/backup-create-en.png)
+![backup-create](https://static.toastoven.net/prod_rds_postgres/20240813/backup-create-en.png)
 
 ❶ Click **+ Create Backup** and the **Create Backup** pop-up window will appear.
 ❷ Select the DB instance on which to perform the backup.
@@ -76,13 +76,13 @@ You can use backup to restore data to any point in time. Restoration always crea
 
 You do not need the original DB instance that performed the backup by restoring only the backup file. To restore a snapshot from the console
 
-![db-instance-detail-backup-restore](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-detail-backup-restore-en.png)
+![db-instance-detail-backup-restore](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-backup-restore-en.png)
 
 ❶ Select the backup file you want to restore on the details tab of the dB instance, and then click **Snapshot Restore** to go to the Restore DB instance screen.
 
 Or
 
-![backup-restore](https://static.toastoven.net/prod_rds_postgres/20240611/backup-restore-en.png)
+![backup-restore](https://static.toastoven.net/prod_rds_postgres/20240813/backup-restore-en.png)
 
 ❶ On the Backup tab, select the backup file you want to restore and then click **Snapshot Restore**.
 
@@ -96,7 +96,7 @@ You can use point-in-time restoration to restore to a specific point-in-time or 
 
 To restore a point in time from the console
 
-![db-instance-pitr](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-en.png)
+![db-instance-pitr](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-pitr-en.png)
 
 ❶ Select the DB instance you want to restore to a point in time and click **Point In Time Restore** to go to the page where you can set up a point in time restore.
 

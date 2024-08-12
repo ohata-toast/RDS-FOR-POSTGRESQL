@@ -401,7 +401,7 @@ DB 인스턴스에 연결된 파라미터 그룹의 설정이 변경되어도 �
 
 읽기 복제본을 생성하려면 콘솔에서
 
-![db-instance-replica-create-ko](https://static.toastoven.net/prod_rds_postgres/240813/db-instance-list-replica-create-ko.png)
+![db-instance-list-replica-create](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-list-replica-create-ko.png)
 
 ❶ 원본 DB 인스턴스를 선택한 뒤 **읽기 복제본 생성**을 클릭하면 읽기 복제본을 생성하기 위한 페이지로 이동합니다.
 

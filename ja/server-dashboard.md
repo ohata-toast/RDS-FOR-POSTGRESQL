@@ -46,29 +46,29 @@
 
 DBインスタンスの各種性能指標をチャート形式で閲覧できます。性能指標ごとにそれぞれ違う形のチャートで構成されています。基本的なシステム指標以外にPostgreSQLが提供する各種性能指標をチャートで提供しています。チャート別に確認できる指標は下記の通りです。
 
-| チャート                       | 指標(単位)                                                                                                                     | 備考                                   |
-|----------------------------|----------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
-| CPU使用率                  | cpu used (%)                                                                                                               |                                        |
-| CPU詳細                   | cpu user (%)<br/>cpu system (%)<br/>cpu nice (%)<br/>cpu IO wait (%)                                                       |                                        |
-| CPU平均負荷                | 1m<br/>5m<br/>15m                                                                                                          |                                        |
-| メモリ使用量                  | memory used (%)                                                                                                            |                                        |
-| メモリ詳細                   | memory used (bytes)<br/>memory free (bytes)                                                                                |                                        |
-| スワップ使用量                   | swap used (bytes)<br> swap total (bytes)                                                                                   |                                        |
-| Storage使用量              | storage used (%)                                                                                                           |                                        |
-| Storage残り使用量           | storage free (%)                                                                                                           |                                        |
-| Storage IO                 | disk read (bytes)<br> disk write (bytes)                                                                                   |                                        |
-| ネットワークデータ送受信             | nic incoming (bytes)<br> nic outgoing (bytes)                                                                              | PostgreSQLで使用する基本的なネットワーク転送が発生します。 |
-| データストレージ障害               | disk fault status                                                                                                          | 異常: 0、正常: 1                          |
-| Database Connection Status | PostgreSQL status                                                                                                          | 接続不可: 0、接続可能: 1                     |
-| Queries Per Second         | qps (counts/sec)                                                                                                           |                                        |
-| Connection                 | idle (counts)<br/>active (counts)<br/>total (counts)<br/>max (counts)                                                      |                                        |
-| Tuple Count                | fetched (counts/sec)<br/>returned (counts/sec)<br/>inserted (counts/sec)<br/>updated (counts/sec)<br/>deleted (counts/sec) |                                        |
-| Lock Tables                | count (counts/sec)                                                                                                         |                                        |
-| Transaction                | commit (counts/sec)<br/>rollback (counts/sec)                                                                              |                                        |
-| Deadlock/Conflict          | deadlock (counts/sec)<br/>conflict (counts/sec)                                                                            |                                        |
-| Cache Hit Ratio            | %                                                                                                                          |                                        |
-| 複製遅延(秒)                   | seconds                                                                                                                    |                                        |
-| 複製遅延(バイト)                 | bytes                                                                                                                      |                                        |
+| チャート                       | 指標(単位)                                                                                                                     | 備考                                 |
+|----------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------|
+| CPU使用率                     | cpu used (%)                                                                                                               |                                    |
+| CPU詳細                      | cpu user (%)<br/>cpu system (%)<br/>cpu nice (%)<br/>cpu IO wait (%)                                                       |                                    |
+| CPU平均負荷                    | 1m<br/>5m<br/>15m                                                                                                          |                                    |
+| メモリ使用量                     | memory used (%)                                                                                                            |                                    |
+| メモリ詳細                      | memory used (bytes)<br/>memory free (bytes)                                                                                |                                    |
+| スワップ使用量                    | swap used (bytes)<br> swap total (bytes)                                                                                   |                                    |
+| Storage使用量                 | storage used (%)                                                                                                           |                                    |
+| Storage残り使用量               | storage free (%)                                                                                                           |                                    |
+| Storage IO                 | disk read (bytes)<br> disk write (bytes)                                                                                   |                                    |
+| ネットワークデータ送受信               | nic incoming (bytes)<br> nic outgoing (bytes)                                                                              | PostgreSQLで使用する基本的なネットワーク転送が発生します。 |
+| データストレージ障害                 | disk fault status                                                                                                          | 異常: 0、正常: 1                        |
+| Database Connection Status | PostgreSQL status                                                                                                          | 接続不可: 0、接続可能: 1                    |
+| Queries Per Second         | qps (counts/sec)                                                                                                           |                                    |
+| Connection                 | idle (counts)<br/>active (counts)<br/>total (counts)<br/>max (counts)                                                      |                                    |
+| Tuple Count                | fetched (counts/sec)<br/>returned (counts/sec)<br/>inserted (counts/sec)<br/>updated (counts/sec)<br/>deleted (counts/sec) |                                    |
+| Lock Tables                | count (counts/sec)                                                                                                         |                                    |
+| Transaction                | commit (counts/sec)<br/>rollback (counts/sec)                                                                              |                                    |
+| Deadlock/Conflict          | deadlock (counts/sec)<br/>conflict (counts/sec)                                                                            |                                    |
+| Cache Hit Ratio            | %                                                                                                                          |                                    |
+| 複製遅延(秒)                    | seconds                                                                                                                    |                                    |
+| 複製遅延(バイト)                  | bytes                                                                                                                      |                                    |
 
 ## サーバーグループ
 
@@ -85,11 +85,11 @@ DBインスタンスの各種性能指標をチャート形式で閲覧できま
 
 サーバーダッシュボード左側のサーバーリストにDBインスタンスとサーバーグループが一緒に表示されます。
 
-![server-dashboard-group-manage](https://static.toastoven.net/prod_rds_postgres/20240813/server-dashboard-group-manage-ja.png)
+![server-dashboard-group-manage](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-group-manage-ja.png)
 
 ❶ **+**, **-**を押してサーバーグループを展開したり、閉じたりすることができます。
 ❷サーバーグループに属するDBインスタンスをクリックすると、チャートに表示される色を変更できる色選択ポップアップが表示されます。
 
-![server-dashboard-group-menu](https://static.toastoven.net/prod_rds_postgres/20240813/server-dashboard-group-menu-ja.png)
+![server-dashboard-group-menu](https://static.toastoven.net/prod_rds_postgres/20240611/server-dashboard-group-menu-ja.png)
 
 ❶ **：**サーバーリストの各項目の右側に表示されるメニューアイコンをクリックすると、サーバーグループを変更または削除できます。

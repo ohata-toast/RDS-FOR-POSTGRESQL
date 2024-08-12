@@ -56,48 +56,48 @@
 
 監視可能な性能指標項目は次のとおりです。
 
-| 項目                        | 単位               |
-|----------------------------|--------------------|
-| CPU使用率                  | %                  |
-| CPU使用量(IO Wait)           | %                  |
-| CPU使用量(Nice)              | %                  |
-| CPU使用量(System)            | %                  |
-| CPU使用量(User)              | %                  |
-| Load Average 1M            |                    |
-| Load Average 5M            |                    |
-| Load Average 15M           |                    |
-| メモリ使用量                  | %                  |
-| メモリ使用量(バイト)               | MB                 |
-| メモリ空き容量(バイト)               | MB                 |
-| メモリバッファ(バイト)                | MB                 |
-| キャッシュされたメモリ(バイト)               | MB                 |
-| スワップ使用量                   | MB                 |
-| スワップ全体サイズ                 | MB                 |
-| Storage使用量              | %                  |
-| Storage残り使用量           | MB                 |
-| Storage IO Read            | KB/sec             |
-| Storage IO Write           | KB/sec             |
-| データストレージ障害               | 異常: 0、正常: 1      |
-| Network in BPS             | KB/sec             |
-| Network out BPS            | KB/sec             |
+| 項目                         | 単位              |
+|----------------------------|-----------------|
+| CPU使用率                     | %               |
+| CPU使用量(IO Wait)            | %               |
+| CPU使用量(Nice)               | %               |
+| CPU使用量(System)             | %               |
+| CPU使用量(User)               | %               |
+| Load Average 1M            |                 |
+| Load Average 5M            |                 |
+| Load Average 15M           |                 |
+| メモリ使用量                     | %               |
+| メモリ使用量(バイト)                | MB              |
+| メモリ空き容量(バイト)               | MB              |
+| メモリバッファ(バイト)               | MB              |
+| キャッシュされたメモリ(バイト)           | MB              |
+| スワップ使用量                    | MB              |
+| スワップ全体サイズ                  | MB              |
+| Storage使用量                 | %               |
+| Storage残り使用量               | MB              |
+| Storage IO Read            | KB/sec          |
+| Storage IO Write           | KB/sec          |
+| データストレージ障害                 | 異常: 0、正常: 1     |
+| Network in BPS             | KB/sec          |
+| Network out BPS            | KB/sec          |
 | Database Connection Status | 接続不可: 0、接続可能: 1 |
-| Queries Per Second         | counts/sec         |
-| Lock Tables                | counts/sec         |
-| Cache Hit Ratio            | %                  |
-| Idle Connection            | counts/sec         |
-| Active Connection          | counts/sec         |
-| Total Connection           | counts/sec         |
-| Fetched Tuple Count        | counts/sec         |
-| Returned Tuple Count       | counts/sec         |
-| Inserted Tuple Count       | counts/sec         |
-| Updated Tuple Count        | counts/sec         |
-| Deleted Tuple Count        | counts/sec         |
-| Transaction Commit         | counts/sec         |
-| Transaction Rollback       | counts/sec         |
-| Deadlock                   | counts/sec         |
-| Conflict                   | counts/sec         |
-| 複製遅延(秒)                   | seconds            |
-| 複製遅延(バイト)                 | MB                 |
+| Queries Per Second         | counts/sec      |
+| Lock Tables                | counts/sec      |
+| Cache Hit Ratio            | %               |
+| Idle Connection            | counts/sec      |
+| Active Connection          | counts/sec      |
+| Total Connection           | counts/sec      |
+| Fetched Tuple Count        | counts/sec      |
+| Returned Tuple Count       | counts/sec      |
+| Inserted Tuple Count       | counts/sec      |
+| Updated Tuple Count        | counts/sec      |
+| Deleted Tuple Count        | counts/sec      |
+| Transaction Commit         | counts/sec      |
+| Transaction Rollback       | counts/sec      |
+| Deadlock                   | counts/sec      |
+| Conflict                   | counts/sec      |
+| 複製遅延(秒)                    | seconds         |
+| 複製遅延(バイト)                  | MB              |
 
 ### 監視設定の追加
 
