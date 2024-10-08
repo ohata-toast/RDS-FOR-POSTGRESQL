@@ -1,7 +1,7 @@
 ## Database > RDS for PostgreSQL > DB 확장 기능
 
 ## DB 확장 기능
-미리 빌드된 확장 기능을 PostgreSQL에 설치하여 기능을 확장 할 수 있습니다. NHN Cloud의 RDS for PostgreSQL에서 지원하는 확장 기능은 아래와 같습니다.
+미리 빌드된 확장 기능을 PostgreSQL에 설치하여 기능을 확장할 수 있습니다. NHN Cloud의 RDS for PostgreSQL에서 지원하는 확장 기능은 아래와 같습니다.
 
 ### PostgreSQL 기본 제공 기능
 
