@@ -8,6 +8,6 @@ In PostgreSQL, the version number consists of version = `X.Y`. In RDS for Postgr
 
 Available versions are as follows.
 
-| Version                  | Note    |
-|---------------------|-------|
-| PostgreSQL 14.6     |       |
+| Version         | Note |
+|-----------------|------|
+| PostgreSQL 14.6 |      |
