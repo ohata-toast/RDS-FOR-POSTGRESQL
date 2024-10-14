@@ -33,7 +33,6 @@ Installing the additional offered extensions requires a DB engine restart, if ne
 
 | Extension name               | Version | Setting parameters  | Remarks                                      | Homepage                           |
 |------------------------------|---------|---------------------|----------------------------------------------|------------------------------------|
-| pg_repack                    | 1.4.8   |                     |                                              | https://reorg.github.io/pg_repack/ |
 | pgAudit                      | 1.6.2   | Additional required |                                              | https://www.pgaudit.org/           |
 | pgrouting                    | 3.6.2   |                     | Requires postgis installation                | https://pgrouting.org/             |
 | postgis                      | 3.4.1   | Additional required |                                              | https://postgis.net/               |
