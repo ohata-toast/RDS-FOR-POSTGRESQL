@@ -466,9 +466,9 @@ Force promotion based on current point-in-time data on the read replica, regardl
 
 To end the wait operation, when you are waiting for replication delays to resolve during a read replica promotion or force promotion,
 
-![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20241015/db-instance-list-stop-wait-replication-lag-ko.png)
+![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20241015/db-instance-list-stop-wait-replication-lag-en.png)
 
-❶ Click **End Replication Delay Waiting** brings up a popup window that allows you to end the waiting task.
+❶ Click **Replication Waiting** brings up a popup window that allows you to end the waiting task.
 ❷ Click **Confirm** to end the waiting task.
 
 ### Stop Replication of Read Replicas

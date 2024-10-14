@@ -462,6 +462,15 @@ If the status of the master DB instance is abnormal, you cannot proceed with the
 
 Force promotion based on current point-in-time data on the read replica, regardless of the state of the master. If there is a replication delay, data loss can occur. Therefore, we do not recommend using this feature unless there is an urgent need to bring the read replica into service.
 
+### End Wait for Replication Delay During Read Replica Promotion/Force Promotion
+
+To end the wait operation, when you are waiting for replication delays to resolve during a read replica promotion or force promotion,
+
+![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20241015/db-instance-list-stop-wait-replication-lag-en.png)
+
+❶ Click **Replication Waiting** brings up a popup window that allows you to end the waiting task.
+❷ Click **Confirm** to end the waiting task.
+
 ### Stop Replication of Read Replicas
 
 A read replica can stop replicating for a number of reasons. If the status of a read replica is `Replication stopped`, you should quickly determine the cause and get it back to normal. If the `replication stopped` state persists for an extended period of time, replication latency will increase. If the WAL logs needed for normalization are not available, you will need to rebuild the read replica.

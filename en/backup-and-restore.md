@@ -7,8 +7,8 @@ You can prepare a database of DB instances to restore in case of a failure. You 
 RDS for PostgreSQL uses the pg_basebackup tool to back up databases. To restore to a backup of an external PostgreSQL or to a backup of RDS for PostgreSQL, you must use the same version of pg_basebackup used by RDS for PostgreSQL. pg_basebackup version according to the DB engine version is as follows.
 
 | PostgreSQL version | pg_basebackup version |
-|---------------|------------------|
-| 14.6          | 14.6             |
+|--------------------|-----------------------|
+| 14.6               | 14.6                  |
 
 * For more information about installing pg_basebackup, refer to the PostgreSQL website.
   * https://www.postgresql.org/docs/14/app-pgbasebackup.html

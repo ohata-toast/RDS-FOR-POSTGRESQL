@@ -40,14 +40,14 @@ You can delete it freely except for the parameter group that is being applied to
 
 Parameters have the following information:
 
-| Items     | Description                                                                                                                  |
-|--------|---------------------------------------------------------------------------------------------------------------------|
-| Name     | It is the name of the option in the option file (postgresql.conf).                                                                                   |
-| Value      | The value to be applied to the parameter.                                                                                                     |
-| Allowed values  | A range of values that can be applied to the parameter.                                                                                            |
-| Applied type  | Either `static` or `dynamic.`<br/>If set to `Static,` the DB instance must be restarted to apply changes to the parameter.<br/>If set to `Dynamic,` the parameter is applied immediately without DB instance restart. |
-| Data type | The type of the parameter value.                                                                                                   | 
-| Use formulas  | Indicates whether or not the formula is available for use                                                                                                 |
+| Items          | Description                                                                                                                                                                                                           |
+|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name           | It is the name of the option in the option file (postgresql.conf).                                                                                                                                                    |
+| Value          | The value to be applied to the parameter.                                                                                                                                                                             |
+| Allowed values | A range of values that can be applied to the parameter.                                                                                                                                                               |
+| Applied type   | Either `static` or `dynamic.`<br/>If set to `Static,` the DB instance must be restarted to apply changes to the parameter.<br/>If set to `Dynamic,` the parameter is applied immediately without DB instance restart. |
+| Data type      | The type of the parameter value.                                                                                                                                                                                      | 
+| Use formulas   | Indicates whether or not the formula is available for use                                                                                                                                                             |
 
 ### Parameter variables, formulas and functions
 

@@ -468,7 +468,7 @@ DB 인스턴스에 연결된 파라미터 그룹의 설정이 변경되어도 �
 
 ![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20241015/db-instance-list-stop-wait-replication-lag-ko.png)
 
-❶ **복제 지연 대기 종료**를 클릭하면 대기 작업을 종료할 수 있는 팝업 창이 나타납니다.
+❶ **복제 지연 대기**를 클릭하면 대기 작업을 종료할 수 있는 팝업 창이 나타납니다.
 ❷ **확인**을 클릭해 대기 작업을 종료합니다.
 
 ### 읽기 복제본의 복제 중단
