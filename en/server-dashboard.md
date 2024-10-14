@@ -2,15 +2,11 @@
 
 ## Server Dashboard
 
-You can visualize performance metrics in chart form on the server dashboard. Charts are arranged according to a pre-set layout. Metrics are collected once a minute and kept for up to five years. Metric data is aggregated into average values over 5 minutes, 30 minutes, 2 hours, and 1 day. The retention period for each collecting unit is as follows.
+You can visualize performance metrics in chart form on the server dashboard. Charts are arranged according to a pre-set layout. Metrics are collected once a minute and kept for up to 1 year. The retention period for each collecting unit is as follows.
 
 | Collecting Unit | Retention Period |
 |-----------------|------------------|
-| 1 minute        | 7 days           |
-| 5 minutes       | 1 month          |
-| 30 minutes      | 6 months         |
-| 2 hours         | 2 years          |
-| 1 day           | 5 years          |
+| 1 minute           | 1 year         |
 
 ## Layout
 
