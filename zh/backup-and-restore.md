@@ -7,8 +7,8 @@ You can prepare a database of DB instances to restore in case of a failure. You 
 RDS for PostgreSQL uses the pg_basebackup tool to back up databases. To restore to a backup of an external PostgreSQL or to a backup of RDS for PostgreSQL, you must use the same version of pg_basebackup used by RDS for PostgreSQL. pg_basebackup version according to the DB engine version is as follows.
 
 | PostgreSQL version | pg_basebackup version |
-|---------------|------------------|
-| 14.6          | 14.6             |
+|--------------------|-----------------------|
+| 14.6               | 14.6                  |
 
 * For more information about installing pg_basebackup, refer to the PostgreSQL website.
     * https://www.postgresql.org/docs/14/app-pgbasebackup.html
@@ -111,12 +111,3 @@ When restoring with Timestamp, perform the restore based on the backup file clos
 ![db-instance-pitr-02](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-02-en.png)
 
 ❷ Select a time to restore. You can restore it to the most recent point in time, or enter the specific point in time that you want.
-
-
-#### Restore using WAL Log Location (LSN: Log Sequence Number)
-
-During the restore process using the WAL log location, the restore is performed based on the backup file closest to the location you entered, and then WAL log of the original instance applies to the desired location.
-
-![db-instance-pitr-03](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-03-en.png)
-
-❸ Enter a specific location for WAL log.

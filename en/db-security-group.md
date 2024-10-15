@@ -23,13 +23,13 @@ When you create DB instance, you can select DB security group to apply. You can 
 
 You can create multiple DB security rules in a single DB security group. When you set up DB security group on DB instance, all DB security rules created for that DB security group are applied.
 
-| Items         | Description                                                                                                                       |
-|------------|--------------------------------------------------------------------------------------------------------------------------|
-| Direction         | Inbound refers to the direction that flows into the DB instance. Outbound refers to the direction that flows out of the DB instance.                                                                |
-| Ether Type | It refers to the version of EtherType IP You can specify IPv4 or IPv6.                                                                         |
-| Port         | Set the port to which the rule applies. You can enter a single port or a range of ports, and also can select a DB port. When you select a DB port, the DB port for the DB instance is automatically entered.                    |
-| Remote         | You can specify a range of IP addresses. If the direction of the rule is 'outbound', the destination is remote, and if it is 'inbound,' the origin is remote.<br/>Depending on the direction of the rule, compare whether the origin and destination of the traffic are set IP addresses or ranges. |
-| Description         | You can add a description of DB security group rules.                                                                                          |
+| Items       | Description                                                                                                                                                                                                                                                                                         |
+|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Direction   | Inbound refers to the direction that flows into the DB instance. Outbound refers to the direction that flows out of the DB instance.                                                                                                                                                                |
+| Ether Type  | It refers to the version of EtherType IP You can specify IPv4 or IPv6.                                                                                                                                                                                                                              |
+| Port        | Set the port to which the rule applies. You can enter a single port or a range of ports, and also can select a DB port. When you select a DB port, the DB port for the DB instance is automatically entered.                                                                                        |
+| Remote      | You can specify a range of IP addresses. If the direction of the rule is 'outbound', the destination is remote, and if it is 'inbound,' the origin is remote.<br/>Depending on the direction of the rule, compare whether the origin and destination of the traffic are set IP addresses or ranges. |
+| Description | You can add a description of DB security group rules.                                                                                                                                                                                                                                               |
 
 ### Change DB Security Rules
 

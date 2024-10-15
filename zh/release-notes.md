@@ -1,5 +1,38 @@
 ## Database > RDS for PostgreSQL > Release Notes
 
+### October 15, 2024
+
+#### Added Features
+
+- Added auto backup settings
+    - Added the feature to set whether to allow auto backups.
+    - You can disallow auto backups under any circumstances.
+        - If you don't have the backups required for replication, you are limited to creating read replicas.
+- Added the feature to wait for replication delay on force promotion
+    - Added the feature to wait for replication delays to resolve when force promoting.
+- Added the feature to end replication delay queuing
+    - Added the feature to end the wait for replication delays when promoting/forcing a promotion.
+- Added DB extensions
+    - Added pgrouting, bool, hstore, intarray, isn, lo, ltree, and more to be able to install.
+
+#### Feature Updates
+
+- Improved event subscription search
+    - Improved so that you can search by event source name.
+- Improved the feature to enter the shared_preload_libraries parameter
+    - Improved the way shared_preload_libraries values are entered to a multi-select drop-down list format.
+
+#### Bug fixes
+
+- Fix default notification creation errors
+    - Fixed default notification creation to ignore the existence of a notification group with the same name.
+- Fixed an error with the log_timezone parameter
+    - Fixed an issue where replication fails when the log_timezone value is applied to something other than Asia/Seoul.
+- Fixed an error with the max_connections parameter
+    - Fixed an issue with the order of application when changing the max_connections value with read replicas added.
+    - Changed the parameter to be inapplicable if the value on the master is set to be greater than the read replica.
+    - Changed the parameter to be inapplicable if the value of the read replica is set to less than the master.
+
 ### August 13, 2024
 
 #### Added Features

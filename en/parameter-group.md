@@ -40,14 +40,14 @@ You can delete it freely except for the parameter group that is being applied to
 
 Parameters have the following information:
 
-| Items     | Description                                                                                                                  |
-|--------|---------------------------------------------------------------------------------------------------------------------|
-| Name     | It is the name of the option in the option file (postgresql.conf).                                                                                   |
-| Value      | The value to be applied to the parameter.                                                                                                     |
-| Allowed values  | A range of values that can be applied to the parameter.                                                                                            |
-| Applied type  | Either `static` or `dynamic.`<br/>If set to `Static,` the DB instance must be restarted to apply changes to the parameter.<br/>If set to `Dynamic,` the parameter is applied immediately without DB instance restart. |
-| Data type | The type of the parameter value.                                                                                                   | 
-| Use formulas  | Indicates whether or not the formula is available for use                                                                                                 |
+| Items          | Description                                                                                                                                                                                                           |
+|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name           | It is the name of the option in the option file (postgresql.conf).                                                                                                                                                    |
+| Value          | The value to be applied to the parameter.                                                                                                                                                                             |
+| Allowed values | A range of values that can be applied to the parameter.                                                                                                                                                               |
+| Applied type   | Either `static` or `dynamic.`<br/>If set to `Static,` the DB instance must be restarted to apply changes to the parameter.<br/>If set to `Dynamic,` the parameter is applied immediately without DB instance restart. |
+| Data type      | The type of the parameter value.                                                                                                                                                                                      | 
+| Use formulas   | Indicates whether or not the formula is available for use                                                                                                                                                             |
 
 ### Parameter variables, formulas and functions
 
@@ -77,3 +77,7 @@ ramSizeByte * 6 / 10
 ### Change Parameters
 
 You can change the parameters by selecting a parameter group from the console and clicking on **Edit Parameter**. Parameters that cannot be changed are shown as plain text and parameters that can be changed are shown as INPUTs that can be changed. If you click **Preview Changes** on Edit screen, you will see a separate pop-up window where you can check the changed parameters and if you click **Reset** you can revert to before making the changes. All values changed in edit mode must be clicked on **Save Changes** to be reflected in the parameter group. For reflection of DB instances of changed parameter groups, see [Apply Parameter Group](parameter-group/#_5).
+
+### Change the `max_connections` Parameter
+
+When changing the `max_connections` value with read replicas added, there is an issue with the order of application. If you only change the value on the master, you cannot apply it to a value larger than the read replica, because the value on the master must be set to a smaller value than the read replica. For the same reason, if you only change the value on the read replica, you cannot apply it to a value smaller than the master. It is recommended to apply it globally on a DB instance group basis if necessary. 
