@@ -21,7 +21,7 @@ API를 사용하려면 [Public API > API 호출 및 인증](https://docs.nhnclou
     * DB 인스턴스를 생성, 수정, 삭제하거나, DB 인스턴스를 대상으로 하는 어떠한 기능도 사용할 수 없습니다.
     * 단, 알림 그룹과 사용자 그룹 관련된 기능은 사용할 수 있습니다.
 
-API 요청 시 인증에 실패하거나 권한이 없을 경우 다음과 같은 오류가 발생합니다.
+API 요청 시 인증에 실패하거나 권한이 없으면 다음과 같은 오류가 발생합니다.
 
 | resultCode | resultMessage | 설명          |
 |------------|---------------|-------------|
@@ -736,7 +736,6 @@ POST /v1.0/db-instances
 | backup.backupSchedules                       | Body | Array   | X  | 백업 스케줄 목록                                                                                                                                                                                                            |
 | backup.backupSchedules.backupWndBgnTime      | Body | String  | O  | 백업 시작 시간<br/>- 예시: `00:00:00`                                                                                                                                                                                        |
 | backup.backupSchedules.backupWndDuration     | Body | Enum    | O  | 백업 윈도우<br/>백업 시작 시간부터 설정된 기간 안에 자동 백업이 실행됩니다.<br/>- `HALF_AN_HOUR`: 30분<br/>- `ONE_HOUR`: 1시간<br/>- `ONE_HOUR_AND_HALF`: 1시간 30분<br/>- `TWO_HOURS`: 2시간<br/>- `TWO_HOURS_AND_HALF`: 2시간 30분<br/>- `THREE_HOURS`: 3시간 |
-| backup.backupSchedules.backupRetryExpireTime | Body | String  | O  | 백업 재시도 만료 시간<br/>- 백업 재시도 만료 시간은 백업 시작 시간보다 앞서거나 백업 윈도우를 벗어난 값으로 설정할 수 없습니다.<br/>- 예시: 백업 시작 시간이 `00:00:00`이면서 백업 윈도우가 `1시간`인 경우 `01:00:00`                                                                          |
 
 <details><summary>예시</summary>
 
@@ -1069,7 +1068,6 @@ GET /v1.0/db-instances/{dbInstanceId}/backup-info
 | backupSchedules                       | Body | Array  | 백업 스케줄 목록                                                                                                                                                                                                            |
 | backupSchedules.backupWndBgnTime      | Body | String | 백업 시작 시간                                                                                                                                                                                                             |
 | backupSchedules.backupWndDuration     | Body | Enum   | 백업 윈도우<br/>백업 시작 시간부터 설정된 기간 안에 자동 백업이 실행됩니다.<br/>- `HALF_AN_HOUR`: 30분<br/>- `ONE_HOUR`: 1시간<br/>- `ONE_HOUR_AND_HALF`: 1시간 30분<br/>- `TWO_HOURS`: 2시간<br/>- `TWO_HOURS_AND_HALF`: 2시간 30분<br/>- `THREE_HOURS`: 3시간 |
-| backupSchedules.backupRetryExpireTime | Body | String | 백업 재시도 만료 시간<br/>- 백업 재시도 만료 시간은 백업 시작 시간보다 앞서거나 백업 윈도우를 벗어난 값으로 설정할 수 없습니다.<br/>- 예시: 백업 시작 시간이 `00:00:00`이면서 백업 윈도우가 `1시간`인 경우 `01:00:00`                                                                          |
 
 <details><summary>예시</summary>
 
@@ -1115,7 +1113,6 @@ PUT /v1.0/db-instances/{dbInstanceId}/backup-info
 | backupSchedules                       | Body | Array  | X  | 백업 스케줄 목록                                                                                                                                                                                                            |
 | backupSchedules.backupWndBgnTime      | Body | String | O  | 백업 시작 시간<br/>- 예시: `00:00:00`                                                                                                                                                                                        |
 | backupSchedules.backupWndDuration     | Body | Enum   | O  | 백업 윈도우<br/>백업 시작 시간부터 설정된 기간 안에 자동 백업이 실행됩니다.<br/>- `HALF_AN_HOUR`: 30분<br/>- `ONE_HOUR`: 1시간<br/>- `ONE_HOUR_AND_HALF`: 1시간 30분<br/>- `TWO_HOURS`: 2시간<br/>- `TWO_HOURS_AND_HALF`: 2시간 30분<br/>- `THREE_HOURS`: 3시간 |
-| backupSchedules.backupRetryExpireTime | Body | String | O  | 백업 재시도 만료 시간<br/>- 백업 재시도 만료 시간은 백업 시작 시간보다 앞서거나 백업 윈도우를 벗어난 값으로 설정할 수 없습니다.<br/>- 예시: 백업 시작 시간이 `00:00:00`이면서 백업 윈도우가 `1시간`인 경우 `01:00:00`                                                                          |
 
 <details><summary>예시</summary>
 
@@ -1598,7 +1595,6 @@ POST /v1.0/db-instances/{dbInstanceId}/replicate
 | backup.backupSchedules                       | Body | Array   | X  | 백업 스케줄 목록                                                                                                                                                                                                                                           |
 | backup.backupSchedules.backupWndBgnTime      | Body | String  | X  | 백업 시작 시각<br/>- 예시: `00:00:00`<br/>- 기본값: 원본 DB 인스턴스 값                                                                                                                                                                                               |
 | backup.backupSchedules.backupWndDuration     | Body | Enum    | X  | 백업 Duration<br/>백업 시작 시각부터 Duration 안에 자동 백업이 실행됩니다.<br/>- `HALF_AN_HOUR`: 30분<br/>- `ONE_HOUR`: 1시간<br/>- `ONE_HOUR_AND_HALF`: 1시간 30분<br/>- `TWO_HOURS`: 2시간<br/>- `TWO_HOURS_AND_HALF`: 2시간 30분<br/>- `THREE_HOURS`: 3시간<br/>- 기본값: 원본 DB 인스턴스 값 |
-| backup.backupSchedules.backupRetryExpireTime | Body | String  | X  | 백업 재시도 만료 시간<br/>- 백업 재시도 만료 시간은 백업 시작 시간보다 앞서거나 백업 윈도우를 벗어난 값으로 설정할 수 없습니다.<br/>- 예시: 백업 시작 시간이 `00:00:00`이면서 백업 윈도우가 `1시간`인 경우 `01:00:00`<br/>- 기본값: 원본 DB 인스턴스 값                                                                                 |
 
 <details><summary>예시</summary>
 
@@ -2520,7 +2516,6 @@ POST /v1.0/backups/{backupId}/restore
 | backup.backupSchedules                       | Body | Array   | X  | 백업 스케줄 목록                                                                                                                                                                                                                 |
 | backup.backupSchedules.backupWndBgnTime      | Body | String  | O  | 백업 시작 시간<br/>- 예시: `00:00:00`                                                                                                                                                                                             |
 | backup.backupSchedules.backupWndDuration     | Body | Enum    | O  | 백업 Duration<br/>백업 시작 시간부터 설정된 기간 안에 자동 백업이 실행됩니다.<br/>- `HALF_AN_HOUR`: 30분<br/>- `ONE_HOUR`: 1시간<br/>- `ONE_HOUR_AND_HALF`: 1시간 30분<br/>- `TWO_HOURS`: 2시간<br/>- `TWO_HOURS_AND_HALF`: 2시간 30분<br/>- `THREE_HOURS`: 3시간 |
-| backup.backupSchedules.backupRetryExpireTime | Body | String  | O  | 백업 재시도 만료 시간<br/>- 백업 재시도 만료 시간은 백업 시작 시간보다 앞서거나 백업 윈도우를 벗어난 값으로 설정할 수 없습니다.<br/>- 예시: 백업 시작 시간이 `00:00:00`이면서 백업 윈도우가 `1시간`인 경우 `01:00:00`                                                                               |
 
 <details><summary>예시</summary>
 
