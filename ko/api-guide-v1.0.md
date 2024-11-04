@@ -882,7 +882,6 @@ GET /v1.0/db-instances/{dbInstanceId}/high-availability
 
 | 이름                      | 종류   | 형식      | 설명                                                                                                                                                                                                                                                                                                                             |
 |-------------------------|------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| useHighAvailability     | Body | Boolean | 고가용성 사용 여부                                                                                                                                                                                                                                                                                                                     |
 | haStatus                | Body | Boolean | 고가용성 상태<br/>- `CREATED`: 생성됨<br/>- `STABLE`: 정상<br/>- `DISABLE_REPLICATION_DELAY`: 복제 지연으로 인한 장애 조치 정지<br/>- `PAUSING`: 일시 중지 중<br/>- `PAUSED`: 일시 중지<br/>- `PAUSED_DUE_TO_TASK`: 작업으로 인한 일시 중지<br/>- `FAILOVER_STARTED`: 장애 조치 시작<br/>- `FAILOVER_FAILED`: 장애 조치 실패<br/>- `FAILOVER_COMPLETED`: 장애 조치 완료<br/>- `DELETED`: 삭제됨 |
 | pingInterval            | Body | Number  | 고가용성 사용 시 Ping 간격(초)<br/>- 최솟값: `1`<br/>- 최댓값: `600`                                                                                                                                                                                                                                                                           |
 | failoverReplWaitingTime | Body | Number  | 고가용성 사용 시 장애 조치 대기 시간<br/>- 최솟값: `-1`<br/>- -1로 설정 시, 복제 지연 해소까지 계속해서 대기합니다.                                                                                                                                                                                                                                                   |
@@ -1954,14 +1953,16 @@ GET /v1.0/db-instances/{dbInstanceId}/databases
 
 #### 응답
 
-| 이름                       | 종류   | 형식       | 설명                                                                                                                                                  |
-|--------------------------|------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| databases                | Body | Array    | 데이터베이스 목록                                                                                                                                           |
-| databases.databaseId     | Body | UUID     | 데이터베이스의 식별자                                                                                                                                         |
-| databases.databaseName   | Body | String   | 데이터베이스 이름                                                                                                                                           |
-| databases.databaseStatus | Body | Enum     | 데이터베이스의 현재 상태<br/>- `STABLE`: 생성됨<br/>- `CREATING`: 생성 중<br/>- `MODIFYING`: 수정 중<br/>- `SYNCING`: 동기화 중<br/>- `DELETING`: 삭제 중<br/>- `DELETED`: 삭제됨 |
-| databases.createdYmdt    | Body | DateTime | 생성 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                   |
-| databases.updatedYmdt    | Body | DateTime | 수정 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                   |
+| 이름                           | 종류   | 형식       | 설명                                                                                                                                                  |
+|------------------------------|------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| databases                    | Body | Array    | 데이터베이스 목록                                                                                                                                           |
+| databases.databaseId         | Body | UUID     | 데이터베이스의 식별자                                                                                                                                         |
+| databases.databaseName       | Body | String   | 데이터베이스 이름                                                                                                                                           |
+| databases.databaseStatus     | Body | Enum     | 데이터베이스의 현재 상태<br/>- `STABLE`: 생성됨<br/>- `CREATING`: 생성 중<br/>- `MODIFYING`: 수정 중<br/>- `SYNCING`: 동기화 중<br/>- `DELETING`: 삭제 중<br/>- `DELETED`: 삭제됨 |
+| databases.createdYmdt        | Body | DateTime | 생성 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                   |
+| databases.updatedYmdt        | Body | DateTime | 수정 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                   |
+| databases.schemas            | Body | Array    | 데이터베이스 내 스키마 목록                                                                                                                                     |
+| databases.schemas.schemaName | Body | String   | 스키마 이름                                                                                                                                              |
 
 <details><summary>예시</summary>
 
@@ -1977,7 +1978,13 @@ GET /v1.0/db-instances/{dbInstanceId}/databases
             "databaseId": "7c9a94b8-86c1-435d-8af2-82a5e9d53fd4",
             "databaseName": "database",
             "databaseStatus": "STABLE",
-            "createdYmdt": "2023-03-20T13:37:45+09:00"
+            "createdYmdt": "2023-03-20T13:37:45+09:00",
+            "updatedYmdt": "2023-03-20T13:37:45+09:00",
+            "schemas": [
+                {
+                    "schemaName": "rds"
+                }
+            ]
         }
     ]
 }
