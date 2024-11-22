@@ -1478,6 +1478,117 @@ GET /v1.0/db-instances/{dbInstanceId}/restoration-info
 ```
 </details>
 
+### DB 인스턴스 복원하기
+
+```http
+GET /v1.0/db-instances/{dbInstanceId}/restore
+```
+
+#### 필요 권한
+
+| 권한명                                 | 설명           |
+|-------------------------------------|--------------|
+| RDSforPostgreSQL:DbInstance.Restore | DB 인스턴스 복원하기 |
+
+#### 공통 요청
+
+| 이름                                       | 종류   | 형식      | 필수 | 설명                                                                                                                                                                                                                                                  |
+|------------------------------------------|------|---------|----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| dbInstanceId                             | URL  | UUID    | O  | DB 인스턴스의 식별자                                                                                                                                                                                                                                        |
+| restore                                  | Body | Object  | O  | 복원 정보 객체                                                                                                                                                                                                                                            |
+| restore.restoreType                      | Body | Enum    | O  | 복원 타입 종류<br/>- `TIMESTAMP`: 복원 가능한 시간 이내의 시간을 이용한 시점 복원 타입<br/>- `BACKUP`: 기존에 생성한 백업을 이용한 스냅샷 복원 타입                                                                                                                                                |
+| dbInstanceName                           | Body | String  | O  | DB 인스턴스를 식별할 수 있는 이름                                                                                                                                                                                                                                |
+| description                              | Body | String  | X  | DB 인스턴스에 대한 추가 정보                                                                                                                                                                                                                                   |
+| dbFlavorId                               | Body | UUID    | O  | DB 인스턴스 사양의 식별자                                                                                                                                                                                                                                     |
+| dbPort                                   | Body | Number  | O  | DB 포트<br/>- 최솟값: `3306`<br/>- 최댓값: `43306`                                                                                                                                                                                                          |
+| parameterGroupId                         | Body | UUID    | O  | 파라미터 그룹의 식별자                                                                                                                                                                                                                                        |
+| dbSecurityGroupIds                       | Body | Array   | X  | DB 보안 그룹의 식별자 목록                                                                                                                                                                                                                                    |
+| userGroupIds                             | Body | Array   | X  | 사용자 그룹의 식별자 목록                                                                                                                                                                                                                                      |
+| useDefaultNotification                   | Body | Boolean | X  | 기본 알림 사용 여부<br/>- 기본값: `false`                                                                                                                                                                                                                      |
+| useDeletionProtection                    | Body | Boolean | X  | 삭제 보호 여부<br>기본값: `false`                                                                                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| useHighAvailability                      | Body | Boolean | X  | 고가용성 사용 여부<br/>- 기본값: `false`                                                                                                                                                                                                                       |
+| pingInterval                             | Body | Number  | X  | 고가용성 사용 시 Ping 간격(초)<br/>- 기본값: `3`최솟값: `1`<br/>- 최댓값: `600`                                                                                                                                                                                        |
+| failoverReplWaitingTime                  | Body | Number  | X  | 고가용성 사용 시 장애 조치 대기 시간<br/>- 최솟값: `-1`<br/>- -1로 설정 시, 복제 지연 해소까지 계속해서 대기합니다.                                                                                                                                                                        |                                                                                                                                                                                                                      | userGroupIds                             | Body | Array   | X  | 기본 알림 수신용 사용자 그룹의 식별자 목록                                                                                                                                                                                             |
+| network                                  | Body | Object  | O  | 네트워크 정보 객체                                                                                                                                                                                                                                          |
+| network.subnetId                         | Body | UUID    | O  | 서브넷의 식별자                                                                                                                                                                                                                                            |
+| network.usePublicAccess                  | Body | Boolean | X  | 외부 접속 가능 여부<br/>- 기본값: `false`</li></ul>                                                                                                                                                                                                            |
+| network.availabilityZone                 | Body | Enum    | X  | DB 인스턴스를 생성할 가용성 영역<br/>- 예시: `kr-pub-a`<br/>- 기본값: `임의의 가용성 영역`                                                                                                                                                                                    |
+| storage                                  | Body | Object  | O  | 스토리지 정보 객체                                                                                                                                                                                                                                          |
+| storage.storageType                      | Body | Enum    | O  | 데이터 스토리지 타입<br/>- 예시: `General SSD`                                                                                                                                                                                                                 |
+| storage.storageSize                      | Body | Number  | O  | 데이터 스토리지 크기(GB)<br/>- 최솟값: `20`<br/>- 최댓값: `2048`                                                                                                                                                                                                   |
+| backup                                   | Body | Object  | O  | 백업 정보 객체                                                                                                                                                                                                                                            |
+| backup.backupPeriod                      | Body | Number  | O  | 백업 보관 기간(일)<br/>- 최솟값: `0`<br/>- 최댓값: `730`                                                                                                                                                                                                         |
+| backup.backupRetryCount                  | Body | Number  | X  | 백업 재시도 횟수<br/>- 기본값: `0`<br/>- 최솟값: `0`<br/>- 최댓값: `10`                                                                                                                                                                                             |
+| backup.backupSchedules                   | Body | Array   | O  | 백업 스케줄 목록                                                                                                                                                                                                                                           |
+| backup.backupSchedules.backupWndBgnTime  | Body | String  | X  | 백업 시작 시각<br/>- 예시: `00:00:00`<br/>- 기본값: 원본 DB 인스턴스 값                                                                                                                                                                                               |
+| backup.backupSchedules.backupWndDuration | Body | Enum    | X  | 백업 Duration<br/>백업 시작 시각부터 Duration 안에 자동 백업이 실행됩니다.<br/>- `HALF_AN_HOUR`: 30분<br/>- `ONE_HOUR`: 1시간<br/>- `ONE_HOUR_AND_HALF`: 1시간 30분<br/>- `TWO_HOURS`: 2시간<br/>- `TWO_HOURS_AND_HALF`: 2시간 30분<br/>- `THREE_HOURS`: 3시간<br/>- 기본값: 원본 DB 인스턴스 값 |
+
+#### Timestamp를 이용한 시점 복원 시 요청(restoreType이 `TIMESTAMP`인 경우)
+
+| 이름                  | 종류   | 형식       | 필수 | 설명                                                                                              |
+|---------------------|------|----------|----|-------------------------------------------------------------------------------------------------|
+| restore.restoreYmdt | Body | DateTime | O  | DB 인스턴스 복원 시간.(YYYY-MM-DDThh:mm:ss.SSSTZD)<br>복원 정보 조회로 조회한 가장 최신의 복원 가능한 시간 이전에 대해서만 복원이 가능하다. |
+
+<details><summary>예시</summary>
+
+```json
+{
+  "dbInstanceName": "db-instance",
+  "description": "description",
+  "dbFlavorId": "71f69bf9-3c01-4c1a-b135-bb75e93f6268",
+  "dbPort": 10000,
+  "dbUserName": "db-user",
+  "dbPassword": "password",
+  "parameterGroupId": "488bf4f5-d8f7-459b-ace6-529b606c8570",
+  "dbSecurityGroupIds": [
+    "b0483a3d-e8e2-46f6-9e84-d5e31b0d44f4"
+  ],
+  "userGroupIds": [],
+  "network": {
+    "subnetId": "3ae7914f-9b42-4729-b125-87417b72cf36"
+  },
+  "storage": {
+    "storageType": "General SSD",
+    "storageSize": 20
+  },
+  "restore": {
+    "restoreType": "TIMESTAMP",
+    "restoreYmdt": "2023-07-10T15:44:44+09:00"
+  },
+  "backup": {
+    "backupPeriod": 1,
+    "backupSchedules": [
+      {
+        "backupWndBgnTime": "00:00:00",
+        "backupWndDuration": "ONE_HOUR_AND_HALF"
+      }
+    ]
+  }
+}
+```
+</details>
+
+#### 응답
+
+| 이름    | 종류   | 형식   | 설명          |
+|-------|------|------|-------------|
+| jobId | Body | UUID | 요청한 작업의 식별자 |
+
+<details><summary>예시</summary>
+
+```json
+{
+    "header": {
+        "resultCode": 0,
+        "resultMessage": "SUCCESS",
+        "isSuccessful": true
+    },
+    "jobId": "0ddb042c-5af6-43fb-a914-f4dd0540eb7c"
+}
+```
+</details>
+
+
 ### DB 인스턴스 삭제 보호 설정 변경하기
 
 ```http
@@ -1743,6 +1854,62 @@ POST /v1.0/db-instances/{dbInstanceId}/backup
 ```json
 {
     "backupName": "backup"
+}
+```
+</details>
+
+#### 응답
+
+| 이름    | 종류   | 형식   | 설명          |
+|-------|------|------|-------------|
+| jobId | Body | UUID | 요청한 작업의 식별자 |
+
+<details><summary>예시</summary>
+
+```json
+{
+    "header": {
+        "resultCode": 0,
+        "resultMessage": "SUCCESS",
+        "isSuccessful": true
+    },
+    "jobId": "0ddb042c-5af6-43fb-a914-f4dd0540eb7c"
+}
+```
+</details>
+
+### DB 인스턴스 백업 후 내보내기
+
+```http
+POST /v1.0/db-instances/{dbInstanceId}/backup-to-object-storage
+```
+
+#### 필요 권한
+
+| 권한명                                               | 설명                         |
+|---------------------------------------------------|----------------------------|
+| RDSforPostgreSQL:DbInstance.BackupToObjectStorage | 백업 후 백업 파일 오브젝트 스토리지로 내보내기 |
+
+#### 요청
+
+| 이름              | 종류   | 형식     | 필수 | 설명                          |
+|-----------------|------|--------|----|-----------------------------|
+| dbInstanceId    | URL  | UUID   | O  | DB 인스턴스의 식별자                |
+| tenantId        | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 테넌트 ID   |
+| username        | Body | String | O  | NHN Cloud 회원 또는 IAM 멤버 ID   |
+| password        | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 API 비밀번호 |
+| targetContainer | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 컨테이너     |
+| objectPath      | Body | String | O  | 컨테이너에 저장될 백업의 경로            |
+
+<details><summary>예시</summary>
+
+```json
+{
+    "tenantId": "399631c404744dbbb18ce4fa2dc71a5a",
+    "username": "gildong.hong@nhn.com",
+    "password": "password",
+    "targetContainer": "/container",
+    "objectPath": "/backups/backup_file"
 }
 ```
 </details>
@@ -2742,6 +2909,61 @@ GET /v1.0/backups
 ```
 </details>
 
+### 오브젝트 스토리지로 백업 내보내기
+
+```http
+POST /v1.0/backups/{backupId}/export
+```
+
+#### 필요 권한
+
+| 권한명                            | 설명                 |
+|--------------------------------|--------------------|
+| RDSforPostgreSQL:Backup.Export | 오브젝트 스토리지로 백업 내보내기 |
+
+#### 요청
+
+| 이름              | 종류   | 형식     | 필수 | 설명                          |
+|-----------------|------|--------|----|-----------------------------|
+| backupId        | URL  | UUID   | O  | 백업의 식별자                     |
+| tenantId        | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 테넌트 ID   |
+| username        | Body | String | O  | NHN Cloud 회원 또는 IAM 멤버 ID   |
+| password        | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 API 비밀번호 |
+| targetContainer | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 컨테이너     |
+| objectPath      | Body | String | O  | 컨테이너에 저장될 백업의 경로            |
+
+<details><summary>예시</summary>
+
+```json
+{
+    "tenantId": "399631c404744dbbb18ce4fa2dc71a5a",
+    "username": "gildong.hong@nhn.com",
+    "password": "password",
+    "targetContainer": "/container",
+    "objectPath": "/backups/backup_file"
+}
+```
+</details>
+
+#### 응답
+
+| 이름    | 종류   | 형식   | 설명          |
+|-------|------|------|-------------|
+| jobId | Body | UUID | 요청한 작업의 식별자 |
+
+<details><summary>예시</summary>
+
+```json
+{
+    "header": {
+        "resultCode": 0,
+        "resultMessage": "SUCCESS",
+        "isSuccessful": true
+    },
+    "jobId": "0ddb042c-5af6-43fb-a914-f4dd0540eb7c"
+}
+```
+</details>
 
 ### 백업 복원하기
 
