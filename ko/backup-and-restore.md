@@ -15,7 +15,7 @@ RDS for PostgreSQL에서는 pg_basebackup 도구를 이용하여 데이터베이
 
 백업 시에 적용되는 설정 항목은 다음과 같으며, 자동 백업 및 수동 백업 시에 모두 적용됩니다.
 
-![backup-config](https://static.toastoven.net/prod_rds_postgres/20240611/backup-config-ko.png)
+![backup-config](https://static.toastoven.net/prod_rds_postgres/20241210/backup-config-ko.png)
 
 ### 수동 백업
 
@@ -71,9 +71,9 @@ RDS for PostgreSQL에서는 pg_basebackup 도구를 이용하여 데이터베이
 
 백업 후 백업 파일을 사용자 오브젝트 스토리지로 내보낼 수 있습니다.
 
-![db-instance-list-export-obs-ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-list-export-obs-ko.png)
+![db-instance-list-export-obs-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-ko.png)
 
-![db-instance-list-export-obs-modal-ko](https://static.toastoven.net/prod_rds/24.03.12/db-instance-list-export-obs-modal-ko.png)
+![db-instance-list-export-obs-modal-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-ko.png)
 
 ❶ 백업할 DB 인스턴스를 선택한 뒤 드롭다운 메뉴에서 **백업 후 오브젝트 스토리지로 백업 파일 내보내기**를 클릭하면 설정 팝업 화면이 나타납니다.
 ❷ 백업이 저장될 오브젝트 스토리지의 테넌트 ID를 입력합니다. 테넌트 ID는 API 엔드포인트 설정에서 확인할 수 있습니다.
@@ -86,11 +86,11 @@ RDS for PostgreSQL에서는 pg_basebackup 도구를 이용하여 데이터베이
 
 내부 백업 스토리지에 저장된 백업 파일을 사용자 오브젝트 스토리지로 내보낼 수 있습니다.
 
-![db-instance-detail-backup-export-ko](https://static.toastoven.net/prod_rds/24.03.12/mariadb/db-instance-detail-backup-export-ko.png)
+![db-instance-detail-backup-export-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-export-ko.png)
 
 ❶ 백업을 수행한 원본 DB 인스턴스의 상세 탭에서 내보낼 백업 파일을 선택한 뒤 **오브젝트 스토리지로 백업 내보내기**를 클릭하면 백업을 내보내기 위한 팝업 화면이 나타납니다.
 
-![backup-export-ko](https://static.toastoven.net/prod_rds/24.03.12/mariadb/backup-export-ko.png)
+![backup-export-ko](https://static.toastoven.net/prod_rds_postgres/20241210/backup-export-ko.png)
 
 ❷ 또는 **백업** 탭에서 내보낼 백업 파일을 선택한 뒤 **오브젝트 스토리지로 백업 내보내기**를 클릭합니다.
 
@@ -109,13 +109,13 @@ RDS for PostgreSQL에서는 pg_basebackup 도구를 이용하여 데이터베이
 
 백업 파일만으로 복원을 진행해 백업을 수행한 원본 DB 인스턴스가 필요하지 않습니다. 콘솔에서 백업을 복원하려면
 
-![db-instance-detail-backup-restore](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-backup-restore-ko.png)
+![db-instance-detail-backup-restore](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-restore-ko.png)
 
 ❶ DB 인스턴스의 상세 탭에서 복원할 백업 파일을 선택한 뒤 **백업 복원**을 클릭하면 DB 인스턴스 복원 화면으로 이동합니다.
 
 또는
 
-![backup-restore](https://static.toastoven.net/prod_rds_postgres/20240813/backup-restore-ko.png)
+![backup-restore](https://static.toastoven.net/prod_rds_postgres/20241210/backup-restore-ko.png)
 
 ❶ 백업 탭에서 복원할 백업 파일을 선택한 뒤 **백업 복원**을 클릭합니다.
 
