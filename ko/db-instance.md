@@ -681,7 +681,7 @@ DB 인스턴스를 강제 재시작하려면 콘솔에서
 
 ## 데이터 마이그레이션
 
-* RDS는 pg_dump를 이용하여 NHN Cloud RDS의 외부로 가져올 수 있습니다.
+* RDS는 pg_dump를 이용하여 NHN Cloud RDS의 외부로 내보내거나 외부에서 가져올 수 있습니다
 * pg_dump 유틸리티는 PostgreSQL을 설치했을 때 기본으로 제공됩니다.
 
 ### pg_dump를 이용하여 내보내기

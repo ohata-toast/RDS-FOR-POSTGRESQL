@@ -32,7 +32,7 @@ RDS for PostgreSQL에서는 pg_basebackup 도구를 이용하여 데이터베이
 
 또는 **백업** 탭에서
 
-![backup-create](https://static.toastoven.net/prod_rds_postgres/20240813/backup-create-ko.png)
+![backup-create](https://static.toastoven.net/prod_rds_postgres/20241210/backup-create-ko.png)
 
 ❶ **+ 백업 생성**을 클릭하면 **백업 생성** 팝업 창이 나타납니다.
 ❷ 백업을 수행할 DB 인스턴스를 선택합니다.
