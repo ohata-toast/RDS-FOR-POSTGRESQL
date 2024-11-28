@@ -21,7 +21,7 @@ RDS for PostgreSQL에서는 pg_basebackup 도구를 이용하여 데이터베이
 
 특정 시점의 데이터베이스를 영구히 저장하려면 콘솔에서 수동으로 백업을 수행할 수 있습니다. 수동 백업은 자동 백업과 달리 명시적으로 백업을 삭제하지 않는 한 DB 인스턴스가 삭제될 때 같이 삭제되지 않습니다. 콘솔에서 수동 백업을 수행하려면
 
-![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-backup-ko.png)
+![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-ko.png)
 
 ❶ 백업할 DB 인스턴스를 선택한 뒤 **백업**을 클릭하면 **백업 생성** 팝업 창이 나타납니다.
     - DB 인스턴스를 선택하지 않고 **백업**을 클릭하면 **백업 생성** 팝업 창 내 드롭다운 메뉴에서 DB 인스턴스를 선택할 수 있습니다.
