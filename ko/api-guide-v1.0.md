@@ -6,13 +6,13 @@
 
 ## 인증 및 권한
 
-API를 사용하려면 [Public API > API 호출 및 인증](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-authentication/)을 통해 발급받은 Bearer 유형의 토큰이 필요합니다.
-발급받은 토큰은 Appkey와 함께 요청 Header에 포함해야 합니다.
+API를 사용하려면 [Public API > API 호출 및 인증](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-authentication/)을 통해 발급 받은 Bearer 유형의 토큰이 필요합니다.
+발급 받은 토큰은 Appkey와 함께 요청 Header에 포함해야 합니다.
 
 | 이름                   | 종류     | 형식     | 필수 | 설명                                               |
 |----------------------|--------|--------|----|--------------------------------------------------|
 | X-TC-APP-KEY         | Header | String | O  | RDS for PostgreSQL 서비스의 Appkey 또는 프로젝트 통합 Appkey |
-| X-NHN-AUTHENTICATION | Header | String | O  | Public API로 발급받은 Bearer 유형 토큰                    |
+| X-NHN-AUTHENTICATION | Header | String | O  | Public API로 발급 받은 Bearer 유형 토큰                   |
 
 또한 프로젝트 권한에 따라 호출할 수 있는 API가 제한됩니다. `RDS for PostgreSQL ADMIN`, `RDS for PostgreSQL VIEWER` 역할에는 아래처럼 기본 권한이 부여돼 있고 프로젝트 내 역할 그룹 관리 메뉴에서 필요한 권한만 부여할 수 있습니다.
 
@@ -48,7 +48,7 @@ API 요청 시 인증에 실패하거나 권한이 없으면 다음과 같은 �
 
 | 이름            | 자료형     | 설명                    |
 |---------------|---------|-----------------------|
-| resultCode    | Number  | 결과코드 (성공: 0, 그 외: 실패) |
+| resultCode    | Number  | 결과 코드(성공: 0, 그 외: 실패) |
 | resultMessage | String  | 결과 메시지                |
 | successful    | Boolean | 성공 여부                 |
 
@@ -515,7 +515,7 @@ GET /v1.0/db-instance-groups/{dbInstanceGroupId}
 | 상태                  | 설명                          |
 |---------------------|-----------------------------|
 | `AVAILABLE`         | DB 인스턴스가 사용 가능한 경우          |
-| `BEFORE_CREATE`     | DB 인스턴스가 생성 전인 경우           |
+| `BEFORE_CREATE`     | DB 인스턴스 생성 전인 경우           |
 | `STORAGE_FULL`      | DB 인스턴스의 용량이 부족한 경우         |
 | `FAIL_TO_CREATE`    | DB 인스턴스 생성에 실패한 경우          |
 | `FAIL_TO_CONNECT`   | DB 인스턴스 연결에 실패한 경우          |
@@ -2220,12 +2220,12 @@ PUT /v1.0/db-instances/{dbInstanceId}/databases/{databaseId}
 
 #### 요청
 
-| 이름                       | 종류   | 형식      | 필수 | 설명                                                                                         |
-|--------------------------|------|---------|----|--------------------------------------------------------------------------------------------|
-| dbInstanceId             | URL  | UUID    | O  | DB 인스턴스의 식별자                                                                               |
-| databaseId               | URL  | UUID    | O  | 데이터베이스의 식별자                                                                                |
-| databaseName             | Body | String  | O  | 데이터베이스 이름                                                                                  |
-| applyHbaRulesImmediately | Body | Boolean | X  | 연관된 접근 제어 규칙 즉시 적용 여부<br/>- 데이터베이스 이름 변경시 이전 데이터베이스 이름으로 설정된 접근 제어 규칙이 있으면 변경된 이름으로 반영합니다. |
+| 이름                       | 종류   | 형식      | 필수 | 설명                                                                                          |
+|--------------------------|------|---------|----|---------------------------------------------------------------------------------------------|
+| dbInstanceId             | URL  | UUID    | O  | DB 인스턴스의 식별자                                                                                |
+| databaseId               | URL  | UUID    | O  | 데이터베이스의 식별자                                                                                 |
+| databaseName             | Body | String  | O  | 데이터베이스 이름                                                                                   |
+| applyHbaRulesImmediately | Body | Boolean | X  | 연관된 접근 제어 규칙 즉시 적용 여부<br/>- 데이터베이스 이름 변경 시 이전 데이터베이스 이름으로 설정된 접근 제어 규칙이 있으면 변경된 이름으로 반영합니다. |
 
 <details><summary>예시</summary>
 
@@ -2420,14 +2420,14 @@ PUT /v1.0/db-instances/{dbInstanceId}/db-users/{dbUserId}
 
 #### 요청
 
-| 이름                       | 종류   | 형식      | 필수 | 설명                                                                                         |
-|--------------------------|------|---------|----|--------------------------------------------------------------------------------------------|
-| dbInstanceId             | URL  | UUID    | O  | DB 인스턴스의 식별자                                                                               |
-| dbUserId                 | URL  | UUID    | O  | DB 사용자의 식별자                                                                                |
-| dbUserName               | Body | String  | X  | DB 사용자 계정 이름<br/>- 최소 길이: `1`<br/>- 최대 길이: `20`                                            |
-| dbPassword               | Body | String  | X  | DB 사용자 계정 암호<br/>- 최소 길이: `1`<br/>- 최대 길이: `100`                                           |
-| authorityType            | Body | Enum    | X  | DB 사용자 권한 유형<br/>- `CRUD`: DML 쿼리 수행 가능한 권한<br/>- `DDL`: DDL 쿼리 수행 가능한 권한                  |
-| applyHbaRulesImmediately | Body | Boolean | X  | 연관된 접근 제어 규칙 즉시 적용 여부<br/>- 사용자 계정 이름 변경시 이전 사용자 계정 이름으로 설정된 접근 제어 규칙이 있으면 변경된 이름으로 반영합니다. |
+| 이름                       | 종류   | 형식      | 필수 | 설명                                                                                          |
+|--------------------------|------|---------|----|---------------------------------------------------------------------------------------------|
+| dbInstanceId             | URL  | UUID    | O  | DB 인스턴스의 식별자                                                                                |
+| dbUserId                 | URL  | UUID    | O  | DB 사용자의 식별자                                                                                 |
+| dbUserName               | Body | String  | X  | DB 사용자 계정 이름<br/>- 최소 길이: `1`<br/>- 최대 길이: `20`                                             |
+| dbPassword               | Body | String  | X  | DB 사용자 계정 암호<br/>- 최소 길이: `1`<br/>- 최대 길이: `100`                                            |
+| authorityType            | Body | Enum    | X  | DB 사용자 권한 유형<br/>- `CRUD`: DML 쿼리 수행 가능한 권한<br/>- `DDL`: DDL 쿼리 수행 가능한 권한                   |
+| applyHbaRulesImmediately | Body | Boolean | X  | 연관된 접근 제어 규칙 즉시 적용 여부<br/>- 사용자 계정 이름 변경 시 이전 사용자 계정 이름으로 설정된 접근 제어 규칙이 있으면 변경된 이름으로 반영합니다. |
 
 <details><summary>예시</summary>
 
@@ -2538,11 +2538,11 @@ GET /v1.0/db-instances/{dbInstanceId}/hba-rules
 | hbaRules.dbUsers.dbUserId       | Body | UUID    | 사용자 지정 DB 사용자의 식별자                                                                                                                                   |
 | hbaRules.dbUsers.dbUserName     | Body | String  | 사용자 지정 DB 사용자 계정 이름                                                                                                                                  |
 | hbaRules.address                | Body | String  | 접속 주소                                                                                                                                                |
-| hbaRules.authMethod             | Body | Enum    | 인증 방식<br/>- `TRUST`: 트러스트 (패스워드 불필요)<br/>- `REJECT`: 접속 차단<br/>- `SCRAM_SHA_256`: 패스워드 (SCRAM-SHA-256)                                               |
-| hbaRules.reservedAction         | Body | Enum    | 예악 작업<br/>- `NONE`: 없음<br/>- `CREATE`: 생성 예약 (적용 필요)<br/>- `MODIFY`: 수정 예약 (적용 필요)<br/>- `DELETE`: 삭제 예약 (적용 필요)                                     |
+| hbaRules.authMethod             | Body | Enum    | 인증 방식<br/>- `TRUST`: 트러스트(패스워드 불필요)<br/>- `REJECT`: 접속 차단<br/>- `SCRAM_SHA_256`: 패스워드(SCRAM-SHA-256)                                                 |
+| hbaRules.reservedAction         | Body | Enum    | 예악 작업<br/>- `NONE`: 없음<br/>- `CREATE`: 생성 예약(적용 필요)<br/>- `MODIFY`: 수정 예약(적용 필요)<br/>- `DELETE`: 삭제 예약(적용 필요)                                        |
 | hbaRules.order                  | Body | Number  | 적용 순서                                                                                                                                                |
 | hbaRules.applicable             | Body | Boolean | 적용 가능 여부<br/>- 적용 불가 상태의 규칙은 무시됨                                                                                                                     |
-| needToApply                     | Body | Boolean | 변경사항 적용 필요 여부                                                                                                                                        |
+| needToApply                     | Body | Boolean | 변경 사항 적용 필요 여부                                                                                                                                       |
 
 <details><summary>예시</summary>
 
@@ -2591,15 +2591,15 @@ POST /v1.0/db-instances/{dbInstanceId}/hba-rules
 
 #### 요청
 
-| 이름                | 종류   | 형식     | 필수 | 설명                                                                                                     |
-|-------------------|------|--------|----|--------------------------------------------------------------------------------------------------------|
-| dbInstanceId      | URL  | UUID   | O  | DB 인스턴스의 식별자                                                                                           |
-| databaseApplyType | Body | String | O  | 데이터베이스 규칙 적용 방식<br/>- `ENTIRE`: 전체<br/>- `USER_CUSTOM`: 사용자 지정                                         |
-| dbUserApplyType   | Body | Enum   | O  | DB 사용자 규칙 적용 방식<br/>- `ENTIRE`: 전체<br/>- `USER_CUSTOM`: 사용자 지정                                         |
-| databaseIds       | Body | Array  | X  | 사용자 지정 데이터베이스의 식별자 목록                                                                                  |
-| dbUserIds         | Body | Array  | X  | 사용자 지정 DB 사용자의 식별자 목록                                                                                  |
-| address           | Body | String | O  | 접속 주소<br/>- CIDR 형식, 호스트명 또는 도메인 형식으로 입력                                                               |
-| authMethod        | Body | Enum   | O  | 인증 방식<br/>- `TRUST`: 트러스트 (패스워드 불필요)<br/>- `REJECT`: 접속 차단<br/>- `SCRAM_SHA_256`: 패스워드 (SCRAM-SHA-256) |
+| 이름                | 종류   | 형식     | 필수 | 설명                                                                                                   |
+|-------------------|------|--------|----|------------------------------------------------------------------------------------------------------|
+| dbInstanceId      | URL  | UUID   | O  | DB 인스턴스의 식별자                                                                                         |
+| databaseApplyType | Body | String | O  | 데이터베이스 규칙 적용 방식<br/>- `ENTIRE`: 전체<br/>- `USER_CUSTOM`: 사용자 지정                                       |
+| dbUserApplyType   | Body | Enum   | O  | DB 사용자 규칙 적용 방식<br/>- `ENTIRE`: 전체<br/>- `USER_CUSTOM`: 사용자 지정                                       |
+| databaseIds       | Body | Array  | X  | 사용자 지정 데이터베이스의 식별자 목록                                                                                |
+| dbUserIds         | Body | Array  | X  | 사용자 지정 DB 사용자의 식별자 목록                                                                                |
+| address           | Body | String | O  | 접속 주소<br/>- CIDR 형식, 호스트명 또는 도메인 형식으로 입력                                                             |
+| authMethod        | Body | Enum   | O  | 인증 방식<br/>- `TRUST`: 트러스트(패스워드 불필요)<br/>- `REJECT`: 접속 차단<br/>- `SCRAM_SHA_256`: 패스워드(SCRAM-SHA-256) |
 
 <details><summary>예시</summary>
 
@@ -2651,16 +2651,16 @@ PUT /v1.0/db-instances/{dbInstanceId}/hba-rules/{hbaRuleId}
 
 #### 요청
 
-| 이름                | 종류   | 형식     | 필수 | 설명                                                                                                     |
-|-------------------|------|--------|----|--------------------------------------------------------------------------------------------------------|
-| dbInstanceId      | URL  | UUID   | O  | DB 인스턴스의 식별자                                                                                           |
-| hbaRuleId         | URL  | UUID   | O  | 접근 제어 규칙의 식별자                                                                                          |
-| databaseApplyType | Body | String | O  | 데이터베이스 규칙 적용 방식<br/>- `ENTIRE`: 전체<br/>- `USER_CUSTOM`: 사용자 지정                                         |
-| dbUserApplyType   | Body | Enum   | O  | DB 사용자 규칙 적용 방식<br/>- `ENTIRE`: 전체<br/>- `USER_CUSTOM`: 사용자 지정                                         |
-| databaseIds       | Body | Array  | X  | 사용자 지정 데이터베이스의 식별자 목록                                                                                  |
-| dbUserIds         | Body | Array  | X  | 사용자 지정 DB 사용자의 식별자 목록                                                                                  |
-| address           | Body | String | O  | 접속 주소<br/>- CIDR 형식, 호스트명 또는 도메인 형식으로 입력                                                               |
-| authMethod        | Body | Enum   | O  | 인증 방식<br/>- `TRUST`: 트러스트 (패스워드 불필요)<br/>- `REJECT`: 접속 차단<br/>- `SCRAM_SHA_256`: 패스워드 (SCRAM-SHA-256) |
+| 이름                | 종류   | 형식     | 필수 | 설명                                                                                                   |
+|-------------------|------|--------|----|------------------------------------------------------------------------------------------------------|
+| dbInstanceId      | URL  | UUID   | O  | DB 인스턴스의 식별자                                                                                         |
+| hbaRuleId         | URL  | UUID   | O  | 접근 제어 규칙의 식별자                                                                                        |
+| databaseApplyType | Body | String | O  | 데이터베이스 규칙 적용 방식<br/>- `ENTIRE`: 전체<br/>- `USER_CUSTOM`: 사용자 지정                                       |
+| dbUserApplyType   | Body | Enum   | O  | DB 사용자 규칙 적용 방식<br/>- `ENTIRE`: 전체<br/>- `USER_CUSTOM`: 사용자 지정                                       |
+| databaseIds       | Body | Array  | X  | 사용자 지정 데이터베이스의 식별자 목록                                                                                |
+| dbUserIds         | Body | Array  | X  | 사용자 지정 DB 사용자의 식별자 목록                                                                                |
+| address           | Body | String | O  | 접속 주소<br/>- CIDR 형식, 호스트명 또는 도메인 형식으로 입력                                                             |
+| authMethod        | Body | Enum   | O  | 인증 방식<br/>- `TRUST`: 트러스트(패스워드 불필요)<br/>- `REJECT`: 접속 차단<br/>- `SCRAM_SHA_256`: 패스워드(SCRAM-SHA-256) |
 
 <details><summary>예시</summary>
 
@@ -2846,20 +2846,20 @@ GET /v1.0/backups
 
 #### 응답
 
-| 이름                   | 종류   | 형식       | 설명                                                                                                                                                             |
-|----------------------|------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| totalCounts          | Body | Number   | 전체 백업 목록 수                                                                                                                                                     |
-| backups              | Body | Array    | 백업 목록                                                                                                                                                          |
-| backups.backupId     | Body | UUID     | 백업의 식별자                                                                                                                                                        |
-| backups.backupName   | Body | String   | 백업을 식별할 수 있는 이름                                                                                                                                                |
-| backups.backupStatus | Body | Enum     | 백업의 현재 상태<br/>- `BACKING_UP` : 백업 중인 경우<br/>- `COMPLETED` : 백업이 완료된 경우<br/>- `DELETING` : 백업이 삭제 중인 경우<br/>- `DELETED` : 백업이 삭제된 경우<br/>- `ERROR` : 오류가 발생한 경우 |
-| backups.dbInstanceId | Body | UUID     | 원본 DB 인스턴스의 식별자                                                                                                                                                |
-| backups.dbVersion    | Body | Enum     | DB 버전 정보                                                                                                                                                       |
-| backups.backupType   | Body | Enum     | 백업 유형<br/>- `AUTO`: 자동<br/>- `MANUAL`:  수동                                                                                                                     |
-| backups.backupSize   | Body | Number   | 백업의 크기<br/>- 단위: `바이트`                                                                                                                                         |
-| createdYmdt          | Body | DateTime | 생성 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                              |
-| updatedYmdt          | Body | DateTime | 수정 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                              |
-| completedYmdt        | Body | DateTime | 완료 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                              |
+| 이름                   | 종류   | 형식       | 설명                                                                                                                                                        |
+|----------------------|------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| totalCounts          | Body | Number   | 전체 백업 목록 수                                                                                                                                                |
+| backups              | Body | Array    | 백업 목록                                                                                                                                                     |
+| backups.backupId     | Body | UUID     | 백업의 식별자                                                                                                                                                   |
+| backups.backupName   | Body | String   | 백업을 식별할 수 있는 이름                                                                                                                                           |
+| backups.backupStatus | Body | Enum     | 백업의 현재 상태<br/>- `BACKING_UP`: 백업 중인 경우<br/>- `COMPLETED`: 백업이 완료된 경우<br/>- `DELETING`: 백업이 삭제 중인 경우<br/>- `DELETED`: 백업이 삭제된 경우<br/>- `ERROR`: 오류가 발생한 경우 |
+| backups.dbInstanceId | Body | UUID     | 원본 DB 인스턴스의 식별자                                                                                                                                           |
+| backups.dbVersion    | Body | Enum     | DB 버전 정보                                                                                                                                                  |
+| backups.backupType   | Body | Enum     | 백업 유형<br/>- `AUTO`: 자동<br/>- `MANUAL`:  수동                                                                                                                |
+| backups.backupSize   | Body | Number   | 백업의 크기<br/>- 단위: `바이트`                                                                                                                                    |
+| createdYmdt          | Body | DateTime | 생성 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                         |
+| updatedYmdt          | Body | DateTime | 수정 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                         |
+| completedYmdt        | Body | DateTime | 완료 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                         |
 
 <details><summary>예시</summary>
 
@@ -3635,26 +3635,26 @@ GET /v1.0/parameter-groups/{parameterGroupId}
 
 #### 응답
 
-| 이름                           | 종류   | 형식       | 설명                                                                                                                                                                                                                                                                                                                                                   |
-|------------------------------|------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| parameterGroupId             | Body | UUID     | 파라미터 그룹의 식별자                                                                                                                                                                                                                                                                                                                                         |
-| parameterGroupName           | Body | String   | 파라미터 그룹을 식별할 수 있는 이름                                                                                                                                                                                                                                                                                                                                 |
-| description                  | Body | String   | 파라미터 그룹에 대한 추가 정보                                                                                                                                                                                                                                                                                                                                    |
-| dbVersion                    | Body | Enum     | DB 버전 정보                                                                                                                                                                                                                                                                                                                                             |
-| parameterGroupStatus         | Body | Enum     | 파라미터 그룹의 현재 상태<br/>- `STABLE`: 적용 완료<br/>- `NEED_TO_APPLY`: 적용 필요<br/>- `DELETED`: 삭제됨                                                                                                                                                                                                                                                               |
-| parameters                   | Body | Array    | 파라미터 목록                                                                                                                                                                                                                                                                                                                                              |
-| parameters.parameterCategory | Body | String   | 파라미터 카테고리                                                                                                                                                                                                                                                                                                                                            |
-| parameters.parameterName     | Body | String   | 파라미터 이름                                                                                                                                                                                                                                                                                                                                              |
-| parameters.value             | Body | String   | 현재 설정된 값                                                                                                                                                                                                                                                                                                                                             |
-| parameters.valueUnit         | Body | Enum     | 현재 설정된 값의 단위<br/>- `B`: 바이트<br/>- `kB`: 킬로바이트<br/>- `MB`: 메가바이트<br/>- `GB`: 기가바이트<br/>- `TB`: 테라바이트<br/>- `us`: 마이크로초<br/>- `ms`: 밀리초<br/>- `s`: 초<br/>- `min`: 분<br/>- `h`: 시<br/>- `d`: 일                                                                                                                                                          |
-| parameters.defaultValue      | Body | String   | 기본값                                                                                                                                                                                                                                                                                                                                                  |
-| parameters.allowedValue      | Body | String   | 허용된 값                                                                                                                                                                                                                                                                                                                                                |
-| parameters.valueType         | Body | Enum     | 값 유형<br/>- `BOOLEAN`: 불린 유형<br/>- `STRING`: 문자열 유형<br/>- `NUMERIC`: 정수 및 부동 소수점 유형<br/>- `NUMERIC_WITH_BYTE_UNIT`: 바이트 단위의 숫자 유형 (예: 120kB, 100MB)<br/>- `NUMERIC_WITH_TIME_UNIT`: 시간 단위의 숫자 유형 (예: 120ms, 100s, 1d)<br/>- `ENUMERATED`: 허용된 값에 선언된 값 중 한 개 입력<br/>- `MULTI_ENUMERATED`: 허용된 값에 선언된 값 중 여러개 입력 (콤마(,)로 구분됨)<br/>- `TIMEZONE`: 타임존 유형 |
-| parameters.updateType        | Body | Enum     | 수정 유형<br/>- `VARIABLE`: 언제든 수정 가능<br/>- `CONSTANT`: 수정 불가능                                                                                                                                                                                                                                                                                           |
-| parameters.applyType         | Body | Enum     | 적용 유형<br/>- `SESSION`: 세션 적용<br/>- `FILE`: 설정 파일 적용(재시작 필요)<br/>- `BOTH`: 전체                                                                                                                                                                                                                                                                         | 
-| createdYmdt                  | Body | DateTime | 생성 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                                                                                                                                                                                                                    |
-| updatedYmdt                  | Body | DateTime | 수정 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                                                                                                                                                                                                                    |
-| expressionAvailable          | Body | Boolean  | 수식 허용 여부                                                                                                                                                                                                                                                                                                                                             |
+| 이름                           | 종류   | 형식       | 설명                                                                                                                                                                                                                                                                                                                                                 |
+|------------------------------|------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| parameterGroupId             | Body | UUID     | 파라미터 그룹의 식별자                                                                                                                                                                                                                                                                                                                                       |
+| parameterGroupName           | Body | String   | 파라미터 그룹을 식별할 수 있는 이름                                                                                                                                                                                                                                                                                                                               |
+| description                  | Body | String   | 파라미터 그룹에 대한 추가 정보                                                                                                                                                                                                                                                                                                                                  |
+| dbVersion                    | Body | Enum     | DB 버전 정보                                                                                                                                                                                                                                                                                                                                           |
+| parameterGroupStatus         | Body | Enum     | 파라미터 그룹의 현재 상태<br/>- `STABLE`: 적용 완료<br/>- `NEED_TO_APPLY`: 적용 필요<br/>- `DELETED`: 삭제됨                                                                                                                                                                                                                                                             |
+| parameters                   | Body | Array    | 파라미터 목록                                                                                                                                                                                                                                                                                                                                            |
+| parameters.parameterCategory | Body | String   | 파라미터 카테고리                                                                                                                                                                                                                                                                                                                                          |
+| parameters.parameterName     | Body | String   | 파라미터 이름                                                                                                                                                                                                                                                                                                                                            |
+| parameters.value             | Body | String   | 현재 설정된 값                                                                                                                                                                                                                                                                                                                                           |
+| parameters.valueUnit         | Body | Enum     | 현재 설정된 값의 단위<br/>- `B`: 바이트<br/>- `kB`: 킬로바이트<br/>- `MB`: 메가바이트<br/>- `GB`: 기가바이트<br/>- `TB`: 테라바이트<br/>- `us`: 마이크로초<br/>- `ms`: 밀리초<br/>- `s`: 초<br/>- `min`: 분<br/>- `h`: 시<br/>- `d`: 일                                                                                                                                                        |
+| parameters.defaultValue      | Body | String   | 기본값                                                                                                                                                                                                                                                                                                                                                |
+| parameters.allowedValue      | Body | String   | 허용된 값                                                                                                                                                                                                                                                                                                                                              |
+| parameters.valueType         | Body | Enum     | 값 유형<br/>- `BOOLEAN`: 불린 유형<br/>- `STRING`: 문자열 유형<br/>- `NUMERIC`: 정수 및 부동 소수점 유형<br/>- `NUMERIC_WITH_BYTE_UNIT`: 바이트 단위의 숫자 유형(예: 120KB, 100MB)<br/>- `NUMERIC_WITH_TIME_UNIT`: 시간 단위의 숫자 유형(예: 120ms, 100s, 1d)<br/>- `ENUMERATED`: 허용된 값에 선언된 값 중 한 개 입력<br/>- `MULTI_ENUMERATED`: 허용된 값에 선언된 값 중 여러 개 입력(콤마(,)로 구분됨)<br/>- `TIMEZONE`: 타임존 유형 |
+| parameters.updateType        | Body | Enum     | 수정 유형<br/>- `VARIABLE`: 언제든 수정 가능<br/>- `CONSTANT`: 수정 불가능                                                                                                                                                                                                                                                                                         |
+| parameters.applyType         | Body | Enum     | 적용 유형<br/>- `SESSION`: 세션 적용<br/>- `FILE`: 설정 파일 적용(재시작 필요)<br/>- `BOTH`: 전체                                                                                                                                                                                                                                                                       | 
+| createdYmdt                  | Body | DateTime | 생성 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                                                                                                                                                                                                                  |
+| updatedYmdt                  | Body | DateTime | 수정 일시(YYYY-MM-DDThh:mm:ss.SSSTZD)                                                                                                                                                                                                                                                                                                                  |
+| expressionAvailable          | Body | Boolean  | 수식 허용 여부                                                                                                                                                                                                                                                                                                                                           |
 
 <details><summary>예시</summary>
 
@@ -4086,11 +4086,11 @@ POST /v1.0/user-groups
 
 #### 요청
 
-| 이름            | 종류   | 형식      | 필수 | 설명                                                               |
-|---------------|------|---------|----|------------------------------------------------------------------|
-| userGroupName | Body | String  | O  | 사용자 그룹을 식별할 수 있는 이름                                              |
-| memberIds     | Body | Array   | O  | 프로젝트 멤버의 식별자 목록     <br /> `selectAllYN`이 true인 경우 해당 필드 값은 무시됨. |
-| selectAllYN   | Body | Boolean | X  | 프로젝트 멤버 전체 유무 <br /> true인 경우 해당 그룹은 전체 멤버에 대해 설정됨               |
+| 이름            | 종류   | 형식      | 필수 | 설명                                                              |
+|---------------|------|---------|----|-----------------------------------------------------------------|
+| userGroupName | Body | String  | O  | 사용자 그룹을 식별할 수 있는 이름                                             |
+| memberIds     | Body | Array   | O  | 프로젝트 멤버의 식별자 목록     <br /> `selectAllYN`이 true인 경우 해당 필드 값은 무시됨 |
+| selectAllYN   | Body | Boolean | X  | 프로젝트 멤버 전체 유무 <br /> true인 경우 해당 그룹은 전체 멤버에 대해 설정됨              |
 
 <details><summary>예시</summary>
 

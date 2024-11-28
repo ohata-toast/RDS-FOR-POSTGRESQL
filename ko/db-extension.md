@@ -9,7 +9,7 @@
 
 | 확장 기능 이름           | 버전  | SUPERUSER 권한 | 비고                            | 홈페이지                                                     |
 |--------------------|-----|--------------|-------------------------------|----------------------------------------------------------|
-| auto_explain       | -   | O            | `LOAD` 구문 실행시 SUPERUSER 권한 필요 | https://www.postgresql.org/docs/14/auto-explain.html     |
+| auto_explain       | -   | O            | `LOAD` 구문 실행 시 SUPERUSER 권한 필요 | https://www.postgresql.org/docs/14/auto-explain.html     |
 | citext             | 1.6 |              |                               | https://www.postgresql.org/docs/14/citext.html           |
 | cube               | 1.5 |              |                               | https://www.postgresql.org/docs/14/cube.html             |
 | dblink             | 1.2 | O            |                               | https://www.postgresql.org/docs/14/dblink.html           |
