@@ -16,7 +16,7 @@
 | BACKUP_05_00            | BACKUP            | 백업 내보내기 시작                           |
 | BACKUP_05_01            | BACKUP            | 백업 내보내기 완료                           |
 | BACKUP_05_04            | BACKUP            | 백업 내보내기 실패                           |
-| BACKUP_06_01            | BACKUP            | DB 인스턴스 백업 실패 (알려진 원인)               |
+| BACKUP_06_01            | BACKUP            | DB 인스턴스 백업 실패(알려진 원인)                |
 | DB_INSTANCE_01_00       | DB_INSTANCE       | DB 인스턴스 생성 시작                        |
 | DB_INSTANCE_01_01       | DB_INSTANCE       | DB 인스턴스 생성 완료                        |
 | DB_INSTANCE_01_04       | DB_INSTANCE       | DB 인스턴스 생성 실패                        |
@@ -98,14 +98,14 @@
 | DB_INSTANCE_37_04       | DB_INSTANCE       | 상세 설정 변경 실패                          |
 | DB_INSTANCE_38_01       | DB_INSTANCE       | 고가용성 DB 인스턴스 시작                      |
 | DB_INSTANCE_39_01       | DB_INSTANCE       | 고가용성 DB 인스턴스 종료                      |
-| DB_INSTANCE_40_00       | DB_INSTANCE       | DB 인스턴스 장애조치 발생                      |
-| DB_INSTANCE_40_01       | DB_INSTANCE       | DB 인스턴스 장애조치 완료                      |
-| DB_INSTANCE_40_04       | DB_INSTANCE       | DB 인스턴스 장애조치 실패                      |
+| DB_INSTANCE_40_00       | DB_INSTANCE       | DB 인스턴스 장애 조치 실행                     |
+| DB_INSTANCE_40_01       | DB_INSTANCE       | DB 인스턴스 장애 조치 완료                     |
+| DB_INSTANCE_40_04       | DB_INSTANCE       | DB 인스턴스 장애 조치 실패                     |
 | DB_INSTANCE_41_01       | DB_INSTANCE       | 장애 조치를 이용한 인스턴스 재시작 완료               |
 | DB_INSTANCE_41_04       | DB_INSTANCE       | 장애 조치를 이용한 인스턴스 재시작 실패               |
 | DB_INSTANCE_42_00       | DB_INSTANCE       | 장애 조치 수동 제어 대기                       |
 | DB_INSTANCE_42_01       | DB_INSTANCE       | 장애 조치 수동 제어 성공                       |
-| DB_INSTANCE_42_04       | DB_INSTANCE       | 장애 조치 수동 제어 타임 아웃                    |
+| DB_INSTANCE_42_04       | DB_INSTANCE       | 장애 조치 수동 제어 시간 초과                    |
 | DB_INSTANCE_43_01       | DB_INSTANCE       | 고가용성 일시 중지                           |
 | DB_INSTANCE_43_04       | DB_INSTANCE       | 고가용성 일시 중지 실패                        |
 | DB_INSTANCE_44_01       | DB_INSTANCE       | 고가용성 다시 시작                           |
@@ -124,11 +124,11 @@
 | DB_INSTANCE_50_00       | DB_INSTANCE       | 예비 마스터 재구축 시작                        |
 | DB_INSTANCE_50_01       | DB_INSTANCE       | 예비 마스터 재구축 완료                        |
 | DB_INSTANCE_50_04       | DB_INSTANCE       | 예비 마스터 재구축 실패                        |
-| DB_INSTANCE_51_01       | DB_INSTANCE       | DB 인스턴스 백업 실패 (알려진 원인)               |
+| DB_INSTANCE_51_01       | DB_INSTANCE       | DB 인스턴스 백업 실패(알려진 원인)                |
 | DB_INSTANCE_52_00       | DB_INSTANCE       | DB 인스턴스 백업 후 백업 파일 내보내기 시작           |
 | DB_INSTANCE_52_01       | DB_INSTANCE       | DB 인스턴스 백업 후 백업 파일 내보내기 완료           |
 | DB_INSTANCE_52_04       | DB_INSTANCE       | DB 인스턴스 백업 후 백업 파일 내보내기 실패           |
-| DB_INSTANCE_53_01       | DB_INSTANCE       | DB 인스턴스 백업 후 백업 파일 내보내기 실패 (알려진 원인)  |
+| DB_INSTANCE_53_01       | DB_INSTANCE       | DB 인스턴스 백업 후 백업 파일 내보내기 실패(알려진 원인)   |
 | DB_INSTANCE_54_00       | DB_INSTANCE       | DB 인스턴스 백업 내보내기 시작                   |
 | DB_INSTANCE_54_01       | DB_INSTANCE       | DB 인스턴스 백업 내보내기 완료                   |
 | DB_INSTANCE_54_04       | DB_INSTANCE       | DB 인스턴스 백업 내보내기 실패                   |
