@@ -1896,7 +1896,7 @@ POST /v1.0/db-instances/{dbInstanceId}/backup-to-object-storage
 |-----------------|------|--------|----|-----------------------------|
 | dbInstanceId    | URL  | UUID   | O  | DB 인스턴스의 식별자                |
 | tenantId        | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 테넌트 ID   |
-| username        | Body | String | O  | NHN Cloud 회원 또는 IAM 멤버 ID   |
+| username        | Body | String | O  | NHN Cloud 계정 또는 IAM 계정 ID   |
 | password        | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 API 비밀번호 |
 | targetContainer | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 컨테이너     |
 | objectPath      | Body | String | O  | 컨테이너에 저장될 백업의 경로            |
@@ -2927,7 +2927,7 @@ POST /v1.0/backups/{backupId}/export
 |-----------------|------|--------|----|-----------------------------|
 | backupId        | URL  | UUID   | O  | 백업의 식별자                     |
 | tenantId        | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 테넌트 ID   |
-| username        | Body | String | O  | NHN Cloud 회원 또는 IAM 멤버 ID   |
+| username        | Body | String | O  | NHN Cloud 계정 또는 IAM 계정 ID   |
 | password        | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 API 비밀번호 |
 | targetContainer | Body | String | O  | 백업이 저장될 오브젝트 스토리지의 컨테이너     |
 | objectPath      | Body | String | O  | 컨테이너에 저장될 백업의 경로            |
