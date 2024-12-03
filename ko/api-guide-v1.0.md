@@ -9,10 +9,10 @@
 API를 사용하려면 [Public API > API 호출 및 인증](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-authentication/)을 통해 발급 받은 Bearer 유형의 토큰이 필요합니다.
 발급 받은 토큰은 Appkey와 함께 요청 Header에 포함해야 합니다.
 
-| 이름                   | 종류     | 형식     | 필수 | 설명                                               |
-|----------------------|--------|--------|----|--------------------------------------------------|
-| X-TC-APP-KEY         | Header | String | O  | RDS for PostgreSQL 서비스의 Appkey 또는 프로젝트 통합 Appkey |
-| X-NHN-AUTHENTICATION | Header | String | O  | Public API로 발급 받은 Bearer 유형 토큰                   |
+| 이름                  | 종류     | 형식     | 필수 | 설명                                               |
+|---------------------|--------|--------|----|--------------------------------------------------|
+| X-TC-APP-KEY        | Header | String | O  | RDS for PostgreSQL 서비스의 Appkey 또는 프로젝트 통합 Appkey |
+| X-NHN-AUTHORIZATION | Header | String | O  | Public API로 발급 받은 Bearer 유형 토큰                   |
 
 또한 프로젝트 권한에 따라 호출할 수 있는 API가 제한됩니다. `RDS for PostgreSQL ADMIN`, `RDS for PostgreSQL VIEWER` 역할에는 아래처럼 기본 권한이 부여돼 있고 프로젝트 내 역할 그룹 관리 메뉴에서 필요한 권한만 부여할 수 있습니다.
 
