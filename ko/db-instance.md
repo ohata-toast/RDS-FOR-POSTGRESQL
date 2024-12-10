@@ -597,7 +597,7 @@ DB 인스턴스를 강제 재시작하려면 콘솔에서
 
 장애 조치된 마스터를 복구하려면 콘솔에서
 
-![db-instance-failover-repair-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-failover-repair-ko.png)
+![db-instance-ha-failover-repair-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-repair-ko.png)
 
 ❶ 복구를 원하는 장애 조치된 마스터를 선택 후 드롭다운 메뉴에서 **장애 조치된 마스터 복구** 메뉴를 클릭합니다.
 
@@ -616,7 +616,7 @@ DB 인스턴스를 강제 재시작하려면 콘솔에서
 
 장애 조치된 마스터를 재구축하려면 콘솔에서
 
-![db-instance-failover-rebuild-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-failover-rebuild-ko.png)
+![db-instance-ha-failover-rebuild-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-rebuild-ko.png)
 
 ❶ 재구축을 원하는 장애 조치된 마스터를 선택 후 드롭다운 메뉴에서 **장애 조치된 마스터 재구축** 메뉴를 클릭합니다.
 
@@ -626,7 +626,7 @@ DB 인스턴스를 강제 재시작하려면 콘솔에서
 
 장애 조치된 마스터를 분리하려면 콘솔에서
 
-![db-instance-failover-split-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-failover-split-ko.png)
+![db-instance-ha-failover-split-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-split-ko.png)
 
 ❶ 분리를 원하는 장애 조치된 마스터를 선택 후 드롭다운 메뉴에서 **장애 조치된 마스터 분리** 메뉴를 클릭합니다.
 
@@ -657,7 +657,7 @@ DB 인스턴스를 강제 재시작하려면 콘솔에서
 
 예비 마스터에 변경 사항을 먼저 적용한 뒤 그 추이를 관찰하거나, 정확한 시간에 장애 조치를 실행하고자 할 때 콘솔에서 장애 조치 시점을 직접 제어할 수 있습니다. 장애 조치 수동 제어를 선택하면 예비 마스터가 재시작된 후 ❶ 콘솔에 **장애 조치** 버튼이 표시됩니다. 이 버튼을 클릭하면 장애 조치가 실행되며, 최대 5일간 실행을 대기할 수 있습니다. 5일 이내에 장애 조치를 실행하지 않을 경우 해당 작업은 자동으로 취소됩니다.
 
-![db-instance-ha-wait-manual-failover-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-ha-wait-manual-failover-ko.png)
+![db-instance-ha-wait-manual-failover-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-wait-manual-failover-ko.png)
 
 > [주의]
 > 장애 조치를 대기하는 동안에는 자동 장애 조치가 되지 않습니다.
