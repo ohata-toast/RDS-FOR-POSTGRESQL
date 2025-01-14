@@ -68,7 +68,7 @@ The following tasks use the I/O capacity of the data storage, which may degrade 
 * Rebuild a read replica
 * Rebuild a candidate master
 * Restore to a certain point in time
-* 단일 DB 인스턴스에서 백업 후 오브젝트 스토리지로 백업 파일 내보내기
+* Export backup files to object storage after backup on a single DB instance
 
 ### High Avilability
 

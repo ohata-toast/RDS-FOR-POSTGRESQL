@@ -2,7 +2,7 @@
 
 ## Event
 
-An event is a significant occurrence that is caused by RDS for PostgreSQL or by a user. An event consists of the event type, when it occurred, the original source, and the message. Events can be viewed in the console, and the types of events and possible events are listed below.
+Event refers to RDS for PostgreSQL or a significant event that is caused by a user. Event consists of event category , the date and time of occurrence, the source and the message. Event can be viewed on the console, and the category of events and possible events are as follows.
 
 | Event Code                  | Event Category            | Description                                   |
 |-------------------------|-------------------|--------------------------------------|

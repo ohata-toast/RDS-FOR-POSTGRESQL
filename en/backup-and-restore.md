@@ -15,13 +15,13 @@ RDS for PostgreSQL uses the pg_basebackup tool to back up databases. To restore 
 
 The following settings are applied to backup and it applies to both auto and manual backups.
 
-![backup-config](https://static.toastoven.net/prod_rds_postgres/20241210/backup-config-ko.png)
+![backup-config](https://static.toastoven.net/prod_rds_postgres/20241210/backup-config-en.png)
 
 ### Manual Backup
 
 If you want to permanently store a database at a specific point in time, you can perform a backup manually from the console. Unlike auto backups, manual backups are not deleted when a DB instance is deleted unless you explicitly delete the backup. To perform a manual backup from the console
 
-![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-ko.png)
+![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-en.png)
 
 ❶ After selecting the DB instance to back up, click **Backup**, and **Create Backup** and the pop-up window appears.
     - If you click **Backup** without selecting DB instance, you can select DB instance from the drop-down menu within the **Create Backup** pop-up window.
@@ -32,7 +32,7 @@ If you want to permanently store a database at a specific point in time, you can
 
 Or, on the **Backup** tab,
 
-![backup-create](https://static.toastoven.net/prod_rds_postgres/20241210/backup-create-ko.png)
+![backup-create](https://static.toastoven.net/prod_rds_postgres/20241210/backup-create-en.png)
 
 ❶ Click **+ Create Backup** and the **Create Backup** pop-up window will appear.
 ❷ Select the DB instance on which to perform the backup.
