@@ -63,9 +63,16 @@ Stores the database's data files in data storage. DB instances support two types
 The following tasks use the I/O capacity of the data storage, which may degrade the performance of DB instances during the process.
 
 * Backup a single DB instance
+* High availability configuration of a single DB instance
 * Create a read replica
 * Rebuild a read replica
+* Rebuild a candidate master
 * Restore to a certain point in time
+* 단일 DB 인스턴스에서 백업 후 오브젝트 스토리지로 백업 파일 내보내기
+
+### High Avilability
+
+High availability DB instances increase availability and data durability, and provide a fault-tolerant database. High availability DB instances consist of a master, a candidate master, and are created in different availability zones. A candidate master is a DB instance that is prepared for failure and is not normally available. For highly available DB instances, backups are performed on the candidate master to avoid performance degradation due to backups. You can see the various features provided by the High Availability DB Instance in [High Availability DB Instance](db-instance/#_1).
 
 ### Information
 
@@ -98,13 +105,13 @@ DB security groups are used to restrict access against outside break-in. You can
 
 You can set up a database of DB instances to periodically back up, or you can create backups at any time with console. During the backup, the performance might degrade. We recommended that you back up at a time when the service load is not high so as not to affect the service. If you don't want performance degradation from backups, you can perform backups on a read replica. Backup files are stored in internal backup storage and are charged based on backup capacity. We recommend that you enable periodic backups to prepare for unexpected failures. For a detailed description of backups, see [Backup and Restore](backup-and-restore/).
 
-### 유지 보수
+### Maintenance
 
-주기적으로 DB 인스턴스의 안정화에 도움을 줄 수 있는 작업을 진행하도록 설정합니다. 파일 I/O를 사용하게 되는 경우, 유지보수 작업이 수행되는 동안 성능 저하가 발생할 수 있습니다. 서비스에 영향을 주지 않기 위해 서비스의 부하가 적은 시간에 자동 유지보수 작업을 진행하는 것을 권장합니다.
+Periodically, set tasks to run that can help stabilize the DB instance. If you are using file I/O, you might experience performance degradation while maintenance tasks are performed. We recommend that you run automatic maintenance tasks during off-peak hours to avoid impacting your services.
 
-#### 자동 스토리지 정리 사용
+#### Enable Auto Storage Cleanup
 
-서비스 동작에 영향을 미치지 않는 보관된 트랜잭션 로그(Archived Write Ahead Log)의 정리를 진행합니다. 서비스 동작에 영향을 미치지 않는 보관된 트랜잭션 로그란, 자동 백업을 이용하여 현재 시점까지 복원을 진행 시 사용되지 않는 로그를 의미합니다.
+Clean up archived write ahead logs that do not affect service behavior. Archived transaction logs that do not affect service behavior are logs that are not used when using automatic backups to restore to the current point in time.
 
 ### Default Notification
 
@@ -125,7 +132,7 @@ You can set default notifications when creating a DB instance. Setting default n
 
 You can view the DB instances created from the console. You can view in groups of DB instances, or as individual DB instances.
 
-![db-instance-list-basic](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-list-basic-en.png)
+![db-instance-list-basic](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-basic-en.png)
 
 ❶ Change the DB instance screen mode.
 ❷ Change the deletion protection settings by clicking the lock icon.
@@ -149,7 +156,7 @@ DB instance's status consists of the following values, which change based on you
 
 The search conditions that can be changed are as follows.
 
-![db-instance-list-filter](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-list-filter-en.png)
+![db-instance-list-filter](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-filter-en.png)
 
 ❶ Retrieve the status of DB instance by filtering criteria.
 ❷ Retrieve availability zones by filtering criteria.
@@ -158,7 +165,7 @@ The search conditions that can be changed are as follows.
 
 Select DB instance to view details.
 
-![db-instance-detail-basic](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-basic-en.png)
+![db-instance-detail-basic](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-basic-en.png)
 
 ❶ When you click on the domain of the connection information, the pop-up window to verify the IP address appears.
 ❷ When you click on the DB security group, a pop-up window appears to verify the DB security rules.
@@ -168,7 +175,7 @@ Select DB instance to view details.
 
 ### Connection Information
 
-Issues an internal domain when you create a DB instance. Internal domain refers to an IP address that belongs to the user's VPC subnet.
+Issues an internal domain when you create a DB instance. Internal domain refers to an IP address that belongs to the user's VPC subnet. In the case of a high availability DB instance, the internal domain does not change even if the candidate master is changed to a new master in a failover. Therefore, unless there is a special reason, the application's access information must use the internal domain.
 
 If you created a floating IP, issue an additional external domain. External domain points to the address of the floating IP. Because the external domain or floating IP is externally accessible, you must set the rules of the DB security group appropriately to protect the DB instance.
 
@@ -181,7 +188,7 @@ On the Logs tab of the DB instance, you can view or download various log files. 
 | postgresql.log  | 40 items of 100 MB   | Static                   |
 | backup.log      | Daily 10 items       | Static                   |
 
-![db-instance-detail-log](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-log-en.png)
+![db-instance-detail-log](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-log-en.png)
 
 ❶ When you click **View Log**, a pop-up window appears where you can view the contents of the log file. You can check logs up to 65,535 Bytes.
 ❷ Click on **Import** to request that the log files of the DB instance be downloaded.
@@ -199,7 +206,7 @@ On the Logs tab of the DB instance, you can view or download various log files. 
 
 #### Create a database
 
-![db-instance-detail-db-create](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-db-create-en.png)
+![db-instance-detail-db-create](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-db-create-en.png)
 
 ❶ When you click on **+ Create**, a pop-up window appears where you can enter the name of the database.
 ❷ You can create the database by entering the database name and clicking **Create**.
@@ -211,24 +218,31 @@ Database names have the following restrictions.
 
 #### Modify Database
 
-![db-instance-detail-db-modify](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-db-modify-en.png)
+![db-instance-detail-db-modify](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-db-modify-en.png)
 
 ❶ When you click on **Modify** in the database row you want to modify, a pop-up window appears where you can modify the database information.
 ❷ You can request a modification by clicking on **Modify**.
 ❸ When checking **Immediate Apply Scheduled Access Control**, the modifications are also applied to the access control rule immediately.
 
-#### Deleting Database
+#### Synchronize Database
 
-![db-instance-detail-db-delete](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-db-delete-en.png)
+![db-instance-detail-db-sync](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-db-sync-ko.png)
+
+❶ After you click **Synchronization**, the **synchronization confirmation** pop-up window appears.
+❷ You can click **Confirm** to request the synchronization.
+
+#### Delete Database
+
+![db-instance-detail-db-delete](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-db-delete-en.png)
 
 ❶ If select the database you want to delete and click on **Delete**, the Delete confirmation pop-up window appears.
 ❷ You can request deletion by clicking on **Delete**.
 
 #### Create a User
 
-![db-instance-detail-user-create](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-user-create-en.png)
+![db-instance-detail-user-create](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-user-create-en.png)
 
-❶ Click on **+ Create** to see Add User pop-up window.
+❶ Click on **+ Create** to see the **Add User** pop-up window.
 ❷ Enter user ID.
 
 User ID has the following restrictions.
@@ -251,15 +265,22 @@ Password has the following restrictions.
 
 #### Edit a User
 
-![db-instance-detail-user-modify](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-user-modify-en.png)
+![db-instance-detail-user-modify](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-user-modify-en.png)
 
 ❶ When you click on **Modify** in the row of users that you want to edit, a pop-up window appears where you can edit information.
 ❷ If you do not enter a password, it will not be edited.
 ❸ When checking **Immediate Apply Scheduled Access Control**, the modifications are also applied to the access control rule immediately.
 
+#### Synchronize User
+
+![db-instance-detail-user-sync](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-user-sync-ko.png)
+
+❶ Click **Synchronization** and a **Confirm Synchronization** pop-up window will appear.
+❷ Click **Confirm** to request synchronization.
+
 #### Delete a User
 
-![db-instance-detail-user-delete](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-user-delete-en.png)
+![db-instance-detail-user-delete](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-user-delete-en.png)
 
 ❶ Select the user that you want to delete and click on the drop-down menu.
 ❷ When **Delete** is clicked, **Delete Confirmation** pop-up window appears. You can request deletion by clicking on **Confirm**.
@@ -268,7 +289,7 @@ Password has the following restrictions.
 
 **Access Control** tab of the DB instance allows you to query and control DB Engine access rules for specific databases and users. The rules set here apply to file `pg_hba.conf`.
 
-![db-instance-detail-hba](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-hba-en.png)
+![db-instance-detail-hba](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-hba-en.png)
 
 ❶ You can view the application status for access control rules.
 ❷ If there is any work in progress, a spinner will appear.
@@ -290,7 +311,7 @@ The status of access control consists of the following values, which change depe
 
 #### Add Access Control Rules
 
-![db-instance-detail-hba-create](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-hba-create-en.png)
+![db-instance-detail-hba-create](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-hba-create-en.png)
 
 ❶ When you click on **+ Create**, add **Access Control Rule** pop-up window appears.
 ❷ You can specify the full target of the rule or select a specific database or user.
@@ -313,14 +334,14 @@ The status of access control consists of the following values, which change depe
 
 #### Modify Access Control Rules
 
-![db-instance-detail-hba-modify](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-hba-modify-en.png)
+![db-instance-detail-hba-modify](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-hba-modify-en.png)
 
 ❶ When click **Modify** in the row of access control rules to modify, a pop-up window appears where you can modify existing information.
 ❷ Modified rules must apply access control settings to DB instances by clicking on **Apply Changes**.
 
 #### Delete Access Control Rules
 
-![db-instance-detail-hba-delete](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-hba-delete-en.png)
+![db-instance-detail-hba-delete](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-hba-delete-en.png)
 
 ❶ If you select the user you want to delete and click on **Delete**, the **Delete confirmation** pop-up window appears.
 ❷ Deleted rules must apply access control settings to DB instances by clicking on **Apply Changes**.
@@ -336,6 +357,9 @@ You can easily change various items in DB instance created through the console. 
 | DB instance type          | Yes                           | Yes                                                            |
 | Data Storage Types        | No                            |                                                                |
 | Data Storage Sizes        | Yes                           | Yes                                                            |
+| High Availability available         | Yes        | No                     |
+| Ping Interval         | Yes        | No                     |
+| Failover latency     | Yes        | No                     |
 | Name                      | Yes                           | No                                                             |
 | Description               | Yes                           | No                                                             |
 | DB port                   | Yes                           | Yes                                                            |
@@ -346,6 +370,12 @@ You can easily change various items in DB instance created through the console. 
 | Backup Settings           | Yes                           | No                                                             |
 | Database and User Control | Yes                           | No                                                             |
 | Access Control            | Yes                           | No                                                             |
+
+For high-availability DB instances, we provide a failover restart feature to increase reliability and reduce net time when there is a change to something that requires a restart.
+
+![modify-ha-popup-ko](https://static.toastoven.net/prod_rds/24.11.12/modify-ha-popup-ko.png)
+
+If you do not use restart with failover, the changes are applied sequentially to the master and candidate master, and then the DB instance is restarted. For more information, see [Manual Failover Items](db-instance/#_7) in High Availability DB Instances.
 
 
 ## Delete DB instance
@@ -373,19 +403,28 @@ Even though the settings of the parameter groups connected to the DB instance ch
 
 You can apply changes to a parameter group to a DB instance using one of the following methods.
 
-![db-instance-list-apply-parameter-group](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-list-apply-parameter-group-en.png)
+![db-instance-list-apply-parameter-group](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-apply-parameter-group-en.png)
 
 ❶ Click **Parameter** for destination DB instance, or
 ❷ Select a destination DB instance and click on **Apply Parameter Group Changes** menu from the drop-down menu.
 
 If the parameters that require restart in the parameter group are changed, such DB instance is restarted in the process of applying the changes.
 
-![db-instance-list-apply-parameter-group-popup](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-list-apply-parameter-group-popup-en.png)
+![db-instance-list-apply-parameter-group-popup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-apply-parameter-group-popup-en.png)
 
 ❶ Click **Compare Chnages** to check the changed parameters.
 ❷ Click **Confirm** after checking the changes to apply the changed parameters to DB instances.
 
-![db-instance-list-apply-parameter-group-compare-popup](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-list-apply-parameter-group-compare-popup-en.png)
+![db-instance-list-apply-parameter-group-compare-popup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-apply-parameter-group-compare-popup-en.png)
+
+## Export Backup Files to Object Storage after Backup
+
+After backing up, you can export the backup file to user object storage in NHN Cloud. For details, see [Export Backup Files](backup-and-restore/#_5).
+
+## Restore Using Backup in Object Storage
+
+You can restore to a DB instance using a backup file exported from RDS for PostgreSQL to object storage. For more information, see [Restore using Backup in Object Storage](backup-and-restore/#_7).
+
 
 ## Read Replica
 
@@ -409,7 +448,7 @@ Backup storage charges can be incurred for the amount of data storage required f
 
 To create a read replica from the console,
 
-![db-instance-list-replica-create](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-list-replica-create-en.png)
+![db-instance-list-replica-create](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-replica-create-en.png)
 
 ❶ After selecting the source DB instance, click **Create Read Replica** to go to the page for creating a read replica.
 
@@ -496,7 +535,7 @@ If you want to restart PostgreSQL, you can restart a DB instance. To minimize re
 
 To restart a DB instance, use console
 
-![db-instance-list-restart](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-list-restart-en.png)
+![db-instance-list-restart](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-restart-en.png)
 
 ❶ Select DB instance that you want to restart and click **Restart DB Instance** from the drop-down menu.
 
@@ -509,7 +548,7 @@ If PostgreSQL of a DB instance is not working properly, you can force a restart.
 
 To force a DB instance restart from console
 
-![db-instance-list-force-restart](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-list-force-restart-en.png)
+![db-instance-list-force-restart](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-force-restart-en.png)
 
 ❶ Select the DB instance that you want to force restart and click on **Force Restart DB Instance** menu from the drop-down menu.
 
@@ -517,17 +556,130 @@ To force a DB instance restart from console
 
 Enabling deletion protection secures DB instances from accidental deletion. You will not be able to delete that DB instance until you disable the feature. To change the deletion protection settings
 
-![db-instance-deletion-protection](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-list-deletion-protection-en.png)
+![db-instance-deletion-protection](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-deletion-protection-en.png)
 
 ❶ After selecting the DB instance for which you want to change the deletion protection settings, click **Change Deletion Protection Settings** from the drop-down menu, and a pop-up window will appear.
 
-![deletion-protection-popup](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-list-deletion-protection-popup-en.png)
+![deletion-protection-popup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-deletion-protection-popup-en.png)
 
 ❷ Click **Confrim** after changing the deletion protection settings.
 
+
+## High Availability DB Instance
+
+High availability DB instances increase availability and data durability and provide a fault-tolerant database. High availability DB instances consist of a master, a spare master, and are created in different availability zones. The spare master is the DB instance in case of failure and is not normally available. For highly available DB instances, backups are performed on the spare master.
+
+> [Note]
+> For highly available DB instances, if you force replication from another DB instance or from an external PostgreSQL master with a PostgreSQL query statement, high availability and some features will not work properly.
+
+### Failure Detection
+
+The redundant master has a process for detecting failures, which periodically detects the health of the master. These detection cycles are called ping intervals, and failover occurs if four consecutive health checks fail. The shorter the ping interval, the more sensitive it is to failures, and the longer the ping interval, the more insensitive it is to failures. It is important to set the appropriate ping interval for your service load.
+
+> [Note]
+> Note that if the master's data storage usage fills up, the high availability watchdog process detects it as a failure and takes failover.
+
+### Auto Failover
+
+If the redundant master fails four consecutive health checks on the master, it determines that the master is unable to provide service and automatically fails over. To prevent split-brain, all user security groups assigned to the failed master are unlinked to prevent external access, and the redundant master assumes the role of the master. The internal virtual IP for connectivity is changed from the failed master to the reserve master, so no changes to the application are required. When failover is complete, the failed master's type is changed to Failed Master and the reserve master's type is changed to Master. During the failover process, automatic recovery occurs for the failed master, and if the automatic recovery is successful, the failed master functions as a spare master again. Failover does not occur until the failed master is recovered or rebuilt. The promoted master inherits all automatic backups from the failed master.
+You can restore a point in time from the time a new backup was taken on the promoted master.
+
+> [Note]
+> Since the high availability feature is based on domains, if the network environment is such that the client attempting to connect cannot reach the DNS server, the DB instance cannot be accessed through the domain, and normal access is not possible in the event of a failover.
+> Access may be temporarily interrupted while the internal virtual IP is changing from the spare master to the master.
+
+### Failed Over Master
+
+A master that fails and becomes failover is called a failed master. Automatic backups of a failed master are not performed, and all other functions except recovering, rebuilding, detaching, and deleting a failed master cannot be performed.
+
+### Restore Failed Over Master
+
+If the consistency of the data was not broken during the failover process and the Archived Write Ahead Log was not lost between the time of the failure and the time you attempt to recover, you can recover the failed master and the promoted master back to a highly available configuration. The recovery will fail if the data is inconsistent or if the Archived Write Ahead Log, which is required for recovery, has been lost because it re-establishes the replication relationship with the promoted master with the failed master's database intact. If the recovery of a failed master fails, you can enable high availability again by rebuilding it.
+
+To recover a failed master, run the
+
+![db-instance-failover-repair-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-failover-repair-ko.png)
+
+❶ Select the failed master you want to recover, and then click the **Recover Failed Master** menu from the drop-down menu.
+
+### Rebuild Failed Over Master
+
+If recovery of a failed master fails, you can use rebuild to enable high availability again. Unlike recovery, rebuilding removes all of the failed master's database and rebuilds it based on the promoted master's database. To rebuild a failed master, you need a backup file and an archived write ahead transaction log from one of the DB instances in the replication group. If you do not have a backup file, select the DB instance to perform the backup in the following order
+
+❶ Read replicas with automatic backups enabled
+❷ Masters with automatic backups enabled
+
+If no DB instance meets the criteria, the request to rebuild the failed master fails.
+
+> [Caution]
+> The time to rebuild a failed master may increase proportionally to the size of the database on the master.
+> For DB instances that are backed up, there might be a drop in storage I/O performance during the rebuilding of the failed master.
+> To rebuild a failed master, in the console, run the
+
+![db-instance-failover-rebuild-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-failover-rebuild-ko.png)
+
+❶ Select the failed master you want to rebuild, and then click the **Rebuild Failed Master** menu from the drop-down menu.
+
+### Separate Failed Over Master
+
+If the failed master recovery fails and data correction is required, you can disable the high availability feature by detaching the failed master. The replication relationship between the detached master and the promoted master is broken and each behaves as a normal DB instance. Once detached, it is not possible to recover it back to its original configuration.
+
+To detach a failed master, use the
+
+![db-instance-failover-split-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-failover-split-ko.png)
+
+❶ Select the failed master you want to detach, and then click the **Detach Failed Master** menu from the drop-down menu.
+
+### Manual Failover
+
+For highly available DB instances, when you perform an operation that involves a restart, you can choose whether to restart with failover or not, as shown below.
+
+* Restart DB Instance
+* Changes to items that require a restart
+* Apply changes to parameters that require a restart
+* Migrating DB instances for hypervisor checks
+
+When you restart with failover, the reserve master is restarted first. Failover then promotes the reserve master to master, and the existing master acts as the reserve master. Upon promotion, the internal virtual IP for connectivity changes from the master to the reserve master, so no changes to the application are required. The promoted master inherits all automatic backups from the old master.
+
+> [Note]
+> Since the high availability feature is based on domains, if the network environment is such that the client attempting to connect cannot reach the DNS server, the DB instance cannot be accessed through the domain, and normal access is not possible in the event of a failover.
+
+> [Caution]
+> If the replication delay value of the spare master and the read replicas included in the replication group is 1 or more, replication delay is considered to have occurred, and manual failover fails. It is recommended that you perform manual failover during off-peak hours. Restart failures due to replication delay can be checked through the Events screen.
+> When restarting with failover, you can select the following additional items to increase reliability
+
+#### Start backup at the current time
+
+You can proceed with a manual backup immediately after the restart with failover is complete.
+
+#### Manual Control of Failover
+
+You can either apply the changes to the spare master first and observe how they evolve, or you can control the timing of the failover directly from the console if you want to execute the failover at a precise time. If you choose to manually control failover, a **failover** button appears in the console ❶ after the spare master restarts. Clicking this button triggers a failover, which can wait up to five days to execute. If you do not run the failover within 5 days, the action is automatically canceled.
+
+![db-instance-ha-wait-manual-failover-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-ha-wait-manual-failover-ko.png)
+
+> [Caution]
+> There is no automatic failover while waiting for failover.
+
+#### Waiting for replication delays to resolve
+
+Enabling the Wait for replication latency to clear option allows you to wait for replication latency to clear for the spare master and the read replicas included in the replication group.
+
+#### Write load blocking
+
+You have the option to additionally block write loads while resolving replication delays. Blocking the write load puts the master into read-only mode just before failover, setting all change queries to fail.
+
+### High availability suspended
+
+You can temporarily pause a high availability feature in situations where you anticipate connection disruptions or large loads due to temporary operations. When a high-availability feature is paused, it does not detect a failure and therefore does not perform failover. Performing an operation that requires a restart while a high-availability feature is paused does not resume the paused high-availability feature. Because data replication occurs normally when a high-availability feature is paused, or because a failure is not detected, it is not recommended to leave it paused for extended periods of time.
+
+### Rebuild Candidate Master
+
+Replication on a spare master can be interrupted for a variety of reasons, such as a disconnection in the network or the establishment of replication from another master. To resolve a replication interruption on a spare master, you must rebuild the spare master. Rebuilding a spare master removes all of the database on the spare master and rebuilds it based on the database on the master. During this process, if the backup files required for the rebuild do not exist in the master database, a backup is performed on the master, and performance degradation due to the backup can occur.
+
 ## Data Migration
 
-* RDS can be imported to the outside of the NHN Cloud RDS using pg_dump.
+* RDS can be exported to and imported from outside of NHN Cloud RDS using pg_dump
 * pg_dump utility is provided by default when you install PostgreSQL.
 
 ### Export using pg_dump
@@ -540,13 +692,26 @@ Enabling deletion protection secures DB instances from accidental deletion. You 
 #### Export in Files
 
 ```
-pg_dump -h {rds_instance_floating_ip} -U {db_id} -p {db_port} -d {database_name} -f {local_path_and_file_name}
+pg_dump -h {DB instance external domain address} -U {DB instance user ID} -p {DB instance connection port} -d {Database name to export} -f {file path to save locally}
 ```
 
 #### Export to PostgreSQL database outside NHN Cloud RDS
 
 ```
-pg_dump  -h {rds_instance_floating_ip} -U {db_id} -p {db_port} -d {database_name} | psql -h {external_db_host} -U {external_db_id} -p {external_db_port} -d {external_database_name}
+pg_dump -h {DB instance external domain address} -U {DB instance user ID} -p {DB instance connection port} -d {database name to export} | psql -h {external PostgreSQL connection address} -U {external PostgreSQL user ID} -p {external PostgreSQL connection port} -d {external PostgreSQL database name}
+```
+### Import with pg_dump
+
+1. Create a DB instance to import data from, selecting **Use Floating IP**.
+
+2. Ensure that the DB instance you are importing has enough capacity.
+
+3. On the **Database & User** tab, pre-create the required databases.
+
+4. Execute the command below to get data from an external source.
+
+```
+pg_dump -h {external PostgreSQL connection address} -U {external PostgreSQL user ID} -p {external PostgreSQL connection port} -d {external PostgreSQL database name} | psql -h {DB instance external domain address} -U {DB instance user ID} -p {DB instance connection port} -d {DB instance database name}
 ```
 
 ## Delete Registry Account
@@ -564,11 +729,11 @@ Navigate to the project that contains the DB instance that you specify to mainte
 
 Those with the migration button next to name are the maintenance targets.
 
-![db-instance-planned-migration](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-planned-migration-en.png)
+![db-instance-planned-migration](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-planned-migration-en.png)
 
 You can check the detailed schedule of maintenance by putting the mouse pointer over the migration button.
 
-![db-instance-planned-migration-popup](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-planned-migration-popup-en.png)
+![db-instance-planned-migration-popup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-planned-migration-popup-en.png)
 
 #### 2. You have to end the application that is connecting to the DB instance for maintenance targets.
 
@@ -577,13 +742,13 @@ If you have no choice but to affect the service, please contact NHN Cloud Custom
 
 #### 3. Select the DB instance to be checked, click on Migration button and when a window appears asking for confirmation of the DB instance migration, click on the OK button.
 
-![db-instance-planned-migration-confirm](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-planned-migration-confirm-en.png)
+![db-instance-planned-migration-confirm](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-planned-migration-confirm-en.png)
 
 #### 4. Wait for DB instance migration to finish.
 
 If the DB instance status does not change, 'refresh'.
 
-![db-instance-planned-migration-status](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-planned-migration-status-en.png)
+![db-instance-planned-migration-status](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-planned-migration-status-en.png)
 
 No action is allowed while the DB instance is being migrated.
 If DB instance migration does not complete successfully, it will be reported to the administrator automatically, and NHN Cloud will contact you separately.
