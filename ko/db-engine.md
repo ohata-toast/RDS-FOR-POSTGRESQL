@@ -8,11 +8,11 @@ PostgreSQL에서 버전 번호는 버전 = `X.Y`로 구성됩니다. NHN Cloud�
 
 아래에 명시된 버전을 사용할 수 있습니다.
 
-| 버전                  |   생성 제한  |   비고   |
-|---------------------|-------|---------|
-| PostgreSQL 14.6     |  O |       |
-| PostgreSQL 14.15     |       |       |
-| PostgreSQL 17.2    |       |       |
+| 버전               | 생성 제한 | 비고 |
+|------------------|-------|----|
+| PostgreSQL 14.6  | O     |    |
+| PostgreSQL 14.15 |       |    |
+| PostgreSQL 17.2  |       |    |
 
 - [ 주의 ] PostgreSQL 14.6 버전의 경우 최신 버전으로의 업그레이드가 [권고](https://www.postgresql.org/about/news/postgresql-171-165-159-1414-1317-and-1221-released-2955/)됩니다.
     
