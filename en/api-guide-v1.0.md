@@ -1625,35 +1625,36 @@ This API does not return a response body.
 ```
 </details>
 
-### DB 인스턴스 유지보수 정보 조회
+
+### Get DB instance maintenance information
 
 ```http
 GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
 ```
 
-#### 필요 권한
+#### Required permissions
 
-| 권한명                                | 설명           |
+| Permission Name                                | Description           |
 |------------------------------------|--------------|
-| RDSforPostgreSQL:DbInstance.Get | DB 인스턴스 상세 보기 |
+| RDSforPostgreSQL:DbInstance.Get | List DB Instance Details |
 
-#### 요청
+#### Request
 
-| 이름                    | 종류   | 형식      | 필수 | 설명           |
+| Name                    | Type   | Format      | Required | Description           |
 |-----------------------|------|---------|----|--------------|
-| dbInstanceId          | URL  | UUID    | O  | DB 인스턴스의 식별자 |
+| dbInstanceId          | URL  | UUID    | O  | DB instance identifier |
 
-#### 응답
+#### Response
 
-| 이름    | 종류   | 형식   | 설명          |
+| Name    | Type   | Format   | Description          |
 |-------|------|------|-------------|
-| allowAutoMaintenance | Body | Boolean | 자동 유지보수 허용 여부 |
-| useAutoStorageCleanup | Body | Boolean | 자동 스토리지 정리 사용 여부 |
-| maintWndBgnTime | Body | String | 자동 유지보수 시작 시간 <br/>- 예시: `00:00:00`|
-| maintWndDuration | Body | ENUM | 유지보수 윈도우 <br/> 예시: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
+| allowAutoMaintenance | Body | Boolean | Whether to allow automatic maintenance |
+| useAutoStorageCleanup | Body | Boolean | Whether to enable automatic storage cleanup |
+| maintWndBgnTime | Body | String | Automatic maintenance start time <br/>- Example: `00:00:00`|
+| maintWndDuration | Body | ENUM | Maintenance window <br/> Examples: `half_an_hour`, `one_hour`, `one_hour_and_half`, `two_hours`, `two_hours_and_half`, `three_hours` |
 
 
-<details><summary>예시</summary>
+<details><summary>Example</summary>
 
 ```json
 {
@@ -1671,33 +1672,33 @@ GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
 </details>
 
 
-### DB 인스턴스 유지보수 정보 수정
+### Modify DB instance maintenance information
 
 ```http
 PUT /v1.0/db-instances/{dbInstanceId}/maintenance-info
 ```
 
-#### 필요 권한
+#### Required permissions
 
-| 권한명                                | 설명           |
+| Permission Name                                | Description           |
 |------------------------------------|--------------|
-| RDSforPostgreSQL:DbInstance.Modify | DB 인스턴스 수정하기 |
+| RDSforPostgreSQL:DbInstance.Modify | Modify DB Instance |
 
-#### 요청
+#### Request
 
-| 이름                    | 종류   | 형식      | 필수 | 설명           |
+| Name                    | Type   | Format      | Required | Description           |
 |-----------------------|------|---------|----|--------------|
-| dbInstanceId          | URL  | UUID    | O  | DB 인스턴스의 식별자 |
-| allowAutoMaintenance | Body | Boolean | O  | 자동 유지보수 허용 여부 |
-| useAutoStorageCleanup | Body | Boolean | O  | 자동 스토리지 정리 사용 여부 |
-| maintWndBgnTime | Body | String | O  | 자동 유지보수 시작 시간 <br/>- 예시: `00:00:00`|
-| maintWndDuration | Body | ENUM | O  | 유지보수 윈도우 <br/> 예시: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
+| dbInstanceId          | URL  | UUID    | O  | DB instance identifier |
+| allowAutoMaintenance | Body | Boolean | O  | Whether to allow automatic maintenance |
+| useAutoStorageCleanup | Body | Boolean | O  | Whether to enable automatic storage cleanup |
+| maintWndBgnTime | Body | String | O  | Automatic maintenance start time <br/>- Example: `00:00:00`|
+| maintWndDuration | Body | ENUM | O  | Maintenance window <br/> Examples: `half_an_hour`, `one_hour`, `one_hour_and_half`, `two_hours`, `two_hours_and_half`, `three_hours` |
 
-#### 응답
+#### Response
 
-이 API는 응답 본문을 반환하지 않습니다.
+This API does not return a response body.
 
-<details><summary>예시</summary>
+<details><summary>Example</summary>
 
 ```json
 {
@@ -1711,34 +1712,34 @@ PUT /v1.0/db-instances/{dbInstanceId}/maintenance-info
 </details>
 
 
-### 현 DB 인스턴스에서 선택 가능한 DB 버전 조회
+### Get selectable DB versions in the current DB instance
 
 ```http
 GET /v1.0/db-instances/{dbInstanceId}/available-db-versions
 ```
 
-#### 필요 권한
+#### Required permissions
 
-| 권한명                                | 설명           |
+| Permission Name                                | Description           |
 |------------------------------------|--------------|
-| RDSforPostgreSQL:DbInstance.Get | DB 인스턴스 상세 보기 |
+| RDSforPostgreSQL:DbInstance.Get | List DB Instance Details |
 
-#### 요청
+#### Request
 
-| 이름                    | 종류   | 형식      | 필수 | 설명           |
+| Name                    | Type   | Format      | Required | Description           |
 |-----------------------|------|---------|----|--------------|
-| dbInstanceId          | URL  | UUID    | O  | DB 인스턴스의 식별자 |
+| dbInstanceId          | URL  | UUID    | O  | DB instance identifier |
 
-#### 응답
+#### Response
 
-| 이름                           | 종류   | 형식      | 설명                    |
+| Name                           | Type   | Format      | Description                    |
 |------------------------------|------|---------|-----------------------|
-| dbVersions                   | Body | Array   | DB 버전 목록              |
-| dbVersions.dbVersion         | Body | String  | DB 버전                 |
-| dbVersions.dbVersionName     | Body | String  | DB 버전명                |
-| dbVersions.restorableFromObs | Body | Boolean | 오브젝트 스토리지로부터 복원 가능 여부 |
+| dbVersions                   | Body | Array   | DB version list              |
+| dbVersions.dbVersion         | Body | String  | DB version                 |
+| dbVersions.dbVersionName     | Body | String  | DB version name                |
+| dbVersions.restorableFromObs | Body | Boolean | Restoring backup from object storage available or not |
 
-<details><summary>예시</summary>
+<details><summary>Example</summary>
 
 ```json
 {

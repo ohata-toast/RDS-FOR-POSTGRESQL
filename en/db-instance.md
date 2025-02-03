@@ -353,7 +353,7 @@ You can easily change various items in DB instance created through the console. 
 | Items                     | Whether able to change or not | Whether need to restart or not                                 |
 |---------------------------|-------------------------------|----------------------------------------------------------------|
 | Availability Zone         | No                            |                                                                |
-| DB Engine                 | No                            |                                                                |
+| DB version                | Yes                           | Yes                                                              |
 | DB instance type          | Yes                           | Yes                                                            |
 | Data Storage Types        | No                            |                                                                |
 | Data Storage Sizes        | Yes                           | Yes                                                            |
@@ -598,7 +598,7 @@ If the consistency of the data was not broken during the failover process and th
 
 To recover a failed master, run the
 
-![db-instance-failover-repair-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-failover-repair-ko.png)
+![db-instance-ha-failover-repair-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-repair-ko.png)
 
 ❶ Select the failed master you want to recover, and then click the **Recover Failed Master** menu from the drop-down menu.
 
@@ -616,7 +616,7 @@ If no DB instance meets the criteria, the request to rebuild the failed master f
 > For DB instances that are backed up, there might be a drop in storage I/O performance during the rebuilding of the failed master.
 > To rebuild a failed master, in the console, run the
 
-![db-instance-failover-rebuild-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-failover-rebuild-ko.png)
+![db-instance-ha-failover-rebuild-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-rebuild-ko.png)
 
 ❶ Select the failed master you want to rebuild, and then click the **Rebuild Failed Master** menu from the drop-down menu.
 
@@ -624,9 +624,9 @@ If no DB instance meets the criteria, the request to rebuild the failed master f
 
 If the failed master recovery fails and data correction is required, you can disable the high availability feature by detaching the failed master. The replication relationship between the detached master and the promoted master is broken and each behaves as a normal DB instance. Once detached, it is not possible to recover it back to its original configuration.
 
-To detach a failed master, use the
+To detach a failed master, go to the Console
 
-![db-instance-failover-split-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-failover-split-ko.png)
+![db-instance-ha-failover-split-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-split-ko.png)
 
 ❶ Select the failed master you want to detach, and then click the **Detach Failed Master** menu from the drop-down menu.
 
@@ -656,7 +656,7 @@ You can proceed with a manual backup immediately after the restart with failover
 
 You can either apply the changes to the spare master first and observe how they evolve, or you can control the timing of the failover directly from the console if you want to execute the failover at a precise time. If you choose to manually control failover, a **failover** button appears in the console ❶ after the spare master restarts. Clicking this button triggers a failover, which can wait up to five days to execute. If you do not run the failover within 5 days, the action is automatically canceled.
 
-![db-instance-ha-wait-manual-failover-ko](https://static.toastoven.net/prod_rds_postgres/241210/db-instance-ha-wait-manual-failover-ko.png)
+![db-instance-ha-wait-manual-failover-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-wait-manual-failover-ko.png)
 
 > [Caution]
 > There is no automatic failover while waiting for failover.
