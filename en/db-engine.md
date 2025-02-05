@@ -1,74 +1,72 @@
 ## Database > RDS for PostgreSQL > DB Engine
 
 ## DB Engine
-In PostgreSQL, the version number consists of version = `X.Y`. In RDS for PostgreSQL of NHN Cloud, `X` represents the major version and `Y` the minor version.
+In PostgreSQL, the version number consists of version = `X.Y`. In NHN Cloud's RDS for PostgreSQL, `X` represents the major version, and `Y` represents the minor version.
 
 
-### DB Engine Version provided by RDS
+### DB Engine Version Provided by RDS
 
-Available versions are as follows.
+The versions specified below are available.
 
-
-| Version                  |   생성 제한  |   Note   |
+| Version                  |   Creation Limit  |   Remarks   |
 |---------------------|-------|---------|
 | PostgreSQL 14.6     |  O |       |
 | PostgreSQL 14.15     |       |       |
 | PostgreSQL 17.2    |       |       |
 
-- [ 주의 ] PostgreSQL 14.6 버전의 경우 최신 버전으로의 업그레이드가 [권고](https://www.postgresql.org/about/news/postgresql-171-165-159-1414-1317-and-1221-released-2955/)됩니다.
+- [Note] For PostgreSQL version 14.6, upgrades to the latest version are [recommended](https://www.postgresql.org/about/news/postgresql-171-165-159-1414-1317-and-1221-released-2955/).
     
     
-### 버전 업그레이드 수행하기
+### Perform Version Upgrades
 
-버전 업그레이드는 순차적으로 진행되며, 메이저 버전 업그레이드와 마이너 버전 업그레이드 각각의 특성에 따라 서로 다른 순서로 진행될 수 있습니다. 
+Version upgrades proceed in sequence, and may proceed in a different order depending on the characteristics of each major version upgrade and minor version upgrade. 
 
-버전 업그레이드의 경우 순차적으로 진행되며, 메이저 버전 업그레이드와 마이너 버전 업그레이드 각각의 특성에 따라 서로 다른 순서로 진행될 수 있습니다. 
+Version upgrades proceed in sequence, and may proceed in a different order depending on the characteristics of each major version upgrade and minor version upgrade. 
 
-버전 업그레이드 진행 전 데이터 손실 방지를 위해 백업 수행을 권장합니다.
+It is recommended to perform a backup to prevent data loss before the version upgrade proceeds.
 
-#### 메이저 버전 업그레이드
+#### Major Version Upgrade
 
-메이저 버전 업그레이드는 버전 번호의 첫 번째 자리를 변경하는 것을 의미합니다. 예를 들어, 14.6에서 17.2으로 업그레이드하는 것이 메이저 버전 업그레이드입니다. 
+A major version upgrade means changing the first place of the version number. For example, upgrading from 14.6 to 17.2 is a major version upgrade. 
 
-RDS for PostgreSQL에서는 메이저 버전 업그레이드는 마스터에서만 실행이 가능하며, 실행한 경우 DB 인스턴스 그룹 내 모든 DB 인스턴스에 대해 버전 업그레이드를 진행합니다.
+In RDS for PostgreSQL, the major version upgrade can only be executed on the master, and if executed, the version upgrade is carried out for all the DB instances within the DB instance group.
 
-#### 메이저 버전 업그레이드 순서
+#### Major Version Upgrade Order
 
-사용자는 마스터 DB 인스턴스 수정을 통해 메이저 버전 업그레이드를 진행할 수 있습니다. 
-수행 순서는 다음과 같습니다.
+You can proceed to upgrade the major version through master DB instance modifications. The order of execution is as follows.
 
-- 마스터 DB 인스턴스에서 버전 업그레이드 사전 점검을 진행합니다. 
-    - 사전 점검 결과 문제가 없는 경우 버전 업그레이드를 진행합니다.
-    - 사전 점검 결과는 로그 파일 형태로 제공되며 DB 인스턴스 상세의 로그 탭에서 `pg_upgrade.log` 파일을 통해 확인할 수 있습니다.    
-- DB 인스턴스 그룹 내 마스터가 단독으로 존재하는 경우, 마스터 DB 인스턴스에 대해 버전 업그레이드를 진행합니다.
-    - 버전 업그레이드 진행 시 다운타임이 존재합니다.
-    - 버전 업그레이드 진행 중 실패 시 복구 작업이 시도될 수 있으며, 성공 시 버전 업그레이드 진행 전 상태로 복구됩니다.
-    - 버전 업그레이드 실패 후 복구 작업 실패 시 재구축을 통해 복구를 시도할 수 있습니다.
-- 마스터 외 복제 관계의 DB 인스턴스(예비 마스터 포함) 중 하나의 DB 인스턴스를 선정하여 진행합니다.
-    - 선정한 DB 인스턴스에 대해 버전 업그레이드를 진행합니다.
-        - 예비 마스터가 있는 경우 읽기 복제본에 우선하여 버전 업그레이드를 진행합니다.
-        - 버전 업그레이드에 실패하는 경우 다른 DB 인스턴스에 대해서는 버전 업그레이드를 진행하지 않으며, 해당 DB 인스턴스의 경우 재구축 작업을 통해 복구를 시도할 수 있습니다.
-        - [ 주의 ] 해당 단계에서 마스터에 대한 **쓰기 부하**는 차단되며, 읽기 부하에 대해서만 처리가 가능합니다.
-    - 업그레이드가 완료된 DB 인스턴스에 대해 마스터로 종류를 변경하며, 나머지 그룹 내 DB 인스턴스에 대해 업그레이드 진행 및 복제 관계를 재설정합니다.
-        - 접속 주소는 변경되지 않으며, 기존 접속 주소를 통해 접속이 가능합니다.
-        - 버전 업그레이드 진행 시 읽기 복제본에 대해 다운타임이 존재합니다.
-        - 버전 업그레이드 중 실패 시 복제 중단 상태로 유지되며, 재구축 작업을 통해 복구를 시도할 수 있습니다.
-- [ 주의 ] DB 인스턴스 그룹 내 버전 업그레이드가 성공한 DB 인스턴스와 실패한 DB 인스턴스가 공존할 수 있습니다. 실패한 DB 인스턴스의 경우 복제 관계가 중단되며, 재구축 작업을 통해 복구를 시도할 수 있습니다.
-
+- Conduct the version upgrade pre-check on the Master DB instance. 
+    - If the pre-check results are not problematic, proceed to upgrade the version.
+    - The pre-check results are provided in the form of log files and can be checked via the `pg_upgrade.log` file in the log tab of the DB instance details.    
+- If the master exists alone within the DB instance group, the version upgrade for the master DB instance proceeds.
+    - Downtime exists during the version upgrade.
+    - Repair operation may proceed if the version upgrade fails, and if successful, DB instances will be recovered to a pre-version status.
+    - If the repair operation fails after a failed version upgrade, you can attempt to recover by rebuilding.
+- Proceed by selecting one of the DB instances (including candidate master) in non-master replication relationship.
+    - Proceed the version upgrade for selected DB instances.
+        - If you have a candidate master, proceed with the version upgrade by prioritizing the read replica.
+        - If the version upgrade fails, the version upgrade will not proceed for other DB instances, and you can attempt to recover them with a rebuild operation.
+        - [Note] At this stage, **write loads** to the master are blocked and only read loads can be processed.
+    - Change the type to master for the upgraded DB instances, and reset the upgrade progress and replication relationship for the remaining DB instances in the group.
+        - The access address is unchanged and can be accessed via the existing access address.
+        - Downtime exists for the read copy during the version upgrade.
+        - If the version upgrade fails, the replication will remain discontinued, and you can attempt repairs through a rebuild operation.
+- [Caution ] DB instances that have successfully upgraded their version within a DB instance group can coexist with DB instances that have failed. In the case of a failed DB instance, the replication relationship is broken, and you can attempt to recover by running a rebuild operation.
 
 
-### 마이너 버전 업그레이드
 
-마이너 버전 업그레이드는 버전 번호의 두 번째 자리를 변경하는 것을 의미합니다. 예를 들어, 14.6에서 14.15로 업그레이드하는 것이 마이너 버전 업그레이드입니다.
+### Miner Version Upgrade
 
-RDS for PostgreSQL에서는 마이너 버전 업그레이드는 마스터뿐만 아니라 슬레이브에서도 실행이 가능하며, 실행한 경우 실행한 대상 DB 인스턴스에 대해 버전 업그레이드를 진행합니다. (고가용성 구성이 완료된 마스터의 경우 예비 마스터도 함께 진행됩니다.)
+A minor version upgrade means changing the second place of the version number. For example, upgrading from 14.6 to 14.15 is a minor version upgrade.
 
-#### 마이너 버전 업그레이드 순서
+In RDS for PostgreSQL, minor version upgrades can be performed on slaves as well as masters, and if performed, the version upgrade will be performed on the target DB instance. (For high availability masters, version upgrade will also proceed for the candidate master.)
 
-- 마스터에 대해 버전 업그레이드를 시도하는 경우 예비 마스터가 존재한다면 함께 버전 업그레이드를 진행합니다. 
-    - 마스터 단독으로 버전 업그레이드가 진행되는 경우 다운타임이 존재합니다.
-    - 예비 마스터와 함께 버전 업그레이드가 진행되는 경우 과정 중 장애 조치를 이용한 재시작이 동반되며, 순단이 발생할 수 있습니다.
-- 읽기 복제본에 대해 버전 업그레이드를 진행하는 경우 해당 DB 인스턴스 단독으로 버전 업그레이드를 진행합니다.
-    - 버전 업그레이드 진행 시 다운타임이 존재합니다.
-    - 버전 업그레이드 진행 중 실패 시 복구 작업이 시도될 수 있으며, 성공 시 버전 업그레이드 진행 전 상태로 복구됩니다.
-    - 버전 업그레이드 실패 후 복구 작업 실패 시 재구축을 통해 복구를 시도할 수 있습니다.
+#### Minor Version Upgrade Order
+
+- If you're trying to upgrade a version for a master, if there's a candidate master, you go through the version upgrade together. 
+    - Downtime exists when version upgrades are performed solely as a master.
+    - If version upgrades are being performed with a candidate master, the process will be accompanied by a restart using troubleshooting, which may result in failure.
+- If you are conducting a version upgrade for a read replica, then the version upgrade is performed with that DB instance alone.
+    - Downtime exists during the version upgrade.
+    - Repair operation may proceed if the version upgrade fails, and if successful, DB instances will be recovered to a pre-version status.
+    - If the repair operation fails after a failed version upgrade, you can attempt to recover by rebuilding.
