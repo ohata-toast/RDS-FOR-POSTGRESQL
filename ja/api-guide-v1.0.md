@@ -1625,35 +1625,35 @@ PUT /v1.0/db-instances/{dbInstanceId}/deletion-protection
 ```
 </details>
 
-### DB 인스턴스 유지보수 정보 조회
+### DBインスタンス保守情報照会
 
 ```http
 GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
 ```
 
-#### 필요 권한
+#### 必要権限
 
-| 권한명                                | 설명           |
+| 権限名                              | 説明         |
 |------------------------------------|--------------|
-| RDSforPostgreSQL:DbInstance.Get | DB 인스턴스 상세 보기 |
+| RDSforPostgreSQL:DbInstance.Get | DBインスタンス詳細表示 |
 
-#### 요청
+#### リクエスト
 
-| 이름                    | 종류   | 형식      | 필수 | 설명           |
+| 名前                  | 種類 | 形式    | 必須 | 説明         |
 |-----------------------|------|---------|----|--------------|
-| dbInstanceId          | URL  | UUID    | O  | DB 인스턴스의 식별자 |
+| dbInstanceId          | URL  | UUID    | O  | DBインスタンスの識別子 |
 
-#### 응답
+#### レスポンス
 
-| 이름    | 종류   | 형식   | 설명          |
+| 名前  | 種類 | 形式 | 説明        |
 |-------|------|------|-------------|
-| allowAutoMaintenance | Body | Boolean | 자동 유지보수 허용 여부 |
-| useAutoStorageCleanup | Body | Boolean | 자동 스토리지 정리 사용 여부 |
-| maintWndBgnTime | Body | String | 자동 유지보수 시작 시간 <br/>- 예시: `00:00:00`|
-| maintWndDuration | Body | ENUM | 유지보수 윈도우 <br/> 예시: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
+| allowAutoMaintenance | Body | Boolean | 自動保守を許可するかどうか |
+| useAutoStorageCleanup | Body | Boolean | ストレージの自動クリーンアップを使用するかどうか |
+| maintWndBgnTime | Body | String | 自動保守開始時間 <br/>- 例: `00:00:00`|
+| maintWndDuration | Body | ENUM | 保守Windows <br/> 例: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
 
 
-<details><summary>예시</summary>
+<details><summary>例</summary>
 
 ```json
 {
@@ -1671,33 +1671,33 @@ GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
 </details>
 
 
-### DB 인스턴스 유지보수 정보 수정
+### DBインスタンス保守情報修正
 
 ```http
 PUT /v1.0/db-instances/{dbInstanceId}/maintenance-info
 ```
 
-#### 필요 권한
+#### 必要権限
 
-| 권한명                                | 설명           |
+| 権限名                              | 説明         |
 |------------------------------------|--------------|
-| RDSforPostgreSQL:DbInstance.Modify | DB 인스턴스 수정하기 |
+| RDSforPostgreSQL:DbInstance.Modify | DBインスタンスを修正する |
 
-#### 요청
+#### リクエスト
 
-| 이름                    | 종류   | 형식      | 필수 | 설명           |
+| 名前                  | 種類 | 形式    | 必須 | 説明         |
 |-----------------------|------|---------|----|--------------|
-| dbInstanceId          | URL  | UUID    | O  | DB 인스턴스의 식별자 |
-| allowAutoMaintenance | Body | Boolean | O  | 자동 유지보수 허용 여부 |
-| useAutoStorageCleanup | Body | Boolean | O  | 자동 스토리지 정리 사용 여부 |
-| maintWndBgnTime | Body | String | O  | 자동 유지보수 시작 시간 <br/>- 예시: `00:00:00`|
-| maintWndDuration | Body | ENUM | O  | 유지보수 윈도우 <br/> 예시: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
+| dbInstanceId          | URL  | UUID    | O  | DBインスタンスの識別子 |
+| allowAutoMaintenance | Body | Boolean | O  | 自動保守を許可するかどうか |
+| useAutoStorageCleanup | Body | Boolean | O  | ストレージの自動クリーンアップを使用するかどうか |
+| maintWndBgnTime | Body | String | O  | 自動保守開始時間 <br/>- 例: `00:00:00`|
+| maintWndDuration | Body | ENUM | O  | 保守Windows <br/> 例: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
 
-#### 응답
+#### レスポンス
 
-이 API는 응답 본문을 반환하지 않습니다.
+このAPIはレスポンス本文を返しません。
 
-<details><summary>예시</summary>
+<details><summary>例</summary>
 
 ```json
 {
@@ -1711,34 +1711,34 @@ PUT /v1.0/db-instances/{dbInstanceId}/maintenance-info
 </details>
 
 
-### 현 DB 인스턴스에서 선택 가능한 DB 버전 조회
+### 現在のDBインスタンスで選択可能なDBバージョンの照会
 
 ```http
 GET /v1.0/db-instances/{dbInstanceId}/available-db-versions
 ```
 
-#### 필요 권한
+#### 必要権限
 
-| 권한명                                | 설명           |
+| 権限名                              | 説明         |
 |------------------------------------|--------------|
-| RDSforPostgreSQL:DbInstance.Get | DB 인스턴스 상세 보기 |
+| RDSforPostgreSQL:DbInstance.Get | DBインスタンス詳細表示 |
 
-#### 요청
+#### リクエスト
 
-| 이름                    | 종류   | 형식      | 필수 | 설명           |
+| 名前                  | 種類 | 形式    | 必須 | 説明         |
 |-----------------------|------|---------|----|--------------|
-| dbInstanceId          | URL  | UUID    | O  | DB 인스턴스의 식별자 |
+| dbInstanceId          | URL  | UUID    | O  | DBインスタンスの識別子 |
 
-#### 응답
+#### レスポンス
 
-| 이름                           | 종류   | 형식      | 설명                    |
+| 名前                         | 種類 | 形式    | 説明                  |
 |------------------------------|------|---------|-----------------------|
-| dbVersions                   | Body | Array   | DB 버전 목록              |
-| dbVersions.dbVersion         | Body | String  | DB 버전                 |
-| dbVersions.dbVersionName     | Body | String  | DB 버전명                |
-| dbVersions.restorableFromObs | Body | Boolean | 오브젝트 스토리지로부터 복원 가능 여부 |
+| dbVersions                   | Body | Array   | DBバージョンリスト            |
+| dbVersions.dbVersion         | Body | String  | DBバージョン               |
+| dbVersions.dbVersionName     | Body | String  | DBバージョン名              |
+| dbVersions.restorableFromObs | Body | Boolean | オブジェクトストレージから復元の可否 |
 
-<details><summary>예시</summary>
+<details><summary>例</summary>
 
 ```json
 {
