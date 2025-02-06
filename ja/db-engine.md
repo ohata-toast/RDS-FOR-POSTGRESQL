@@ -9,11 +9,11 @@ PostgreSQLでバージョン番号はバージョン= `X.Y`で構成されます
 下記のバージョンを使用できます。
 
 
-| バージョン                | 作成制限 | 備考 |
-|---------------------|-------|---------|
-| PostgreSQL 14.6     |  O |       |
-| PostgreSQL 14.15     |       |       |
-| PostgreSQL 17.2    |       |       |
+| バージョン             | 作成制限 | 備考 |
+|------------------|-------|----|
+| PostgreSQL 14.6  | O     |    |
+| PostgreSQL 14.15 |       |    |
+| PostgreSQL 17.2  |       |    |
 
 - [注意] PostgreSQL 14.6バージョンの場合最新バージョンへのアップグレードが[勧告](https://www.postgresql.org/about/news/postgresql-171-165-159-1414-1317-and-1221-released-2955/)されます。
     
