@@ -9,6 +9,8 @@ RDS for PostgreSQL uses the pg_basebackup tool to back up databases. To restore 
 | PostgreSQL version | pg_basebackup version |
 |--------------------|-----------------------|
 | 14.6               | 14.6                  |
+| 14.15              | 14.15                 |
+| 17.2               | 17.2                  |
 
 * For more information about installing pg_basebackup, refer to the PostgreSQL website.
   * https://www.postgresql.org/docs/14/app-pgbasebackup.html

@@ -1,5 +1,54 @@
 ## Database > RDS for PostgreSQL > Release Notes
 
+### Feb 11, 2025
+
+#### Added Features
+
+- Added a new DB engine version
+    - Added PostgreSQL versions 14.15, 17.2.
+- Added a feature to upgrade DB engine version
+    - You can upgrade the DB Engine version from an existing version to the recently added version.
+
+#### Features Updates
+
+- Added DB engine creation limit
+    - A security vulnerability has been discovered in PostgreSQL version 14.6 and an upgrade to a newer version is [recommended](https://www.postgresql.org/about/news/postgresql-171-165-159-1414-1317-and-1221-released-2955/).
+    - DB engine creation is allowed for changing an existing DB instance to high availability or restoring with a backup.
+
+### December 10, 2024
+
+#### Added Features
+
+- Added High Availability
+    - Added the feature to create and modify high-availability DB instances.
+- Added Database & User Synchronization
+    - Added the feature to view databases and user lists in sync with information within the DB engine.
+- Added Maintenance Settings
+    - Provides the feature to periodically clean up storage to help stabilize DB instances.
+- Added Backup Export
+    - Added the feature to select an existing backup or start a new backup and export it to user object storage.
+- Added the feature to restore to a backup in object storage
+    - Added the feature to restore from a backup exported to object storage.
+- Added API Feature
+    - Added the feature to control RDS for PostgreSQL features via APIs.
+
+#### Feature Updates
+
+- Changed the DB Instance > **Backup** tab name
+    - Renamed the **Backup** tab to **Backup and Maintenance** among the detail tabs of the DB instance.
+    - You can additionally check the maintenance settings within your DB instance.
+- Changed User Permissions in Databases
+    - Expanded DDL user permissions from the `CREATE` schema permission to the `CREATE` database permission.
+    - As part of the expanded permissions, changed to allow schema creation with DDL user IDs.
+- Improved Database List View Feature
+    - Improved the feature to view a list of schemas added as DDL users in the database list.
+- Improved Backup Settings
+    - Removed the backup retry expiration time entry and improved to retry backups within the backup window time range.
+- Changed Feature to Free up Capacity
+    - Improved the selection of WAL log files from directly selecting them to a backup time base that allows point-in-time restores.
+- Changed the `shared_buffers` parameter
+    - Limit the parameter to a maximum of 50% of the DB instance RAM size, as using an excessively large value can cause problems running the DB engine.
+
 ### October 15, 2024
 
 #### Added Features

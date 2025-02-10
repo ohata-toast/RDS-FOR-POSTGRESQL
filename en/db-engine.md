@@ -8,11 +8,11 @@ In PostgreSQL, the version number consists of version = `X.Y`. In NHN Cloud's RD
 
 The versions specified below are available.
 
-| Version                  |   Creation Limit  |   Remarks   |
-|---------------------|-------|---------|
-| PostgreSQL 14.6     |  O |       |
-| PostgreSQL 14.15     |       |       |
-| PostgreSQL 17.2    |       |       |
+| Version          | Creation Limit | Remarks |
+|------------------|----------------|---------|
+| PostgreSQL 14.6  | O              |         |
+| PostgreSQL 14.15 |                |         |
+| PostgreSQL 17.2  |                |         |
 
 - [Note] For PostgreSQL version 14.6, upgrades to the latest version are [recommended](https://www.postgresql.org/about/news/postgresql-171-165-159-1414-1317-and-1221-released-2955/).
     
