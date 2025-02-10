@@ -105,7 +105,6 @@
     - Added the TIMEZONE type and improved the dropdown to search for and enter it.
     - Improved the feature to select units with a dropdown when editing parameters with units.
 
-
 ### June 11, 2024
 
 #### Release of a New Service
