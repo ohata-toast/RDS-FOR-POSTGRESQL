@@ -1,5 +1,20 @@
 ## Database > RDS for PostgreSQL > Release Notes
 
+### Feb 11, 2025
+
+#### Added Features
+
+- Added a new DB engine version
+  - Added PostgreSQL versions 14.15, 17.2.
+- Added a feature to upgrade DB engine version
+  - You can upgrade the DB Engine version from an existing version to the recently added version.
+
+#### Features Updates
+
+- Added DB engine creation limit
+  - A security vulnerability has been discovered in PostgreSQL version 14.6 and an upgrade to a newer version is [recommended](https://www.postgresql.org/about/news/postgresql-171-165-159-1414-1317-and-1221-released-2955/).
+  - DB engine creation is allowed for changing an existing DB instance to high availability or restoring with a backup.
+  
 ### December 10, 2024
 
 #### Added Features
