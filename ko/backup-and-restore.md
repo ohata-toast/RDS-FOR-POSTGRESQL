@@ -9,6 +9,8 @@ RDS for PostgreSQL에서는 pg_basebackup 도구를 이용하여 데이터베이
 | PostgreSQL 버전 | pg_basebackup 버전 |
 |---------------|------------------|
 | 14.6          | 14.6             |
+| 14.15         | 14.15            |
+| 17.2          | 17.2             |
 
 * pg_basebackup의 설치에 대한 자세한 설명은 PostgreSQL 홈페이지를 참고합니다.
   * https://www.postgresql.org/docs/14/app-pgbasebackup.html

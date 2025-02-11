@@ -1625,6 +1625,141 @@ PUT /v1.0/db-instances/{dbInstanceId}/deletion-protection
 ```
 </details>
 
+
+### DB 인스턴스 유지보수 정보 조회
+
+```http
+GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
+```
+
+#### 필요 권한
+
+| 권한명                                | 설명           |
+|------------------------------------|--------------|
+| RDSforPostgreSQL:DbInstance.Get | DB 인스턴스 상세 보기 |
+
+#### 요청
+
+| 이름                    | 종류   | 형식      | 필수 | 설명           |
+|-----------------------|------|---------|----|--------------|
+| dbInstanceId          | URL  | UUID    | O  | DB 인스턴스의 식별자 |
+
+#### 응답
+
+| 이름    | 종류   | 형식   | 설명          |
+|-------|------|------|-------------|
+| allowAutoMaintenance | Body | Boolean | 자동 유지보수 허용 여부 |
+| useAutoStorageCleanup | Body | Boolean | 자동 스토리지 정리 사용 여부 |
+| maintWndBgnTime | Body | String | 자동 유지보수 시작 시간 <br/>- 예시: `00:00:00`|
+| maintWndDuration | Body | ENUM | 유지보수 윈도우 <br/> 예시: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
+
+
+<details><summary>예시</summary>
+
+```json
+{
+    "header": {
+        "resultCode": 0,
+        "resultMessage": "SUCCESS",
+        "isSuccessful": true
+    },
+    "allowAutoMaintenance": true,
+    "useAutoStorageCleanup": true,
+    "maintWndBgnTime": "00:00:00",
+    "maintWndDuration": "HALF_AN_HOUR"
+}
+```
+</details>
+
+
+### DB 인스턴스 유지보수 정보 수정
+
+```http
+PUT /v1.0/db-instances/{dbInstanceId}/maintenance-info
+```
+
+#### 필요 권한
+
+| 권한명                                | 설명           |
+|------------------------------------|--------------|
+| RDSforPostgreSQL:DbInstance.Modify | DB 인스턴스 수정하기 |
+
+#### 요청
+
+| 이름                    | 종류   | 형식      | 필수 | 설명           |
+|-----------------------|------|---------|----|--------------|
+| dbInstanceId          | URL  | UUID    | O  | DB 인스턴스의 식별자 |
+| allowAutoMaintenance | Body | Boolean | O  | 자동 유지보수 허용 여부 |
+| useAutoStorageCleanup | Body | Boolean | O  | 자동 스토리지 정리 사용 여부 |
+| maintWndBgnTime | Body | String | O  | 자동 유지보수 시작 시간 <br/>- 예시: `00:00:00`|
+| maintWndDuration | Body | ENUM | O  | 유지보수 윈도우 <br/> 예시: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
+
+#### 응답
+
+이 API는 응답 본문을 반환하지 않습니다.
+
+<details><summary>예시</summary>
+
+```json
+{
+    "header": {
+        "resultCode": 0,
+        "resultMessage": "SUCCESS",
+        "isSuccessful": true
+    }
+}
+```
+</details>
+
+
+### 현 DB 인스턴스에서 선택 가능한 DB 버전 조회
+
+```http
+GET /v1.0/db-instances/{dbInstanceId}/available-db-versions
+```
+
+#### 필요 권한
+
+| 권한명                                | 설명           |
+|------------------------------------|--------------|
+| RDSforPostgreSQL:DbInstance.Get | DB 인스턴스 상세 보기 |
+
+#### 요청
+
+| 이름                    | 종류   | 형식      | 필수 | 설명           |
+|-----------------------|------|---------|----|--------------|
+| dbInstanceId          | URL  | UUID    | O  | DB 인스턴스의 식별자 |
+
+#### 응답
+
+| 이름                           | 종류   | 형식      | 설명                    |
+|------------------------------|------|---------|-----------------------|
+| dbVersions                   | Body | Array   | DB 버전 목록              |
+| dbVersions.dbVersion         | Body | String  | DB 버전                 |
+| dbVersions.dbVersionName     | Body | String  | DB 버전명                |
+| dbVersions.restorableFromObs | Body | Boolean | 오브젝트 스토리지로부터 복원 가능 여부 |
+
+<details><summary>예시</summary>
+
+```json
+{
+    "header": {
+        "resultCode": 0,
+        "resultMessage": "SUCCESS",
+        "isSuccessful": true
+    },
+    "dbVersions": [
+        {
+            "dbVersion": "POSTGRESQL_V146",
+            "dbVersionName": "PostgreSQL V14.6",
+            "restorableFromObs": true
+        }
+    ]
+}
+```
+</details>
+
+
 ### DB 인스턴스 삭제하기
 
 ```http
@@ -2017,9 +2152,6 @@ POST /v1.0/db-instances/{dbInstanceId}/replicate
 | backup                                       | Body | Object  | X  | 백업 정보 객체                                                                                                                                                                                                                                            |
 | backup.backupPeriod                          | Body | Number  | X  | 백업 보관 기간(일)<br/>- 기본값: 원본 DB 인스턴스 값<br/>- 최솟값: `0`<br/>- 최댓값: `730`                                                                                                                                                                                 |
 | backup.backupRetryCount                      | Body | Number  | X  | 백업 재시도 횟수<br/>- 기본값: 원본 DB 인스턴스 값<br/>- 최솟값: `0`<br/>- 최댓값: `10`                                                                                                                                                                                    |
-| backup.backupSchedules                       | Body | Array   | X  | 백업 스케줄 목록                                                                                                                                                                                                                                           |
-| backup.backupSchedules.backupWndBgnTime      | Body | String  | X  | 백업 시작 시각<br/>- 예시: `00:00:00`<br/>- 기본값: 원본 DB 인스턴스 값                                                                                                                                                                                               |
-| backup.backupSchedules.backupWndDuration     | Body | Enum    | X  | 백업 Duration<br/>백업 시작 시각부터 Duration 안에 자동 백업이 실행됩니다.<br/>- `HALF_AN_HOUR`: 30분<br/>- `ONE_HOUR`: 1시간<br/>- `ONE_HOUR_AND_HALF`: 1시간 30분<br/>- `TWO_HOURS`: 2시간<br/>- `TWO_HOURS_AND_HALF`: 2시간 30분<br/>- `THREE_HOURS`: 3시간<br/>- 기본값: 원본 DB 인스턴스 값 |
 
 <details><summary>예시</summary>
 
