@@ -750,7 +750,7 @@ POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/sync
 | 상태                  | 설명                          |
 |---------------------|-----------------------------|
 | `AVAILABLE`         | DB 인스턴스가 사용 가능한 경우          |
-| `BEFORE_CREATE`     | DB 인스턴스 생성 전인 경우           |
+| `BEFORE_CREATE`     | DB 인스턴스 생성 전인 경우            |
 | `STORAGE_FULL`      | DB 인스턴스의 용량이 부족한 경우         |
 | `FAIL_TO_CREATE`    | DB 인스턴스 생성에 실패한 경우          |
 | `FAIL_TO_CONNECT`   | DB 인스턴스 연결에 실패한 경우          |
@@ -766,6 +766,7 @@ POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/sync
 |---------------------------------|----------------|
 | `APPLYING_DB_INSTANCE_HBA_RULE` | 접근 제어 규칙 적용 중  |
 | `APPLYING_PARAMETER_GROUP`      | 파라미터 그룹 적용 중   |
+| `APPLYING_EXTENSION`            | 확장 적용 중        |
 | `BACKING_UP`                    | 백업 중           |
 | `CANCELING`                     | 취소 중           |
 | `CREATING`                      | 생성 중           |
@@ -774,6 +775,7 @@ POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/sync
 | `DELETING`                      | 삭제 중           |
 | `DELETING_DATABASE`             | 데이터베이스 삭제 중    |
 | `DELETING_USER`                 | 사용자 삭제 중       |
+| `EXPORTING_BACKUP`              | 백업을 내보내는 중     |
 | `FAILING_OVER`                  | 장애 조치 중        |
 | `MIGRATING`                     | 마이그레이션 중       |
 | `MODIFYING`                     | 수정 중           |
@@ -791,6 +793,7 @@ POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/sync
 | `STOPPING`                      | 정지 중           |
 | `SYNCING_DATABASE`              | 데이터베이스 동기화 중   |
 | `SYNCING_USER`                  | 사용자 동기화 중	     |
+| `SYNCING_EXTENSION`             | 확장 동기화 중	      |
 | `UPDATING_USER`                 | 사용자 수정 중	      |
 | `UPDATING_DATABASE`             | 데이터베이스 수정 중	   |
 | `WAIT_MANUAL_CONTROL`           | 수동 장애 조치 대기 중	 |
