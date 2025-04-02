@@ -329,7 +329,7 @@ DB 인스턴스의 **접근 제어** 탭에서는 특정 데이터베이스와 �
     - 접근 제어 규칙은 위에서부터 순차적으로 적용하며 먼저 적용된 규칙이 우선됩니다.
     - 상단에 등록된 접근 허용 규칙이 먼저 적용되면 하단에 접근 차단 규칙이 있더라도 접근이 허용됩니다.
     - 반대로 하단에 접근 허용 규칙이 있더라도 상단에 등록된 접근 차단 규칙이 먼저 적용돼 있으면 접근이 불가능합니다.
-❻ 설정을 마친 뒤 **변경사항 적용**을 클릭해 DB 인스턴스에 접근 제어 설정을 적용합니다.
+❻ 설정을 마친 뒤 **변경 사항 적용**을 클릭해 DB 인스턴스에 접근 제어 설정을 적용합니다.
 ❼ DB 인스턴스에 적용되면 상태가 **적용됨**으로 변경됩니다.
 
 #### 접근 제어 규칙 수정
@@ -337,14 +337,46 @@ DB 인스턴스의 **접근 제어** 탭에서는 특정 데이터베이스와 �
 ![db-instance-detail-hba-modify](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-hba-modify-ko.png)
 
 ❶ 수정할 접근 제어 규칙 행의 **수정**을 클릭하면 기존 정보를 수정할 수 있는 팝업 창이 나타납니다.
-❷ 수정한 규칙은 **변경사항 적용**을 클릭해 DB 인스턴스에 접근 제어 설정을 적용해야 합니다.
+❷ 수정한 규칙은 **변경 사항 적용**을 클릭해 DB 인스턴스에 접근 제어 설정을 적용해야 합니다.
 
 #### 접근 제어 규칙 삭제
 
 ![db-instance-detail-hba-delete](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-hba-delete-ko.png)
 
 ❶ 삭제할 사용자를 선택 후 **삭제**를 클릭하면 **삭제 확인** 팝업 창이 나타납니다.
-❷ 삭제한 규칙은 **변경사항 적용**을 클릭해 DB 인스턴스에 접근 제어 설정을 적용해야 합니다.
+❷ 삭제한 규칙은 **변경 사항 적용**을 클릭해 DB 인스턴스에 접근 제어 설정을 적용해야 합니다.
+
+<a id="extension"></a>
+### 확장 관리
+
+DB 인스턴스의 **확장 관리** 탭에서는 SUPERUSER 권한이 필요한 확장을 조회 및 제어할 수 있습니다.
+
+#### 확장 설치
+
+![db-instance-detail-extension-install](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-install-ko.png)
+
+❶ **설치**를 클릭하면 선택한 확장을 설치할 데이터베이스를 선택할 수 있는 팝업 창이 나타납니다.
+❷ **강제 설치**를 체크하면 의존 관계에 있는 확장들을 강제 설치합니다.
+❸ 설치할 데이터베이스를 선택 후 **확인**을 클릭하면 설치 작업이 예약됩니다.
+❹ **취소**를 클릭하면 예약된 작업을 취소할 수 있습니다.
+❺ **변경 사항 적용**을 클릭하여 DB 인스턴스에 확장을 설치합니다.
+
+#### 확장 삭제
+
+![db-instance-detail-extension-delete](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-delete-ko.png)
+
+❸ 삭제할 데이터베이스 행에서 **삭제**를 클릭하면 **삭제 확인** 팝업 창이 나타납니다.
+❷ **강제 삭제**를 체크하면 의존 관계에 있는 확장들을 강제 삭제합니다.
+❸ **삭제**를 클릭하면 삭제 작업이 예약됩니다.
+❹ **취소**를 클릭하면 예약된 작업을 취소할 수 있습니다.
+❺ **변경 사항 적용**을 클릭하여 DB 인스턴스에 설치된 확장을 삭제합니다.
+
+#### 확장 동기화
+
+![db-instance-detail-extension-sync](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-sync-ko.png)
+
+❶ **동기화**를 클릭하면 **동기화 확인** 팝업 창이 나타납니다.
+❷ **확인**을 클릭하여 동기화를 요청할 수 있습니다.
 
 ## DB 인스턴스 수정
 
