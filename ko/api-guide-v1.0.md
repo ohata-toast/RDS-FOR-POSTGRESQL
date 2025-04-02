@@ -6,7 +6,7 @@
 
 ## 인증 및 권한
 
-API를 사용하려면 [Public API > API 호출 및 인증](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-authentication/)을 통해 발급 받은 Bearer 유형의 토큰이 필요합니다.
+API를 사용하려면 [Public API > API 호출 및 인증](/nhncloud/ko/public-api/api-authentication/)을 통해 발급 받은 Bearer 유형의 토큰이 필요합니다.
 발급 받은 토큰은 Appkey와 함께 요청 Header에 포함해야 합니다.
 
 | 이름                  | 종류     | 형식     | 필수 | 설명                                               |
@@ -537,14 +537,14 @@ GET /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions
 | extensions                                          | Body | Array   | 확장 목록                                                                                                                                                                                           |
 | extensions.extensionId                              | Body | UUID    | 확장의 식별자                                                                                                                                                                                         |
 | extensions.extensionName                            | Body | String  | 확장 이름                                                                                                                                                                                           |
-| extensions.extensionStatus                          | Body | ENUM    | 확장 상태<br/>- `AVAILABLE`: 사용 가능<br/>- `NEED_TO_APPLY`: 적용 필요<br/>- `APPLYING`: 적용중                                                                                                               |
+| extensions.extensionStatus                          | Body | ENUM    | 확장 상태<br/>- `AVAILABLE`: 사용 가능<br/>- `NEED_TO_APPLY`: 적용 필요<br/>- `APPLYING`: 적용 중                                                                                                               |
 | extensions.databases                                | Body | Array   | 확장이 설치된 데이터베이스 정보                                                                                                                                                                               |
 | extensions.databases.dbInstanceGroupExtensionId     | Body | UUID    | DB 인스턴스 그룹 내 확장의 식별자                                                                                                                                                                            |
-| extensions.databases.dbInstanceGroupExtensionStatus | Body | ENUM    | DB 인스턴스 그룹 내 확장 상태<br/>- `CREATED`: 생성 됨<br/>- `INSTALLED`: 설치 됨<br/>- `INSTALLING`: 설치 중<br/>- `INSTALL_ERROR`: 설치 에러<br/>- `DELETED`: 삭제 됨<br/>- `DELETING`: 삭제 중<br/>- `DELETE_ERROR`: 삭제 에러 |
+| extensions.databases.dbInstanceGroupExtensionStatus | Body | ENUM    | DB 인스턴스 그룹 내 확장 상태<br/>- `CREATED`: 생성됨<br/>- `INSTALLED`: 설치됨<br/>- `INSTALLING`: 설치 중<br/>- `INSTALL_ERROR`: 설치 오류<br/>- `DELETED`: 삭제됨<br/>- `DELETING`: 삭제 중<br/>- `DELETE_ERROR`: 삭제 오류 |
 | extensions.databases.databaseId                     | Body | UUID    | 데이터베이스의 식별자                                                                                                                                                                                     |
 | extensions.databases.databaseName                   | Body | String  | 데이터베이스 이름                                                                                                                                                                                       |
-| extensions.databases.reservedAction                 | Body | ENUM    | 예약 작업<br/>- `NONE`: 없음<br/>- `INSTALL`: 설치 예약 (적용 필요)<br/>- `INSTALL_WITH_CASCADE`: 강제 설치 예약 (적용 필요)<br/>- `DELETE`: 삭제 예약 (적용 필요)<br/>- `DELETE_WITH_CASCADE`: 강제 삭제 예약 (적용 필요)                |
-| extensions.databases.errorReason                    | Body | String  | 에러 원인                                                                                                                                                                                           |
+| extensions.databases.reservedAction                 | Body | ENUM    | 예약 작업<br/>- `NONE`: 없음<br/>- `INSTALL`: 설치 예약(적용 필요)<br/>- `INSTALL_WITH_CASCADE`: 강제 설치 예약(적용 필요)<br/>- `DELETE`: 삭제 예약(적용 필요)<br/>- `DELETE_WITH_CASCADE`: 강제 삭제 예약(적용 필요)                |
+| extensions.databases.errorReason                    | Body | String  | 오류 원인                                                                                                                                                                                           |
 | isNeedToApply                                       | Body | Boolean | 변경 사항 적용 필요 여부                                                                                                                                                                                  |
 
 <details><summary>예시</summary>
@@ -661,7 +661,7 @@ DELETE /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/{dbInstanceGroupE
 </details>
 
 
-### 확장 변경사항 적용
+### 확장 변경 사항 적용
 
 ```http
 POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/apply
@@ -671,7 +671,7 @@ POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/apply
 
 | 권한명                                             | 설명         |
 |-------------------------------------------------|------------|
-| RDSforPostgreSQL:DbInstanceGroupExtension.Apply | 확장 변경사항 적용 |
+| RDSforPostgreSQL:DbInstanceGroupExtension.Apply | 확장 변경 사항 적용 |
 
 #### 요청
 
@@ -1890,7 +1890,7 @@ GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
 | useAutoStorageCleanup | Body | Boolean | 자동 스토리지 정리 사용 여부                                                                                                     |
 | maintWndBgnTime       | Body | String  | 자동 유지보수 시작 시간 <br/>- 예시: `00:00:00`                                                                                  |
 | maintWndDuration      | Body | ENUM    | 유지보수 윈도우 <br/> 예시: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
-| logRetentionPeriod    | Body | Number  | 로그 보관 기간 (일)                                                                                                         |
+| logRetentionPeriod    | Body | Number  | 로그 보관 기간(일)                                                                                                         |
 
 
 <details><summary>예시</summary>
@@ -1933,7 +1933,7 @@ PUT /v1.0/db-instances/{dbInstanceId}/maintenance-info
 | useAutoStorageCleanup | Body | Boolean | X  | 자동 스토리지 정리 사용 여부                                                                                                     |
 | maintWndBgnTime       | Body | String  | X  | 자동 유지보수 시작 시간 <br/>- 예시: `00:00:00`                                                                                  |
 | maintWndDuration      | Body | ENUM    | X  | 유지보수 윈도우 <br/> 예시: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
-| logRetentionPeriod    | Body | Number  | X  | 로그 보관 기간 (일)                                                                                                         |
+| logRetentionPeriod    | Body | Number  | X  | 로그 보관 기간(일)                                                                                                         |
 
 <details><summary>예시</summary>
 
@@ -2188,9 +2188,9 @@ POST /v1.0/db-instances/{dbInstanceId}/stop
 
 #### 필요 권한
 
-| 권한명                               | 설명           |
-|-----------------------------------|--------------|
-| RDSforPostgreSQL:DbInstance.Start | DB 인스턴스 시작하기 |
+| 권한명                              | 설명           |
+|----------------------------------|--------------|
+| RDSforPostgreSQL:DbInstance.Stop | DB 인스턴스 정지하기 |
 
 #### 요청
 
