@@ -135,6 +135,12 @@ Event refers to RDS for PostgreSQL or a significant event that is caused by a us
 | DB_INSTANCE_55_00       | DB_INSTANCE       | DB instance restoration using backup from the object storage started          |
 | DB_INSTANCE_55_01       | DB_INSTANCE       | DB instance using backup from the object storage restored                     |
 | DB_INSTANCE_55_04       | DB_INSTANCE       | DB instance restoration using backup from the object storage failed           |
+| DB_INSTANCE_56_00       | DB_INSTANCE       | DB instance version upgrade started                                           |
+| DB_INSTANCE_56_01       | DB_INSTANCE       | DB instance version upgrade completed                                         |
+| DB_INSTANCE_56_04       | DB_INSTANCE       | DB instance version upgrade failed                                            |
+| DB_INSTANCE_57_00       | DB_INSTANCE       | Applying extension changes started                                            |
+| DB_INSTANCE_57_01       | DB_INSTANCE       | Applying extension changes completed                                          |
+| DB_INSTANCE_57_04       | DB_INSTANCE       | Applying extension changes failed                                             |
 | DB_SECURITY_GROUP_01_01 | DB_SECURITY_GROUP | DB security group created                                                     |
 | DB_SECURITY_GROUP_02_00 | DB_SECURITY_GROUP | Changing DB security group started                                            |
 | DB_SECURITY_GROUP_02_01 | DB_SECURITY_GROUP | Changing DB security group completed                                          |

@@ -135,6 +135,12 @@
 | DB_INSTANCE_55_00       | DB_INSTANCE       | 오브젝트 스토리지에 있는 백업으로 DB 인스턴스 복원 시작     |
 | DB_INSTANCE_55_01       | DB_INSTANCE       | 오브젝트 스토리지에 있는 백업으로 DB 인스턴스 복원 완료     |
 | DB_INSTANCE_55_04       | DB_INSTANCE       | 오브젝트 스토리지에 있는 백업으로 DB 인스턴스 복원 실패     |
+| DB_INSTANCE_56_00       | DB_INSTANCE       | DB 인스턴스 버전 업그레이드 시작                  |
+| DB_INSTANCE_56_01       | DB_INSTANCE       | DB 인스턴스 버전 업그레이드 완료                  |
+| DB_INSTANCE_56_04       | DB_INSTANCE       | DB 인스턴스 버전 업그레이드 실패                  |
+| DB_INSTANCE_57_00       | DB_INSTANCE       | 확장 변경 사항 적용 시작                       |
+| DB_INSTANCE_57_01       | DB_INSTANCE       | 확장 변경 사항 적용 완료                       |
+| DB_INSTANCE_57_04       | DB_INSTANCE       | 확장 변경 사항 적용 실패                       |
 | DB_SECURITY_GROUP_01_01 | DB_SECURITY_GROUP | DB 보안 그룹 생성                          |
 | DB_SECURITY_GROUP_02_00 | DB_SECURITY_GROUP | DB 보안 그룹 변경 시작                       |
 | DB_SECURITY_GROUP_02_01 | DB_SECURITY_GROUP | DB 보안 그룹 변경 완료                       |
