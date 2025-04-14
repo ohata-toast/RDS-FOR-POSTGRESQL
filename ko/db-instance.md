@@ -545,7 +545,7 @@ RDS for PostgreSQL에서 오브젝트 스토리지로 내보낸 백업 파일을
 
 읽기 복제본 승격 혹은 강제 승격 중에 복제 지연이 해소될 때까지 대기하는 경우 대기 작업을 종료하려면 콘솔에서
 
-![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20241015/db-instance-list-stop-wait-replication-lag-ko.png)
+![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-list-stop-wait-replication-lag-ko.png)
 
 ❶ **복제 지연 대기**를 클릭하면 대기 작업을 종료할 수 있는 팝업 창이 나타납니다.
 ❷ **확인**을 클릭해 대기 작업을 종료합니다.
