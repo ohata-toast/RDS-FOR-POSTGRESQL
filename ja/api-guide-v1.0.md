@@ -6,7 +6,7 @@
 
 ## 認証および権限
 
-APIを使用するには[Public API > API呼び出しおよび認証](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-authentication/)を通じて発行されたBearerタイプのトークンが必要です。
+APIを使用するには[Public API > API呼び出しおよび認証](/nhncloud/ko/public-api/api-authentication/)を通じて発行されたBearerタイプのトークンが必要です。
 発行されたトークンはAppkeyと共にリクエストHeaderに含める必要があります。
 
 | 名前                 | 種類    | 形式    | 必須 | 説明                                              |
@@ -508,6 +508,241 @@ GET /v1.0/db-instance-groups/{dbInstanceGroupId}
 ```
 </details>
 
+## DBインスタンスグループ > 拡張機能管理
+
+### 拡張機能リスト表示
+
+```http
+GET /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions
+```
+
+#### 必要権限
+
+| 権限名                                          | 説明     |
+|------------------------------------------------|----------|
+| RDSforPostgreSQL:DbInstanceGroupExtension.List | 拡張機能リスト照会 |
+
+#### リクエスト
+
+このAPIはリクエスト本文を要求しません。
+
+| 名前              | 種類 | 形式 | 必須 | 説明            |
+|-------------------|-----|------|----|-----------------|
+| dbInstanceGroupId | URL | UUID | O  | DBインスタンスグループの識別子 |
+
+#### レスポンス
+
+| 名前                                                | 種類 | 形式    | 説明                                                                                                                                                                                            |
+|-----------------------------------------------------|------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| extensions                                          | Body | Array   | 拡張機能リスト                                                                                                                                                                                         |
+| extensions.extensionId                              | Body | UUID    | 拡張機能の識別子                                                                                                                                                                                       |
+| extensions.extensionName                            | Body | String  | 拡張機能名                                                                                                                                                                                         |
+| extensions.extensionStatus                          | Body | ENUM    | 拡張機能の状態<br/>- `AVAILABLE`:使用可能<br/>- `NEED_TO_APPLY`:適用必要<br/>- `APPLYING`:適用中                                                                                                             |
+| extensions.databases                                | Body | Array   | 拡張機能がインストールされたデータベース情報                                                                                                                                                                             |
+| extensions.databases.dbInstanceGroupExtensionId     | Body | UUID    | DBインスタンスグループ内の拡張機能の識別子                                                                                                                                                                          |
+| extensions.databases.dbInstanceGroupExtensionStatus | Body | ENUM    | DBインスタンスグループ内の拡張機能の状態<br/>- `CREATED`:作成済み<br/>- `INSTALLED`:インストール済み<br/>- `INSTALLING`:インストール中<br/>- `INSTALL_ERROR`:インストールエラー<br/>- `DELETED`:削除済み<br/>- `DELETING`:削除中<br/>- `DELETE_ERROR`:削除エラー |
+| extensions.databases.databaseId                     | Body | UUID    | データベースの識別子                                                                                                                                                                                   |
+| extensions.databases.databaseName                   | Body | String  | データベース名                                                                                                                                                                                     |
+| extensions.databases.reservedAction                 | Body | ENUM    | 予約タスク<br/>- `NONE`:なし<br/>- `INSTALL`:インストール予約(適用必要)<br/>- `INSTALL_WITH_CASCADE`:強制インストール予約(適用必要)<br/>- `DELETE`:削除予約(適用必要)<br/>- `DELETE_WITH_CASCADE`:強制削除予約(適用必要)                |
+| extensions.databases.errorReason                    | Body | String  | エラー原因                                                                                                                                                                                         |
+| isNeedToApply                                       | Body | Boolean | 変更事項の適用が必要かどうか                                                                                                                                                                                |
+
+<details><summary>例</summary>
+
+```json
+{
+    "header": {
+        "resultCode": 0,
+        "resultMessage": "SUCCESS",
+        "isSuccessful": true
+    },
+    "extensions": [
+        {
+            "extensionId": "7c9a94b8-86c1-435d-8af2-82a5e9d53fd4",
+            "extensionName": "address_standardizer",
+            "extensionStatus": "AVAILABLE",
+            "databases": [
+                {
+                    "dbInstanceGroupExtensionId": "7c9a94b8-86c1-435d-8af2-82a5e9d53fd4",
+                    "databaseId": "7c9a94b8-86c1-435d-8af2-82a5e9d53fd4",
+                    "databaseName": "database-1",
+                    "dbInstanceGroupExtensionStatus": "INSTALLED",
+                    "reservedAction": "NONE",
+                    "errorReason": null
+                }
+            ]
+        }
+    ],
+    "isNeedToApply": true
+}
+```
+</details>
+
+
+### 拡張機能のインストール
+
+```http
+POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/{extensionId}
+```
+
+#### 必要権限
+
+| 権限名                                             | 説明  |
+|---------------------------------------------------|-------|
+| RDSforPostgreSQL:DbInstanceGroupExtension.Install | 拡張機能のインストール |
+
+#### リクエスト
+
+このAPIはリクエスト本文を要求しません。
+
+| 名前              | 種類 | 形式    | 必須 | 説明              |
+|-------------------|------|---------|----|-------------------|
+| dbInstanceGroupId | URL  | UUID    | O  | DBインスタンスグループの識別子 |
+| extensionId       | URL  | UUID    | O  | 拡張機能の識別子         |
+| databaseId        | Body | UUID    | O  | インストール対象データベースの識別子 |
+| schemaName        | Body | String  | O  | インストール対象スキーマ名    |
+| withCascade       | Body | Boolean | X  | 依存情報を強制的にインストールするかどうか   |
+
+#### レスポンス
+
+このAPIはレスポンス本文を返しません。
+
+<details><summary>例</summary>
+
+```json
+{
+  "header": {
+    "resultCode": 0,
+    "resultMessage": "SUCCESS",
+    "isSuccessful": true
+  }
+}
+```
+</details>
+
+
+### 拡張機能の削除(キャンセル)
+
+```http
+DELETE /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/{dbInstanceGroupExtensionId}
+```
+
+#### 必要権限
+
+| 権限名                                            | 説明      |
+|--------------------------------------------------|-----------|
+| RDSforPostgreSQL:DbInstanceGroupExtension.Delete | 拡張機能の削除(キャンセル) |
+
+#### リクエスト
+
+このAPIはリクエスト本文を要求しません。
+
+| 名前                       | 種類  | 形式    | 必須 | 説明                 |
+|----------------------------|-------|---------|----|----------------------|
+| dbInstanceGroupId          | URL   | UUID    | O  | DBインスタンスグループの識別子    |
+| dbInstanceGroupExtensionId | URL   | UUID    | O  | DBインスタンスグループ内の拡張機能の識別子 |
+| withCascade                | Query | Boolean | O  | 依存情報を強制的に削除するかどうか      |
+
+#### レスポンス
+
+このAPIはレスポンス本文を返しません。
+
+<details><summary>例</summary>
+
+```json
+{
+  "header": {
+    "resultCode": 0,
+    "resultMessage": "SUCCESS",
+    "isSuccessful": true
+  }
+}
+```
+</details>
+
+
+### 拡張機能変更事項適用
+
+```http
+POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/apply
+```
+
+#### 必要権限
+
+| 権限名                                           | 説明       |
+|-------------------------------------------------|------------|
+| RDSforPostgreSQL:DbInstanceGroupExtension.Apply | 拡張機能変更事項適用 |
+
+#### リクエスト
+
+このAPIはリクエスト本文を要求しません。
+
+| 名前                       | 種類  | 形式    | 必須 | 説明                 |
+|----------------------------|-------|---------|----|----------------------|
+| dbInstanceGroupId          | URL   | UUID    | O  | DBインスタンスグループの識別子    |
+
+#### レスポンス
+
+| 名前  | 種類 | 形式 | 説明        |
+|-------|------|------|-------------|
+| jobId | Body | UUID | リクエストした作業の識別子 |
+
+<details><summary>例</summary>
+
+```json
+{
+  "header": {
+    "resultCode": 0,
+    "resultMessage": "SUCCESS",
+    "isSuccessful": true
+  },
+  "jobId": "0ddb042c-5af6-43fb-a914-f4dd0540eb7c"
+}
+```
+</details>
+
+
+### 拡張機能の同期
+
+```http
+POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/sync
+```
+
+#### 必要権限
+
+| 権限名                                          | 説明   |
+|------------------------------------------------|--------|
+| RDSforPostgreSQL:DbInstanceGroupExtension.Sync | 拡張機能の同期 |
+
+#### リクエスト
+
+このAPIはリクエスト本文を要求しません。
+
+| 名前                       | 種類  | 形式    | 必須 | 説明                 |
+|----------------------------|-------|---------|----|----------------------|
+| dbInstanceGroupId          | URL   | UUID    | O  | DBインスタンスグループの識別子    |
+
+#### レスポンス
+
+| 名前  | 種類 | 形式 | 説明        |
+|-------|------|------|-------------|
+| jobId | Body | UUID | リクエストした作業の識別子 |
+
+<details><summary>例</summary>
+
+```json
+{
+  "header": {
+    "resultCode": 0,
+    "resultMessage": "SUCCESS",
+    "isSuccessful": true
+  },
+  "jobId": "0ddb042c-5af6-43fb-a914-f4dd0540eb7c"
+}
+```
+</details>
+
+
 ## DBインスタンス
 
 ### DBインスタンスの状態
@@ -515,7 +750,7 @@ GET /v1.0/db-instance-groups/{dbInstanceGroupId}
 | 状態                 | 説明                         |
 |---------------------|-----------------------------|
 | `AVAILABLE`         | DBインスタンスが使用可能な場合         |
-| `BEFORE_CREATE`     | DBインスタンス作成前の場合          |
+| `BEFORE_CREATE`     | DBインスタンス作成前の場合           |
 | `STORAGE_FULL`      | DBインスタンスの容量が不足している場合        |
 | `FAIL_TO_CREATE`    | DBインスタンス作成に失敗した場合         |
 | `FAIL_TO_CONNECT`   | DBインスタンス接続に失敗した場合         |
@@ -531,6 +766,7 @@ GET /v1.0/db-instance-groups/{dbInstanceGroupId}
 |---------------------------------|----------------|
 | `APPLYING_DB_INSTANCE_HBA_RULE` | アクセス制御ルール適用中 |
 | `APPLYING_PARAMETER_GROUP`      | パラメータグループ適用中  |
+| `APPLYING_EXTENSION`            | 拡張機能の適用中      |
 | `BACKING_UP`                    | バックアップ中          |
 | `CANCELING`                     | キャンセル中          |
 | `CREATING`                      | 作成中          |
@@ -539,6 +775,7 @@ GET /v1.0/db-instance-groups/{dbInstanceGroupId}
 | `DELETING`                      | 削除中          |
 | `DELETING_DATABASE`             | データベース削除中   |
 | `DELETING_USER`                 | ユーザー削除中      |
+| `EXPORTING_BACKUP`              | バックアップをエクスポート中    |
 | `FAILING_OVER`                  | フェイルオーバー中       |
 | `MIGRATING`                     | マイグレーション中      |
 | `MODIFYING`                     | 修正中          |
@@ -556,6 +793,7 @@ GET /v1.0/db-instance-groups/{dbInstanceGroupId}
 | `STOPPING`                      | 停止中          |
 | `SYNCING_DATABASE`              | データベース同期中  |
 | `SYNCING_USER`                  | ユーザー同期中	     |
+| `SYNCING_EXTENSION`             | 拡張機能の同期中	      |
 | `UPDATING_USER`                 | ユーザー修正中	      |
 | `UPDATING_DATABASE`             | データベース修正中	   |
 | `WAIT_MANUAL_CONTROL`           | 手動フェイルオーバー待機中	 |
@@ -1633,8 +1871,8 @@ GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
 
 #### 必要権限
 
-| 権限名                              | 説明         |
-|------------------------------------|--------------|
+| 権限名                           | 説明          |
+|---------------------------------|---------------|
 | RDSforPostgreSQL:DbInstance.Get | DBインスタンス詳細表示 |
 
 #### リクエスト
@@ -1645,12 +1883,13 @@ GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
 
 #### レスポンス
 
-| 名前  | 種類 | 形式 | 説明        |
-|-------|------|------|-------------|
-| allowAutoMaintenance | Body | Boolean | 自動保守を許可するかどうか |
-| useAutoStorageCleanup | Body | Boolean | ストレージの自動クリーンアップを使用するかどうか |
-| maintWndBgnTime | Body | String | 自動保守開始時間 <br/>- 例: `00:00:00`|
-| maintWndDuration | Body | ENUM | 保守Windows <br/> 例: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
+| 名前                  | 種類 | 形式    | 説明                                                                                                                 |
+|-----------------------|------|---------|----------------------------------------------------------------------------------------------------------------------|
+| allowAutoMaintenance  | Body | Boolean | 自動保守を許可するかどうか                                                                                                       |
+| useAutoStorageCleanup | Body | Boolean | 自動ストレージクリーンアップを使用するかどうか                                                                                                    |
+| maintWndBgnTime       | Body | String  | 自動保守開始時間 <br/>- 例: `00:00:00`                                                                                  |
+| maintWndDuration      | Body | ENUM    | 保守Windows <br/> 例: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
+| logRetentionPeriod    | Body | Number  | ログ保管期間(日)                                                                                                         |
 
 
 <details><summary>例</summary>
@@ -1665,7 +1904,8 @@ GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
     "allowAutoMaintenance": true,
     "useAutoStorageCleanup": true,
     "maintWndBgnTime": "00:00:00",
-    "maintWndDuration": "HALF_AN_HOUR"
+    "maintWndDuration": "HALF_AN_HOUR",
+    "logRetentionPeriod": 7
 }
 ```
 </details>
@@ -1685,27 +1925,42 @@ PUT /v1.0/db-instances/{dbInstanceId}/maintenance-info
 
 #### リクエスト
 
-| 名前                  | 種類 | 形式    | 必須 | 説明         |
-|-----------------------|------|---------|----|--------------|
-| dbInstanceId          | URL  | UUID    | O  | DBインスタンスの識別子 |
-| allowAutoMaintenance | Body | Boolean | O  | 自動保守を許可するかどうか |
-| useAutoStorageCleanup | Body | Boolean | O  | ストレージの自動クリーンアップを使用するかどうか |
-| maintWndBgnTime | Body | String | O  | 自動保守開始時間 <br/>- 例: `00:00:00`|
-| maintWndDuration | Body | ENUM | O  | 保守Windows <br/> 例: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
-
-#### レスポンス
-
-このAPIはレスポンス本文を返しません。
+| 名前                  | 種類 | 形式    | 必須 | 説明                                                                                                                 |
+|-----------------------|------|---------|----|----------------------------------------------------------------------------------------------------------------------|
+| dbInstanceId          | URL  | UUID    | O  | DBインスタンスの識別子                                                                                                       |
+| allowAutoMaintenance  | Body | Boolean | X  | 自動保守を許可するかどうか                                                                                                       |
+| useAutoStorageCleanup | Body | Boolean | X  | 自動ストレージクリーンアップを使用するかどうか                                                                                                    |
+| maintWndBgnTime       | Body | String  | X  | 自動保守開始時間 <br/>- 例: `00:00:00`                                                                                  |
+| maintWndDuration      | Body | ENUM    | X  | 保守Windows <br/> 例: `HALF_AN_HOUR`, `ONE_HOUR`, `ONE_HOUR_AND_HALF`, `TWO_HOURS`, `TWO_HOURS_AND_HALF`, `THREE_HOURS` |
+| logRetentionPeriod    | Body | Number  | X  | ログ保管期間(日)                                                                                                         |
 
 <details><summary>例</summary>
 
 ```json
 {
-    "header": {
-        "resultCode": 0,
-        "resultMessage": "SUCCESS",
-        "isSuccessful": true
-    }
+  "allowAutoMaintenance": true,
+  "useAutoStorageCleanup": true,
+  "logRetentionPeriod": 7
+}
+```
+</details>
+
+#### レスポンス
+
+| 名前  | 種類 | 形式 | 説明        |
+|-------|------|------|-------------|
+| jobId | Body | UUID | リクエストした作業の識別子 |
+
+<details><summary>例</summary>
+
+```json
+{
+  "header": {
+    "resultCode": 0,
+    "resultMessage": "SUCCESS",
+    "isSuccessful": true
+  },
+  "jobId": "0ddb042c-5af6-43fb-a914-f4dd0540eb7c"
 }
 ```
 </details>
@@ -1931,9 +2186,9 @@ POST /v1.0/db-instances/{dbInstanceId}/stop
 
 #### 必要権限
 
-| 権限名                              | 説明          |
-|-----------------------------------|--------------|
-| RDSforPostgreSQL:DbInstance.Start | DBインスタンス開始 |
+| 権限名                            | 説明         |
+|----------------------------------|--------------|
+| RDSforPostgreSQL:DbInstance.Stop | DBインスタンスを停止する |
 
 #### リクエスト
 

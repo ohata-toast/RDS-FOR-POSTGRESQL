@@ -1,19 +1,19 @@
-## Database > RDS for PostgreSQL > DB 확장 기능
+## Database > RDS for PostgreSQL > DB拡張機能
 
-## DB 확장 기능
-미리 빌드된 확장 기능을 PostgreSQL에 설치하여 기능을 확장할 수 있습니다. NHN Cloud의 RDS for PostgreSQL에서 지원하는 확장 기능은 아래와 같습니다.
+## DB拡張機能
+あらかじめビルドされた拡張機能をPostgreSQLにインストールして機能を拡張することができます。NHN CloudのRDS for PostgreSQLでサポートする拡張機能は次のとおりです。
 
-### PostgreSQL 기본 제공 기능
+### PostgreSQL基本提供機能
 
-`auto_explain` 모듈은 파라미터 그룹의 `shared_preload_libraries` 파라미터에 추가해서 전체 세션에 적용하거나 `LOAD` 구문으로 각 세션별로 따로 적용할 수 있습니다. 나머지 확장 기능들은 [CREATE EXTENSION](https://www.postgresql.org/docs/14/sql-createextension.html) 구문으로 필요한 확장 기능을 설치할 수 있습니다.
+`auto_explain`モジュールはパラメータグループの`shared_preload_libraries`パラメータに追加して全体セッションに適用したり、`LOAD`構文でセッションごとに個別に適用できます。残りの拡張機能は[CREATE EXTENSION](https://www.postgresql.org/docs/14/sql-createextension.html)構文で必要な拡張機能をインストールできます。
 
-| 확장 기능 이름           | 버전  | SUPERUSER 권한 | 비고                            | 홈페이지                                                     |
+| 拡張機能名         | バージョン | SUPERUSER権限 | 備考                          | Webサイト                                                   |
 |--------------------|-----|--------------|-------------------------------|----------------------------------------------------------|
-| auto_explain       | -   | O            | `LOAD` 구문 실행시 SUPERUSER 권한 필요 | https://www.postgresql.org/docs/14/auto-explain.html     |
+| auto_explain       | -   | O            | `LOAD`構文実行時にSUPERUSER権限必要 | https://www.postgresql.org/docs/14/auto-explain.html     |
 | citext             | 1.6 |              |                               | https://www.postgresql.org/docs/14/citext.html           |
 | cube               | 1.5 |              |                               | https://www.postgresql.org/docs/14/cube.html             |
 | dblink             | 1.2 | O            |                               | https://www.postgresql.org/docs/14/dblink.html           |
-| earthdistance      | 1.1 | O            | cube 설치 필요                    | https://www.postgresql.org/docs/14/earthdistance.html    |
+| earthdistance      | 1.1 | O            | cubeインストール必要                  | https://www.postgresql.org/docs/14/earthdistance.html    |
 | fuzzystrmatch      | 1.1 |              |                               | https://www.postgresql.org/docs/14/fuzzystrmatch.html    |
 | hstore             | 1.8 |              |                               | https://www.postgresql.org/docs/14/hstore.html           |
 | intarray           | 1.5 |              |                               | https://www.postgresql.org/docs/14/intarray.html         |
@@ -27,18 +27,18 @@
 | postgres_fdw       | 1.1 | O            |                               | https://www.postgresql.org/docs/14/postgres-fdw.html     |
 | tablefunc          | 1.0 |              |                               | https://www.postgresql.org/docs/14/tablefunc.html        |
 
-### RDS 추가 제공 기능
+### RDS追加提供機能
 
-추가 제공되는 확장 기능을 설치하려면 필요한 경우 파라미터 그룹의 `shared_preload_libraries` 파라미터에 설정 추가 후 DB 엔진 재시작이 필요합니다. 재시작이 완료되면 [CREATE EXTENSION](https://www.postgresql.org/docs/14/sql-createextension.html) 구문으로 필요한 확장 기능을 설치할 수 있습니다.
+追加提供される拡張機能をインストールするには、必要に応じてパラメータグループの`shared_preload_libraries`パラメータに設定を追加した後、DBエンジン再起動が必要です。再起動が完了したら[CREATE EXTENSION](https://www.postgresql.org/docs/14/sql-createextension.html)構文で必要な拡張機能をインストールできます。
 
-| 확장 기능 이름                     | 버전    | SUPERUSER 권한 | 파라미터 설정 | 비고                           | 홈페이지                               |
+| 拡張機能名                   | バージョン  | SUPERUSER権限 | パラメータ設定 | 備考                         | Webサイト                             |
 |------------------------------|-------|--------------|---------|------------------------------|------------------------------------|
-| pgAudit                      | 1.6.2 | O            | 추가 필요   |                              | https://www.pgaudit.org/           |
-| pgrouting                    | 3.6.2 | O            |         | postgis 설치 필요                | https://pgrouting.org/             |
-| postgis                      | 3.4.1 | O            | 추가 필요   |                              | https://postgis.net/               |
-| postgis_raster               | 3.4.1 | O            |         | postgis 설치 필요                |                                    |
-| postgis_sfcgal               | 3.4.1 | O            |         | postgis 설치 필요                |                                    |
-| postgis_tiger_geocoder       | 3.4.1 | O            |         | fuzzystrmatch, postgis 설치 필요 |                                    |
-| postgis_topology             | 3.4.1 | O            |         | postgis 설치 필요                |                                    |
-| address_standardizer         | 3.4.1 | O            |         | postgis 설치 필요                |                                    |
-| address_standardizer_data_us | 3.4.1 | O            |         | postgis 설치 필요                |                                    |
+| pgAudit                      | 1.6.2 | O            | 追加必要 |                              | https://www.pgaudit.org/           |
+| pgrouting                    | 3.6.2 | O            |         | postgisインストール必要              | https://pgrouting.org/             |
+| postgis                      | 3.4.1 | O            | 追加必要 |                              | https://postgis.net/               |
+| postgis_raster               | 3.4.1 | O            |         | postgisインストール必要              |                                    |
+| postgis_sfcgal               | 3.4.1 | O            |         | postgisインストール必要              |                                    |
+| postgis_tiger_geocoder       | 3.4.1 | O            |         | fuzzystrmatch, postgisインストール必要 |                                    |
+| postgis_topology             | 3.4.1 | O            |         | postgisインストール必要              |                                    |
+| address_standardizer         | 3.4.1 | O            |         | postgisインストール必要              |                                    |
+| address_standardizer_data_us | 3.4.1 | O            |         | postgisインストール必要              |                                    |

@@ -12,10 +12,12 @@ PostgreSQLでバージョン番号はバージョン= `X.Y`で構成されます
 | バージョン             | 作成制限 | 備考 |
 |------------------|-------|----|
 | PostgreSQL 14.6  | O     |    |
-| PostgreSQL 14.15 |       |    |
-| PostgreSQL 17.2  |       |    |
+| PostgreSQL 14.15 | O     |    |
+| PostgreSQL 14.17 |       |    |
+| PostgreSQL 17.2  | O     |    |
+| PostgreSQL 17.4  |       |    |
 
-- [注意] PostgreSQL 14.6バージョンの場合最新バージョンへのアップグレードが[勧告](https://www.postgresql.org/about/news/postgresql-171-165-159-1414-1317-and-1221-released-2955/)されます。
+- [注意] PostgreSQL 14.6, 14.15, 17.2バージョンの場合最新バージョンへのアップグレードが[勧告](https://www.postgresql.org/support/security/CVE-2025-1094/)されます。
     
     
 ### バージョンアップグレードを実行する
