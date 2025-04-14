@@ -6,7 +6,7 @@
 
 ## 認証および権限
 
-APIを使用するには[Public API > API呼び出しおよび認証](/nhncloud/ko/public-api/api-authentication/)を通じて発行されたBearerタイプのトークンが必要です。
+APIを使用するには[Public API > API呼び出しおよび認証](/nhncloud/ja/public-api/api-authentication/)を通じて発行されたBearerタイプのトークンが必要です。
 発行されたトークンはAppkeyと共にリクエストHeaderに含める必要があります。
 
 | 名前                 | 種類    | 形式    | 必須 | 説明                                              |
