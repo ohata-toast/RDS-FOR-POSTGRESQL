@@ -346,6 +346,40 @@ The status of access control consists of the following values, which change depe
 ❶ If you select the user you want to delete and click on **Delete**, the **Delete confirmation** pop-up window appears.
 ❷ Deleted rules must apply access control settings to DB instances by clicking on **Apply Changes**.
 
+
+<a id="extension"></a>
+### 확장 관리
+
+DB 인스턴스의 **확장 관리** 탭에서는 SUPERUSER 권한이 필요한 확장을 조회 및 제어할 수 있습니다.
+
+#### 확장 설치
+
+![db-instance-detail-extension-install](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-install-ko.png)
+
+❶ **설치**를 클릭하면 선택한 확장을 설치할 데이터베이스를 선택할 수 있는 팝업 창이 나타납니다.
+❷ **강제 설치**를 체크하면 의존 관계에 있는 확장들을 강제 설치합니다.
+❸ 설치할 데이터베이스를 선택 후 **확인**을 클릭하면 설치 작업이 예약됩니다.
+❹ **취소**를 클릭하면 예약된 작업을 취소할 수 있습니다.
+❺ **변경 사항 적용**을 클릭하여 DB 인스턴스에 확장을 설치합니다.
+
+#### 확장 삭제
+
+![db-instance-detail-extension-delete](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-delete-ko.png)
+
+❸ 삭제할 데이터베이스 행에서 **삭제**를 클릭하면 **삭제 확인** 팝업 창이 나타납니다.
+❷ **강제 삭제**를 체크하면 의존 관계에 있는 확장들을 강제 삭제합니다.
+❸ **삭제**를 클릭하면 삭제 작업이 예약됩니다.
+❹ **취소**를 클릭하면 예약된 작업을 취소할 수 있습니다.
+❺ **변경 사항 적용**을 클릭하여 DB 인스턴스에 설치된 확장을 삭제합니다.
+
+#### 확장 동기화
+
+![db-instance-detail-extension-sync](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-sync-ko.png)
+
+❶ **동기화**를 클릭하면 **동기화 확인** 팝업 창이 나타납니다.
+❷ **확인**을 클릭하여 동기화를 요청할 수 있습니다.
+
+
 ## Modify DB Instance
 
 You can easily change various items in DB instance created through the console. The change items you request are applied to DB instances sequentially. If a restart is required during the application process, apply all changes and restart the DB instance. Items that cannot be changed and that require a restart are as follows.
