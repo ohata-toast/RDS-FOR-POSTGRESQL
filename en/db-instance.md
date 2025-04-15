@@ -226,7 +226,7 @@ Database names have the following restrictions.
 
 #### Synchronize Database
 
-![db-instance-detail-db-sync](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-db-sync-ko.png)
+![db-instance-detail-db-sync](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-db-sync-en.png)
 
 ❶ After you click **Synchronization**, the **synchronization confirmation** pop-up window appears.
 ❷ You can click **Confirm** to request the synchronization.
@@ -273,7 +273,7 @@ Password has the following restrictions.
 
 #### Synchronize User
 
-![db-instance-detail-user-sync](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-user-sync-ko.png)
+![db-instance-detail-user-sync](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-user-sync-en.png)
 
 ❶ Click **Synchronization** and a **Confirm Synchronization** pop-up window will appear.
 ❷ Click **Confirm** to request synchronization.
@@ -346,6 +346,40 @@ The status of access control consists of the following values, which change depe
 ❶ If you select the user you want to delete and click on **Delete**, the **Delete confirmation** pop-up window appears.
 ❷ Deleted rules must apply access control settings to DB instances by clicking on **Apply Changes**.
 
+
+<a id="extension"></a>
+### 확장 관리
+
+DB 인스턴스의 **확장 관리** 탭에서는 SUPERUSER 권한이 필요한 확장을 조회 및 제어할 수 있습니다.
+
+#### 확장 설치
+
+![db-instance-detail-extension-install](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-install-en.png)
+
+❶ **설치**를 클릭하면 선택한 확장을 설치할 데이터베이스를 선택할 수 있는 팝업 창이 나타납니다.
+❷ **강제 설치**를 체크하면 의존 관계에 있는 확장들을 강제 설치합니다.
+❸ 설치할 데이터베이스를 선택 후 **확인**을 클릭하면 설치 작업이 예약됩니다.
+❹ **취소**를 클릭하면 예약된 작업을 취소할 수 있습니다.
+❺ **변경 사항 적용**을 클릭하여 DB 인스턴스에 확장을 설치합니다.
+
+#### 확장 삭제
+
+![db-instance-detail-extension-delete](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-delete-en.png)
+
+❸ 삭제할 데이터베이스 행에서 **삭제**를 클릭하면 **삭제 확인** 팝업 창이 나타납니다.
+❷ **강제 삭제**를 체크하면 의존 관계에 있는 확장들을 강제 삭제합니다.
+❸ **삭제**를 클릭하면 삭제 작업이 예약됩니다.
+❹ **취소**를 클릭하면 예약된 작업을 취소할 수 있습니다.
+❺ **변경 사항 적용**을 클릭하여 DB 인스턴스에 설치된 확장을 삭제합니다.
+
+#### 확장 동기화
+
+![db-instance-detail-extension-sync](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-sync-en.png)
+
+❶ **동기화**를 클릭하면 **동기화 확인** 팝업 창이 나타납니다.
+❷ **확인**을 클릭하여 동기화를 요청할 수 있습니다.
+
+
 ## Modify DB Instance
 
 You can easily change various items in DB instance created through the console. The change items you request are applied to DB instances sequentially. If a restart is required during the application process, apply all changes and restart the DB instance. Items that cannot be changed and that require a restart are as follows.
@@ -373,7 +407,7 @@ You can easily change various items in DB instance created through the console. 
 
 For high-availability DB instances, we provide a failover restart feature to increase reliability and reduce net time when there is a change to something that requires a restart.
 
-![modify-ha-popup-ko](https://static.toastoven.net/prod_rds/24.11.12/modify-ha-popup-ko.png)
+![modify-ha-popup](https://static.toastoven.net/prod_rds/24.11.12/modify-ha-popup-en.png)
 
 If you do not use restart with failover, the changes are applied sequentially to the master and candidate master, and then the DB instance is restarted. For more information, see [Manual Failover Items](db-instance/#_7) in High Availability DB Instances.
 
@@ -513,7 +547,7 @@ Force promotion based on current point-in-time data on the read replica, regardl
 
 To end the wait operation, when you are waiting for replication delays to resolve during a read replica promotion or force promotion,
 
-![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20241015/db-instance-list-stop-wait-replication-lag-en.png)
+![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-list-stop-wait-replication-lag-en.png)
 
 ❶ Click **Replication Waiting** brings up a popup window that allows you to end the waiting task.
 ❷ Click **Confirm** to end the waiting task.
@@ -598,7 +632,7 @@ If the consistency of the data was not broken during the failover process and th
 
 To recover a failed master, run the
 
-![db-instance-ha-failover-repair-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-repair-ko.png)
+![db-instance-ha-failover-repair](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-repair-en.png)
 
 ❶ Select the failed master you want to recover, and then click the **Recover Failed Master** menu from the drop-down menu.
 
@@ -616,7 +650,7 @@ If no DB instance meets the criteria, the request to rebuild the failed master f
 > For DB instances that are backed up, there might be a drop in storage I/O performance during the rebuilding of the failed master.
 > To rebuild a failed master, in the console, run the
 
-![db-instance-ha-failover-rebuild-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-rebuild-ko.png)
+![db-instance-ha-failover-rebuild](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-rebuild-en.png)
 
 ❶ Select the failed master you want to rebuild, and then click the **Rebuild Failed Master** menu from the drop-down menu.
 
@@ -626,7 +660,7 @@ If the failed master recovery fails and data correction is required, you can dis
 
 To detach a failed master, go to the Console
 
-![db-instance-ha-failover-split-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-split-ko.png)
+![db-instance-ha-failover-split](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-split-en.png)
 
 ❶ Select the failed master you want to detach, and then click the **Detach Failed Master** menu from the drop-down menu.
 
@@ -656,7 +690,7 @@ You can proceed with a manual backup immediately after the restart with failover
 
 You can either apply the changes to the spare master first and observe how they evolve, or you can control the timing of the failover directly from the console if you want to execute the failover at a precise time. If you choose to manually control failover, a **failover** button appears in the console ❶ after the spare master restarts. Clicking this button triggers a failover, which can wait up to five days to execute. If you do not run the failover within 5 days, the action is automatically canceled.
 
-![db-instance-ha-wait-manual-failover-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-wait-manual-failover-ko.png)
+![db-instance-ha-wait-manual-failover](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-wait-manual-failover-en.png)
 
 > [Caution]
 > There is no automatic failover while waiting for failover.

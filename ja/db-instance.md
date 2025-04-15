@@ -323,6 +323,38 @@ DBインスタンスの**アクセス制御**タブでは、特定のデータ�
 ❶削除するユーザーを選択し、**削除**をクリックすると、**削除確認**ポップアップウィンドウが表示されます。
 ❷削除したルールは、**変更の適用**をクリックしてDBインスタンスにアクセス制御設定を適用する必要があります。
 
+<a id="extension"></a>
+### 拡張機能管理
+
+DBインスタンスの**拡張管理**タブでは、SUPERUSER権限が必要な拡張機能を照会及び制御できます。
+
+#### 拡張機能のインストール
+
+![db-instance-detail-extension-install](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-install-ja.png)
+
+❶ **インストール**をクリックすると、選択した拡張機能をインストールするデータベースを選択できるポップアップウィンドウが表示されます。
+❷ **強制インストール**をチェックすると、依存関係にある拡張機能を強制的にインストールします。
+❸インストールするデータベースを選択した後、**確認**をクリックするとインストール作業が予約されます。
+❹ **キャンセル**をクリックすると、予約された作業をキャンセルできます。
+❺ **変更事項適用**をクリックしてDBインスタンスに拡張機能をインストールします。
+
+#### 拡張機能の削除
+
+![db-instance-detail-extension-delete](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-delete-ja.png)
+
+❸削除するデータベースの行で**削除**をクリックすると、**削除確認**ポップアップウィンドウが表示されます。
+❷ **強制削除**をチェックすると、依存関係にある拡張機能を強制的に削除します。
+❸ **削除**をクリックすると削除作業が予約されます。
+❹ **キャンセル**をクリックすると、予約された作業をキャンセルできます。
+❺ **変更事項適用**をクリックしてDBインスタンスにインストールされた拡張機能を削除します。
+
+#### 拡張機能の同期
+
+![db-instance-detail-extension-sync](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-sync-ja.png)
+
+❶ **同期**をクリックすると、**同期確認** ポップアップウィンドウが表示されます。
+❷ **確認**をクリックして同期をリクエストできます。
+
 ## DBインスタンスの修正
 
 コンソールを通じて作成されたDBインスタンスの様々な項目を簡単に変更できます。変更をリクエストした項目は、順次DBインスタンスに適用します。適用過程で再起動が必要な場合、すべての変更を適用した後、DBインスタンスを再起動します。変更不可能な項目と再起動が必要な項目は次のとおりです。
@@ -469,7 +501,7 @@ DBインスタンスに接続されたパラメータグループの設定が変
 
 リードレプリカの昇格または強制昇格中に複製遅延が解消されるまで待機している場合、待機作業を終了するには、コンソールで
 
-![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20241015/db-instance-list-stop-wait-replication-lag-ko.png)
+![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-list-stop-wait-replication-lag-ja.png)
 
 ❶ **複製遅延待機終了**をクリックすると、待機作業を終了することができるポップアップウィンドウが表示されます。
 ❷ **確認**をクリックして待機作業を終了します。
@@ -554,7 +586,7 @@ DBインスタンスを強制的に再起動するには、コンソールで
 
 フェイルオーバーが行われたマスターを復旧するにはコンソールで
 
-![db-instance-ha-failover-repair-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-repair-ko.png)
+![db-instance-ha-failover-repair](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-repair-ja.png)
 
 ❶復旧したいフェイルオーバーが行われたマスターを選択し、ドロップダウンメニューから**フェイルオーバーが行われたマスター復旧**メニューをクリックします。
 
@@ -573,7 +605,7 @@ DBインスタンスを強制的に再起動するには、コンソールで
 
 フェイルオーバーが行われたマスターを再構築するには、コンソールで
 
-![db-instance-ha-failover-rebuild-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-rebuild-ko.png)
+![db-instance-ha-failover-rebuild](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-rebuild-ja.png)
 
 ❶再構築したいフェイルオーバーが行われたマスターを選択し、ドロップダウンメニューから**フェイルオーバーが行われたマスター再構築**メニューをクリックします。
 
@@ -583,7 +615,7 @@ DBインスタンスを強制的に再起動するには、コンソールで
 
 フェイルオーバーが行われたマスターを分離するにはコンソールで
 
-![db-instance-ha-failover-split-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-split-ko.png)
+![db-instance-ha-failover-split](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-split-ja.png)
 
 ❶分離したいフェイルオーバーが行われたマスターを選択し、ドロップダウンメニューから*フェイルオーバーが行われたマスター分離**メニューをクリックします。
 
@@ -614,7 +646,7 @@ DBインスタンスを強制的に再起動するには、コンソールで
 
 予備マスターに変更を先に適用した後、その推移を観察したり、正確な時間にフェイルオーバーを実行したい場合、コンソールでフェイルオーバーのタイミングを直接制御できます。フェイルオーバー手動制御を選択すると、予備マスターが再起動された後、❶コンソールに**フェイルオーバー**ボタンが表示されます。このボタンをクリックするとフェイルオーバーが実行され、最大5日間実行を待機できます。5日以内にフェイルオーバーを実行しない場合、その作業は自動的にキャンセルされます。
 
-![db-instance-ha-wait-manual-failover-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-wait-manual-failover-ko.png)
+![db-instance-ha-wait-manual-failover](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-wait-manual-failover-ja.png)
 
 > [注意]
 > フェイルオーバーを待機している間は、自動フェイルオーバーは実行されません。

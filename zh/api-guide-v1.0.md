@@ -6,7 +6,7 @@
 
 ## Authentication and Authorization
 
-To use the API, you need a token of type Bearer, issued through [Public API > API Calls and Authentication](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/api-authentication/).
+To use the API, you need a token of type Bearer, issued through [Public API > API Calls and Authentication](/nhncloud/en/public-api/api-authentication/).
 The issued token must be included in the request header along with the Appkey.
 
 | Name                  | Type     | Format     | Required | Description                                               |
@@ -508,6 +508,242 @@ This API does not require a request body.
 ```
 </details>
 
+
+## DB 인스턴스 그룹 > 확장 관리
+
+### 확장 목록 보기
+
+```http
+GET /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions
+```
+
+#### 필요 권한
+
+| 권한명                                            | 설명       |
+|------------------------------------------------|----------|
+| RDSforPostgreSQL:DbInstanceGroupExtension.List | 확장 목록 조회 |
+
+#### 요청
+
+이 API는 요청 본문을 요구하지 않습니다.
+
+| 이름                | 종류  | 형식   | 필수 | 설명              |
+|-------------------|-----|------|----|-----------------|
+| dbInstanceGroupId | URL | UUID | O  | DB 인스턴스 그룹의 식별자 |
+
+#### 응답
+
+| 이름                                                  | 종류   | 형식      | 설명                                                                                                                                                                                              |
+|-----------------------------------------------------|------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| extensions                                          | Body | Array   | 확장 목록                                                                                                                                                                                           |
+| extensions.extensionId                              | Body | UUID    | 확장의 식별자                                                                                                                                                                                         |
+| extensions.extensionName                            | Body | String  | 확장 이름                                                                                                                                                                                           |
+| extensions.extensionStatus                          | Body | ENUM    | 확장 상태<br/>- `AVAILABLE`: 사용 가능<br/>- `NEED_TO_APPLY`: 적용 필요<br/>- `APPLYING`: 적용 중                                                                                                               |
+| extensions.databases                                | Body | Array   | 확장이 설치된 데이터베이스 정보                                                                                                                                                                               |
+| extensions.databases.dbInstanceGroupExtensionId     | Body | UUID    | DB 인스턴스 그룹 내 확장의 식별자                                                                                                                                                                            |
+| extensions.databases.dbInstanceGroupExtensionStatus | Body | ENUM    | DB 인스턴스 그룹 내 확장 상태<br/>- `CREATED`: 생성됨<br/>- `INSTALLED`: 설치됨<br/>- `INSTALLING`: 설치 중<br/>- `INSTALL_ERROR`: 설치 오류<br/>- `DELETED`: 삭제됨<br/>- `DELETING`: 삭제 중<br/>- `DELETE_ERROR`: 삭제 오류 |
+| extensions.databases.databaseId                     | Body | UUID    | 데이터베이스의 식별자                                                                                                                                                                                     |
+| extensions.databases.databaseName                   | Body | String  | 데이터베이스 이름                                                                                                                                                                                       |
+| extensions.databases.reservedAction                 | Body | ENUM    | 예약 작업<br/>- `NONE`: 없음<br/>- `INSTALL`: 설치 예약(적용 필요)<br/>- `INSTALL_WITH_CASCADE`: 강제 설치 예약(적용 필요)<br/>- `DELETE`: 삭제 예약(적용 필요)<br/>- `DELETE_WITH_CASCADE`: 강제 삭제 예약(적용 필요)                |
+| extensions.databases.errorReason                    | Body | String  | 오류 원인                                                                                                                                                                                           |
+| isNeedToApply                                       | Body | Boolean | 변경 사항 적용 필요 여부                                                                                                                                                                                  |
+
+<details><summary>예시</summary>
+
+```json
+{
+    "header": {
+        "resultCode": 0,
+        "resultMessage": "SUCCESS",
+        "isSuccessful": true
+    },
+    "extensions": [
+        {
+            "extensionId": "7c9a94b8-86c1-435d-8af2-82a5e9d53fd4",
+            "extensionName": "address_standardizer",
+            "extensionStatus": "AVAILABLE",
+            "databases": [
+                {
+                    "dbInstanceGroupExtensionId": "7c9a94b8-86c1-435d-8af2-82a5e9d53fd4",
+                    "databaseId": "7c9a94b8-86c1-435d-8af2-82a5e9d53fd4",
+                    "databaseName": "database-1",
+                    "dbInstanceGroupExtensionStatus": "INSTALLED",
+                    "reservedAction": "NONE",
+                    "errorReason": null
+                }
+            ]
+        }
+    ],
+    "isNeedToApply": true
+}
+```
+</details>
+
+
+### 확장 설치
+
+```http
+POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/{extensionId}
+```
+
+#### 필요 권한
+
+| 권한명                                               | 설명    |
+|---------------------------------------------------|-------|
+| RDSforPostgreSQL:DbInstanceGroupExtension.Install | 확장 설치 |
+
+#### 요청
+
+이 API는 요청 본문을 요구하지 않습니다.
+
+| 이름                | 종류   | 형식      | 필수 | 설명                |
+|-------------------|------|---------|----|-------------------|
+| dbInstanceGroupId | URL  | UUID    | O  | DB 인스턴스 그룹의 식별자   |
+| extensionId       | URL  | UUID    | O  | 확장의 식별자           |
+| databaseId        | Body | UUID    | O  | 설치 대상 데이터베이스의 식별자 |
+| schemaName        | Body | String  | O  | 설치 대상 스키마 이름      |
+| withCascade       | Body | Boolean | X  | 의존 정보 강제 설치 여부    |
+
+#### 응답
+
+이 API는 응답 본문을 반환하지 않습니다.
+
+<details><summary>예시</summary>
+
+```json
+{
+  "header": {
+    "resultCode": 0,
+    "resultMessage": "SUCCESS",
+    "isSuccessful": true
+  }
+}
+```
+</details>
+
+
+### 확장 삭제(취소)
+
+```http
+DELETE /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/{dbInstanceGroupExtensionId}
+```
+
+#### 필요 권한
+
+| 권한명                                              | 설명        |
+|--------------------------------------------------|-----------|
+| RDSforPostgreSQL:DbInstanceGroupExtension.Delete | 확장 삭제(취소) |
+
+#### 요청
+
+이 API는 요청 본문을 요구하지 않습니다.
+
+| 이름                         | 종류    | 형식      | 필수 | 설명                   |
+|----------------------------|-------|---------|----|----------------------|
+| dbInstanceGroupId          | URL   | UUID    | O  | DB 인스턴스 그룹의 식별자      |
+| dbInstanceGroupExtensionId | URL   | UUID    | O  | DB 인스턴스 그룹 내 확장의 식별자 |
+| withCascade                | Query | Boolean | O  | 의존 정보 강제 삭제 여부       |
+
+#### 응답
+
+이 API는 응답 본문을 반환하지 않습니다.
+
+<details><summary>예시</summary>
+
+```json
+{
+  "header": {
+    "resultCode": 0,
+    "resultMessage": "SUCCESS",
+    "isSuccessful": true
+  }
+}
+```
+</details>
+
+
+### 확장 변경 사항 적용
+
+```http
+POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/apply
+```
+
+#### 필요 권한
+
+| 권한명                                             | 설명         |
+|-------------------------------------------------|------------|
+| RDSforPostgreSQL:DbInstanceGroupExtension.Apply | 확장 변경 사항 적용 |
+
+#### 요청
+
+이 API는 요청 본문을 요구하지 않습니다.
+
+| 이름                         | 종류    | 형식      | 필수 | 설명                   |
+|----------------------------|-------|---------|----|----------------------|
+| dbInstanceGroupId          | URL   | UUID    | O  | DB 인스턴스 그룹의 식별자      |
+
+#### 응답
+
+| 이름    | 종류   | 형식   | 설명          |
+|-------|------|------|-------------|
+| jobId | Body | UUID | 요청한 작업의 식별자 |
+
+<details><summary>예시</summary>
+
+```json
+{
+  "header": {
+    "resultCode": 0,
+    "resultMessage": "SUCCESS",
+    "isSuccessful": true
+  },
+  "jobId": "0ddb042c-5af6-43fb-a914-f4dd0540eb7c"
+}
+```
+</details>
+
+
+### 확장 동기화
+
+```http
+POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/sync
+```
+
+#### 필요 권한
+
+| 권한명                                            | 설명     |
+|------------------------------------------------|--------|
+| RDSforPostgreSQL:DbInstanceGroupExtension.Sync | 확장 동기화 |
+
+#### 요청
+
+이 API는 요청 본문을 요구하지 않습니다.
+
+| 이름                         | 종류    | 형식      | 필수 | 설명                   |
+|----------------------------|-------|---------|----|----------------------|
+| dbInstanceGroupId          | URL   | UUID    | O  | DB 인스턴스 그룹의 식별자      |
+
+#### 응답
+
+| 이름    | 종류   | 형식   | 설명          |
+|-------|------|------|-------------|
+| jobId | Body | UUID | 요청한 작업의 식별자 |
+
+<details><summary>예시</summary>
+
+```json
+{
+  "header": {
+    "resultCode": 0,
+    "resultMessage": "SUCCESS",
+    "isSuccessful": true
+  },
+  "jobId": "0ddb042c-5af6-43fb-a914-f4dd0540eb7c"
+}
+```
+</details>
+
+
 ## DB Instance
 
 ### DB Instance Status
@@ -531,6 +767,7 @@ This API does not require a request body.
 |---------------------------------|----------------|
 | `APPLYING_DB_INSTANCE_HBA_RULE` | Applying an access control rule  |
 | `APPLYING_PARAMETER_GROUP`      | Parameter group is being applied   |
+| `APPLYING_EXTENSION`            | 확장 적용 중        |
 | `BACKING_UP`                    | Backing up           |
 | `CANCELING`                     | Canceling           |
 | `CREATING`                      | Creating           |
@@ -539,6 +776,7 @@ This API does not require a request body.
 | `DELETING`                      | Deleting           |
 | `DELETING_DATABASE`             | Deleting a database    |
 | `DELETING_USER`                 | Deleting user       |
+| `EXPORTING_BACKUP`              | 백업을 내보내는 중     |
 | `FAILING_OVER`                  | Under failover        |
 | `MIGRATING`                     | Under migration       |
 | `MODIFYING`                     | Under modification           |
@@ -556,6 +794,7 @@ This API does not require a request body.
 | `STOPPING`                      | Stopping           |
 | `SYNCING_DATABASE`              | Synchronizing the database   |
 | `SYNCING_USER`                  | Synchronizing user	     |
+| `SYNCING_EXTENSION`             | 확장 동기화 중	      |
 | `UPDATING_USER`                 | Modifying user	      |
 | `UPDATING_DATABASE`             | Modifying the database	   |
 | `WAIT_MANUAL_CONTROL`           | Waiting for manual failover	 |
@@ -1646,13 +1885,13 @@ GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
 
 #### Response
 
-| Name    | Type   | Format   | Description          |
-|-------|------|------|-------------|
-| allowAutoMaintenance | Body | Boolean | Whether to allow automatic maintenance |
-| useAutoStorageCleanup | Body | Boolean | Whether to enable automatic storage cleanup |
-| maintWndBgnTime | Body | String | Automatic maintenance start time <br/>- Example: `00:00:00`|
-| maintWndDuration | Body | ENUM | Maintenance window <br/> Examples: `half_an_hour`, `one_hour`, `one_hour_and_half`, `two_hours`, `two_hours_and_half`, `three_hours` |
-
+| Name                  | Type | Format  | Description                                                                                                                          |
+|-----------------------|------|---------|--------------------------------------------------------------------------------------------------------------------------------------|
+| allowAutoMaintenance  | Body | Boolean | Whether to allow automatic maintenance                                                                                               |
+| useAutoStorageCleanup | Body | Boolean | Whether to enable automatic storage cleanup                                                                                          |
+| maintWndBgnTime       | Body | String  | Automatic maintenance start time <br/>- Example: `00:00:00`                                                                          |
+| maintWndDuration      | Body | ENUM    | Maintenance window <br/> Examples: `half_an_hour`, `one_hour`, `one_hour_and_half`, `two_hours`, `two_hours_and_half`, `three_hours` |
+| logRetentionPeriod    | Body | Number  | 로그 보관 기간(일)                                                                                                                          |
 
 <details><summary>Example</summary>
 
@@ -1666,7 +1905,8 @@ GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
     "allowAutoMaintenance": true,
     "useAutoStorageCleanup": true,
     "maintWndBgnTime": "00:00:00",
-    "maintWndDuration": "HALF_AN_HOUR"
+    "maintWndDuration": "HALF_AN_HOUR",
+    "logRetentionPeriod": 7
 }
 ```
 </details>
@@ -1686,27 +1926,42 @@ PUT /v1.0/db-instances/{dbInstanceId}/maintenance-info
 
 #### Request
 
-| Name                    | Type   | Format      | Required | Description           |
-|-----------------------|------|---------|----|--------------|
-| dbInstanceId          | URL  | UUID    | O  | DB instance identifier |
-| allowAutoMaintenance | Body | Boolean | O  | Whether to allow automatic maintenance |
-| useAutoStorageCleanup | Body | Boolean | O  | Whether to enable automatic storage cleanup |
-| maintWndBgnTime | Body | String | O  | Automatic maintenance start time <br/>- Example: `00:00:00`|
-| maintWndDuration | Body | ENUM | O  | Maintenance window <br/> Examples: `half_an_hour`, `one_hour`, `one_hour_and_half`, `two_hours`, `two_hours_and_half`, `three_hours` |
-
-#### Response
-
-This API does not return a response body.
+| Name                  | Type | Format  | Required | Description                                                                                                                          |
+|-----------------------|------|---------|----------|--------------------------------------------------------------------------------------------------------------------------------------|
+| dbInstanceId          | URL  | UUID    | O        | DB instance identifier                                                                                                               |
+| allowAutoMaintenance  | Body | Boolean | O        | Whether to allow automatic maintenance                                                                                               |
+| useAutoStorageCleanup | Body | Boolean | O        | Whether to enable automatic storage cleanup                                                                                          |
+| maintWndBgnTime       | Body | String  | O        | Automatic maintenance start time <br/>- Example: `00:00:00`                                                                          |
+| maintWndDuration      | Body | ENUM    | O        | Maintenance window <br/> Examples: `half_an_hour`, `one_hour`, `one_hour_and_half`, `two_hours`, `two_hours_and_half`, `three_hours` |
+| logRetentionPeriod    | Body | Number  | X        | 로그 보관 기간(일)                                                                                                                          |
 
 <details><summary>Example</summary>
 
 ```json
 {
-    "header": {
-        "resultCode": 0,
-        "resultMessage": "SUCCESS",
-        "isSuccessful": true
-    }
+  "allowAutoMaintenance": true,
+  "useAutoStorageCleanup": true,
+  "logRetentionPeriod": 7
+}
+```
+</details>
+
+#### Response
+
+| Name  | Type | Format | Description                  |
+|-------|------|--------|------------------------------|
+| jobId | Body | UUID   | Identifier of requested task |
+
+<details><summary>Example</summary>
+
+```json
+{
+  "header": {
+    "resultCode": 0,
+    "resultMessage": "SUCCESS",
+    "isSuccessful": true
+  },
+  "jobId": "0ddb042c-5af6-43fb-a914-f4dd0540eb7c"
 }
 ```
 </details>
@@ -4994,17 +5249,17 @@ This API does not require a request body.
 
 ```json
 {
-  "header": {
-    "resultCode": 0,
-    "resultMessage": "SUCCESS",
-    "isSuccessful": true
-  },
-  "eventCodes": [
-    {
-      "eventCode": "DB_INSTANCE_02_01",
-      "eventCategoryType": "DB_INSTANCE"
-    }
-  ]
+    "header": {
+        "resultCode": 0,
+        "resultMessage": "SUCCESS",
+        "isSuccessful": true
+    },
+    "eventCodes": [
+        {
+            "eventCode": "DB_INSTANCE_02_01",
+            "eventCategoryType": "DB_INSTANCE"
+        }
+    ]
 }
 ```
 </details>
