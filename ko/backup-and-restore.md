@@ -90,7 +90,7 @@ RDS for PostgreSQL에서는 pg_basebackup 도구를 이용하여 데이터베이
 
 내부 백업 스토리지에 저장된 백업 파일을 사용자 오브젝트 스토리지로 내보낼 수 있습니다.
 
-![db-instance-detail-backup-export-ko](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-backup-export-ko.png)
+![db-instance-detail-backup-export-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-export-ko.png)
 
 ❶ 백업을 수행한 원본 DB 인스턴스의 상세 탭에서 내보낼 백업 파일을 선택한 뒤 **오브젝트 스토리지로 백업 내보내기**를 클릭하면 백업을 내보내기 위한 팝업 화면이 나타납니다.
 
