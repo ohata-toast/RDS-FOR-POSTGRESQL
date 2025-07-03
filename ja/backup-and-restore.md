@@ -21,7 +21,7 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 特定の時点のデータベースを永続的に保存するには、コンソールで手動バックアップを行います。手動バックアップは、自動バックアップと違って、明示的にバックアップを削除しない限り、DBインスタンスが削除される時に一緒に削除されません。 コンソールで手動バックアップを実行するには
 
-![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-ja.png)
+![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-backup-ja.png)
 
 ❶バックアップするDBインスタンスを選択した後、**バックアップ**をクリックすると、**バックアップ作成** ポップアップウィンドウが表示されます。
 - DBインスタンスを選択せずに**バックアップ**をクリックすると、**バックアップ作成**ポップアップウィンドウ内のドロップダウンメニューからDBインスタンスを選択できます。
@@ -109,7 +109,7 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 バックアップファイルだけで復元するため、バックアップを実行した元のDBインスタンスが必要ありません。コンソールでバックアップを復元するには
 
-![db-instance-detail-backup-restore](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-restore-ja.png)
+![db-instance-detail-backup-restore](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-backup-restore-ja.png)
 
 ❶DBインスタンスの詳細タブで復元するバックアップファイルを選択した後、**バックアップ復元**をクリックすると、DBインスタンスの復元画面に移動します。
 
