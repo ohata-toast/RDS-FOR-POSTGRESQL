@@ -77,7 +77,7 @@ RDS for PostgreSQL에서는 pg_basebackup 도구를 이용하여 데이터베이
 
 ![db-instance-list-export-obs-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-ko.png)
 
-![db-instance-list-export-obs-modal-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-ko.png)
+![db-instance-list-export-obs-modal-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-modal-ko.png)
 
 ❶ 백업할 DB 인스턴스를 선택한 뒤 드롭다운 메뉴에서 **백업 후 오브젝트 스토리지로 백업 파일 내보내기**를 클릭하면 설정 팝업 화면이 나타납니다.
 ❷ 백업이 저장될 오브젝트 스토리지의 테넌트 ID를 입력합니다. 테넌트 ID는 API 엔드포인트 설정에서 확인할 수 있습니다.
