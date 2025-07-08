@@ -71,9 +71,9 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 バックアップ後にバックアップファイルをユーザーのオブジェクトストレージにエクスポートできます。
 
-![db-instance-list-export-obs-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-ko.png)
+![db-instance-list-export-obs](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-ja.png)
 
-![db-instance-list-export-obs-modal-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-ko.png)
+![db-instance-list-export-obs-modal](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-modal-ja.png)
 
 ❶バックアップするDBインスタンスを選択後、ドロップダウンメニューで**バックアップ後オブジェクトストレージにバックアップファイルをエクスポート**をクリックすると、設定のポップアップ画面が表示されます。
 ❷バックアップが保存されるオブジェクトストレージのテナントIDを入力します。テナントIDはAPIエンドポイント設定で確認できます。
@@ -86,11 +86,11 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 内部バックアップストレージに保存されたバックアップファイルをユーザーオブジェクトストレージにエクスポートできます。
 
-![db-instance-detail-backup-export-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-export-ko.png)
+![db-instance-detail-backup-export](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-export-ja.png)
 
 ❶バックアップを実行した原本のDBインスタンスの詳細タブでエクスポートするバックアップファイルを選択し、**オブジェクトストレージにバックアップをエクスポート**をクリックすると、バックアップをエクスポートするためのポップアップ画面が表示されます。
 
-![backup-export-ko](https://static.toastoven.net/prod_rds_postgres/20241210/backup-export-ko.png)
+![backup-export](https://static.toastoven.net/prod_rds_postgres/20241210/backup-export-ja.png)
 
 ❷または**バックアップ**タブでエクスポートするバックアップファイルを選択し、**オブジェクトストレージにバックアップをエクスポート**をクリックします。
 
@@ -154,7 +154,7 @@ RDS for PostgreSQLからオブジェクトストレージにエクスポート�
 
 (2)復元するプロジェクトのコンソールに接続して、DBインスタンスタブで**オブジェクトストレージにあるバックアップで復元**ボタンをクリックします。
 
-![backup-obs-restore](https://static.toastoven.net/prod_rds_postgres/20241210/backup-obs-restore-ko.png)
+![backup-obs-restore](https://static.toastoven.net/prod_rds_postgres/20241210/backup-obs-restore-ja.png)
 
 ❶バックアップが保存されたオブジェクトストレージのテナントIDを入力します。テナントIDはAPIエンドポイント設定で確認できます。
 ❷バックアップが保存されたオブジェクトストレージのNHN CloudアカウントまたはIAMアカウントを入力します。
