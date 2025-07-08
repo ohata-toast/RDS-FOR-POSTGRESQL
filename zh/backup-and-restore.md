@@ -75,9 +75,9 @@ All backup files are uploaded to the internal backup storage and saved. For manu
 
 After backing up, you can export the backup file to user object storage.
 
-![db-instance-list-export-obs-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-ko.png)
+![db-instance-list-export-obs](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-en.png)
 
-![db-instance-list-export-obs-modal-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-ko.png)
+![db-instance-list-export-obs-modal](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-modal-en.png)
 
 ❶ After selecting the DB instance to backup, click **Export Backup File to Object Storage After Backup** from the drop-down menu, and a settings pop-up screen will appear.
 ❷ Enter the tenant ID of the object storage where the backup will be stored. The tenant ID can be found in the API endpoint settings.
@@ -90,11 +90,11 @@ After backing up, you can export the backup file to user object storage.
 
 You can export backup files stored in internal backup storage to user object storage.
 
-![db-instance-detail-backup-export-ko](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-export-ko.png)
+![db-instance-detail-backup-export](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-export-en.png)
 
 ❶ On the Details tab of the source DB instance from which the backup was taken, select the backup file to export and click **Export Backup to Object Storage**, and a pop-up screen will appear to export the backup.
 
-![backup-export-ko](https://static.toastoven.net/prod_rds_postgres/20241210/backup-export-ko.png)
+![backup-export](https://static.toastoven.net/prod_rds_postgres/20241210/backup-export-en.png)
 
 ❷ Alternatively, on the **Backup** tab, select the backup file you want to export and click **Export Backup to Object Storage**.
 
@@ -158,7 +158,7 @@ You can create a DB instance using a backup file exported from RDS for PostgreSQ
 
 (2) Access the console of the project you want to restore, and on the DB Instances tab, click the Restore from backup in Object Storage button.
 
-![backup-obs-restore](https://static.toastoven.net/prod_rds_postgres/20241210/backup-obs-restore-ko.png)
+![backup-obs-restore](https://static.toastoven.net/prod_rds_postgres/20241210/backup-obs-restore-en.png)
 
 ❶ Enter the tenant ID of the object storage where the backup is stored. You can find the tenant ID in the API endpoint settings.
 ❷ Enter the NHN Cloud account or IAM account of the object storage where the backup is stored.
