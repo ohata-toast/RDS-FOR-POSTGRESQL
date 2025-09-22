@@ -13,8 +13,10 @@ The versions specified below are available.
 | PostgreSQL 14.6  | O              |         |
 | PostgreSQL 14.15 | O              |         |
 | PostgreSQL 14.17 |                |         |
+| PostgreSQL 14.19 |                |         |
 | PostgreSQL 17.2  | O              |         |
 | PostgreSQL 17.4  |                |         |
+| PostgreSQL 17.6  |                |         |
 
 - [Note] For PostgreSQL version 14.6, 14.15, 17.2, upgrades to the latest version are [recommended](https://www.postgresql.org/support/security/CVE-2025-1094/).
 

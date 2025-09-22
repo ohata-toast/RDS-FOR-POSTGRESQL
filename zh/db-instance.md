@@ -28,9 +28,12 @@ NHN Cloud has divided the entire system into multiple availability areas to prep
 
 The versions specified below are available.
 
-| Version                   | Note |
-|----------------------|----|
-| PostgreSQL 14.6      |    |
+| Version          | Note |
+|------------------|------|
+| PostgreSQL 14.17 |      |
+| PostgreSQL 14.19 |      |
+| PostgreSQL 17.4  |      |
+| PostgreSQL 17.6  |      |
 
 
 ### DB instance type
@@ -38,12 +41,12 @@ The versions specified below are available.
 DB instances have different CPU cores and different memory capacities, depending on the type.
 When you create a DB instance, you must select the appropriate DB instance type according to the database workload.
 
-| Type | Description                                                        |
-|----|-----------------------------------------------------------|
-| m2 | This is a type that balances CPU and memory.                                |
-| c2 | This is an Instance type with high CPU performance.                               |
-| r2 | It can be used when memory is used more than other resources.                     |
-| x1 | It is a type that supports high-specification CPU and memory. It can be used for services or applications that require high performance. |
+| Type | Description                                                                                                                              |
+|------|------------------------------------------------------------------------------------------------------------------------------------------|
+| m2   | This is a type that balances CPU and memory.                                                                                             |
+| c2   | This is an Instance type with high CPU performance.                                                                                      |
+| r2   | It can be used when memory is used more than other resources.                                                                            |
+| x1   | It is a type that supports high-specification CPU and memory. It can be used for services or applications that require high performance. |
 
 The type of DB instance that you have already created can be easily changed through the console.
 
@@ -547,7 +550,7 @@ Force promotion based on current point-in-time data on the read replica, regardl
 
 To end the wait operation, when you are waiting for replication delays to resolve during a read replica promotion or force promotion,
 
-![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20241015/db-instance-list-stop-wait-replication-lag-en.png)
+![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-list-stop-wait-replication-lag-en.png)
 
 ❶ Click **Replication Waiting** brings up a popup window that allows you to end the waiting task.
 ❷ Click **Confirm** to end the waiting task.

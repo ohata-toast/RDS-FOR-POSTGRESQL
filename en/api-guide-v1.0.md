@@ -1,7 +1,7 @@
 ## Database > RDS for PostgreSQL > API Guide
 
-| Region        | Endpoint                                            |
-|-----------|--------------------------------------------------|
+| Region                | Endpoint                                         |
+|-----------------------|--------------------------------------------------|
 | Korea (Pangyo) region | https://kr1-rds-postgres.api.nhncloudservice.com |
 
 ## Authentication and Authorization
@@ -9,10 +9,10 @@
 To use the API, you need a token of type Bearer, issued through [Public API > API Calls and Authentication](/nhncloud/en/public-api/api-authentication/).
 The issued token must be included in the request header along with the Appkey.
 
-| Name                  | Type     | Format     | Required | Description                                               |
-|---------------------|--------|--------|----|--------------------------------------------------|
-| X-TC-APP-KEY        | Header | String | O  | Appkey or project integration appkey for RDS for PostgreSQL service |
-| X-NHN-AUTHORIZATION | Header | String | O  | Bearer type token issued with the Public API                   |
+| Name                | Type   | Format | Required | Description                                                         |
+|---------------------|--------|--------|----------|---------------------------------------------------------------------|
+| X-TC-APP-KEY        | Header | String | O        | Appkey or project integration appkey for RDS for PostgreSQL service |
+| X-NHN-AUTHORIZATION | Header | String | O        | Bearer type token issued with the Public API                        |
 
 Project permissions also limit the APIs that can be called. The `RDS for` `PostgreSQL` `ADMIN` and `RDS for PostgreSQL VIEWER` roles are granted default permissions, as shown below, and you can grant only the permissions you need from the Manage Role Groups menu within the project.
 
@@ -23,10 +23,10 @@ Project permissions also limit the APIs that can be called. The `RDS for` `Postg
 
 If an API request fails to authenticate or is not authorized, the following error occurs.
 
-| resultCode | resultMessage | Description          |
-|------------|---------------|-------------|
+| resultCode | resultMessage | Description            |
+|------------|---------------|------------------------|
 | 80401      | Unauthorized  | Failed to authenticate |
-| 80403      | Forbidden     | Unauthorized.   |
+| 80403      | Forbidden     | Unauthorized.          |
 
 ## Response Common Information
 
@@ -46,17 +46,23 @@ The API responds with "200 OK" to all API requests. For more information on the 
 
 #### Field
 
-| Name            | Data type     | Description                    |
-|---------------|---------|-----------------------|
-| resultCode    | Number  | Result code (Success: 0, Other: Failure) |
-| resultMessage | String  | Result message                |
-| successful    | Boolean | Successful or not                 |
+| Name          | Data type | Description                              |
+|---------------|-----------|------------------------------------------|
+| resultCode    | Number    | Result code (Success: 0, Other: Failure) |
+| resultMessage | String    | Result message                           |
+| successful    | Boolean   | Successful or not                        |
 
 ## DB version
 
-| DB version           | Available for creation |
-|-----------------|----------|
-| POSTGRESQL_V146 | O        |
+| DB version        | Available for creation |
+|-------------------|------------------------|
+| POSTGRESQL_V14_6  |                        |
+| POSTGRESQL_V14_15 |                        |
+| POSTGRESQL_V14_17 | O                      |
+| POSTGRESQL_V14_19 | O                      |
+| POSTGRESQL_V17_2  |                        |
+| POSTGRESQL_V17_4  | O                      |
+| POSTGRESQL_V17_6  | O                      |
 
 * You can use that value for dbVersion fields of type ENUM.
 * Depending on the version, there may be some cases where it is not possible to create or restore.
@@ -69,8 +75,8 @@ GET /v1.0/db-versions
 
 #### Required permissions
 
-| Permission Name                             | Description          |
-|---------------------------------|-------------|
+| Permission Name                 | Description          |
+|---------------------------------|----------------------|
 | RDSforPostgreSQL:DbVersion.List | View DB Version List |
 
 #### Request
@@ -79,11 +85,11 @@ This API does not require a request body.
 
 #### Response
 
-| Name                           | Type   | Format      | Description                    |
-|------------------------------|------|---------|-----------------------|
-| dbVersions                   | Body | Array   | DB version list              |
-| dbVersions.dbVersion         | Body | String  | DB version                 |
-| dbVersions.dbVersionName     | Body | String  | DB version name                |
+| Name                         | Type | Format  | Description                                           |
+|------------------------------|------|---------|-------------------------------------------------------|
+| dbVersions                   | Body | Array   | DB version list                                       |
+| dbVersions.dbVersion         | Body | String  | DB version                                            |
+| dbVersions.dbVersionName     | Body | String  | DB version name                                       |
 | dbVersions.restorableFromObs | Body | Boolean | Restoring backup from object storage available or not |
 
 <details><summary>Example</summary>
@@ -97,8 +103,8 @@ This API does not require a request body.
     },
     "dbVersions": [
         {
-            "dbVersion": "POSTGRESQL_V146",
-            "dbVersionName": "PostgreSQL V14.6",
+            "dbVersion": "POSTGRESQL_V17_6",
+            "dbVersionName": "PostgreSQL V17.6",
             "restorableFromObs": true
         }
     ]
@@ -847,7 +853,7 @@ This API does not require a request body.
             "dbInstanceGroupId": "51c7d080-ff36-4025-84b1-9d9d0b4fe9e0",
             "dbInstanceName": "db-instance",
             "description": null,
-            "dbVersion": "POSTGRESQL_V146",
+            "dbVersion": "POSTGRESQL_V17_6",
             "dbPort": 15432,
             "dbInstanceType": "MASTER",
             "dbInstanceStatus": "AVAILABLE",
@@ -918,7 +924,7 @@ This API does not require a request body.
     "dbInstanceGroupId": "51c7d080-ff36-4025-84b1-9d9d0b4fe9e0",
     "dbInstanceName": "db-instance",
     "description": null,
-    "dbVersion": "POSTGRESQL_V146",
+    "dbVersion": "POSTGRESQL_V17_6",
     "dbPort": 15432,
     "dbInstanceType": "MASTER",
     "dbInstanceStatus": "AVAILABLE",
@@ -988,7 +994,7 @@ POST /v1.0/db-instances
     "dbInstanceName": "db-instance",
     "description": "description",
     "dbFlavorId": "71f69bf9-3c01-4c1a-b135-bb75e93f6268",
-    "dbVersion": "POSTGRESQL_V146",
+    "dbVersion": "POSTGRESQL_V17_6",
     "dbPort": 15432,
     "databaseName": "database",
     "dbUserName": "db-user",
@@ -1704,7 +1710,7 @@ GET /v1.0/db-instances/{dbInstanceId}/restoration-info
                 "backupStatus": "COMPLETED",
                 "dbInstanceId": "dba1be25-9429-4589-9716-7fb6daad7cb9",
                 "dbInstanceName": "original-db-instance-name",
-                "dbVersion": "POSTGRESQL_V146",
+                "dbVersion": "POSTGRESQL_V17_6",
                 "backupType": "MANUAL",
                 "backupSize": 8299904,
                 "walFileName": "000000010000000000000005",
@@ -2005,8 +2011,8 @@ GET /v1.0/db-instances/{dbInstanceId}/available-db-versions
     },
     "dbVersions": [
         {
-            "dbVersion": "POSTGRESQL_V146",
-            "dbVersionName": "PostgreSQL V14.6",
+            "dbVersion": "POSTGRESQL_V17_6",
+            "dbVersionName": "PostgreSQL V17.6",
             "restorableFromObs": true
         }
     ]
@@ -3264,7 +3270,7 @@ This API does not require a request body.
             "backupName": "backup",
             "backupStatus": "COMPLETED",
             "dbInstanceId": "142e6ccc-3bfb-4e1e-84f7-38861284fafd",
-            "dbVersion": "POSTGRESQL_V146",
+            "dbVersion": "POSTGRESQL_V17_6",
             "backupType": "AUTO",
             "backupSize": 4996786,
             "createdYmdt": "2023-02-21T00:35:00+09:00",
@@ -3990,7 +3996,7 @@ This API does not require a request body.
             "parameterGroupName": "parameter-group",
             "parameterGroupStatus": "STABLE",
             "description": null,
-            "dbVersion": "POSTGRESQL_V146",
+            "dbVersion": "POSTGRESQL_V17_6",
             "createdYmdt": "2023-02-31T15:28:17+09:00",
             "updatedYmdt": "2023-02-31T15:28:17+09:00"
         }
@@ -4055,7 +4061,7 @@ This API does not require a request body.
     "parameterGroupId": "404e8a89-ca4d-4fca-96c2-1518754d50b7",
     "parameterGroupName": "parameter-group",
     "description": null,
-    "dbVersion": "POSTGRESQL_V146",
+    "dbVersion": "POSTGRESQL_V17_6",
     "parameterGroupStatus": "STABLE",
     "parameters": [
         {
@@ -4103,7 +4109,7 @@ POST /v1.0/parameter-groups
 {
     "parameterGroupName": "parameter-group",
     "description": "description",
-    "dbVersion": "POSTGRESQL_V146"
+    "dbVersion": "POSTGRESQL_V17_6"
 }
 ```
 </details>
