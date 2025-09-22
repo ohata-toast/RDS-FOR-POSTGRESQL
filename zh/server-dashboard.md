@@ -16,7 +16,7 @@ You can use the layout to indicate the size and location of the chart. When acti
 
 ❶ click **Manage Layout** to display a pop-up window to manage the layout.
 ❷ You can create a layout by clicking on **+ Create Layout**.
-- Enter a layout name and click **Create** to create a layout.
+    - Enter a layout name and click **Create** to create a layout.
 ❸ Click the button to change the layout added.
 ❹ Click the button to delete the layout added.
 

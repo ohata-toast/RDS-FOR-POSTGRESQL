@@ -17,7 +17,7 @@ RDS for PostgreSQL uses the pg_basebackup tool to back up databases. To restore 
 | 17.6               | 17.6                  |
 
 * For more information about installing pg_basebackup, refer to the PostgreSQL website.
-    * https://www.postgresql.org/docs/14/app-pgbasebackup.html
+  * https://www.postgresql.org/docs/17/app-pgbasebackup.html
 
 The following settings are applied to backup and it applies to both auto and manual backups.
 
@@ -30,7 +30,7 @@ If you want to permanently store a database at a specific point in time, you can
 ![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-backup-en.png)
 
 ❶ After selecting the DB instance to back up, click **Backup**, and **Create Backup** and the pop-up window appears.
-- If you click **Backup** without selecting DB instance, you can select DB instance from the drop-down menu within the **Create Backup** pop-up window.
+    - If you click **Backup** without selecting DB instance, you can select DB instance from the drop-down menu within the **Create Backup** pop-up window.
 ❷ Enter a name of the backup. There are the following restrictions.
 
 * Backup name has to be unique for each region.

@@ -135,7 +135,7 @@ You can set default notifications when creating a DB instance. Setting default n
 
 You can view the DB instances created from the console. You can view in groups of DB instances, or as individual DB instances.
 
-![db-instance-list-basic](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-basic-en.png)
+![db-instance-list-basic](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-basic-en.png)
 
 ❶ Change the DB instance screen mode.
 ❷ Change the deletion protection settings by clicking the lock icon.
@@ -159,7 +159,7 @@ DB instance's status consists of the following values, which change based on you
 
 The search conditions that can be changed are as follows.
 
-![db-instance-list-filter](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-filter-en.png)
+![db-instance-list-filter](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-filter-en.png)
 
 ❶ Retrieve the status of DB instance by filtering criteria.
 ❷ Retrieve availability zones by filtering criteria.
@@ -168,7 +168,7 @@ The search conditions that can be changed are as follows.
 
 Select DB instance to view details.
 
-![db-instance-detail-basic](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-basic-en.png)
+![db-instance-detail-basic](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-basic-en.png)
 
 ❶ When you click on the domain of the connection information, the pop-up window to verify the IP address appears.
 ❷ When you click on the DB security group, a pop-up window appears to verify the DB security rules.
@@ -191,7 +191,7 @@ On the Logs tab of the DB instance, you can view or download various log files. 
 | postgresql.log  | 40 items of 100 MB   | Static                   |
 | backup.log      | Daily 10 items       | Static                   |
 
-![db-instance-detail-log](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-log-en.png)
+![db-instance-detail-log](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-log-en.png)
 
 ❶ When you click **View Log**, a pop-up window appears where you can view the contents of the log file. You can check logs up to 65,535 Bytes.
 ❷ Click on **Import** to request that the log files of the DB instance be downloaded.
@@ -209,7 +209,7 @@ On the Logs tab of the DB instance, you can view or download various log files. 
 
 #### Create a database
 
-![db-instance-detail-db-create](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-db-create-en.png)
+![db-instance-detail-db-create](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-db-create-en.png)
 
 ❶ When you click on **+ Create**, a pop-up window appears where you can enter the name of the database.
 ❷ You can create the database by entering the database name and clicking **Create**.
@@ -221,7 +221,7 @@ Database names have the following restrictions.
 
 #### Modify Database
 
-![db-instance-detail-db-modify](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-db-modify-en.png)
+![db-instance-detail-db-modify](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-db-modify-en.png)
 
 ❶ When you click on **Modify** in the database row you want to modify, a pop-up window appears where you can modify the database information.
 ❷ You can request a modification by clicking on **Modify**.
@@ -229,21 +229,21 @@ Database names have the following restrictions.
 
 #### Synchronize Database
 
-![db-instance-detail-db-sync](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-db-sync-en.png)
+![db-instance-detail-db-sync](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-db-sync-en.png)
 
 ❶ After you click **Synchronization**, the **synchronization confirmation** pop-up window appears.
 ❷ You can click **Confirm** to request the synchronization.
 
 #### Delete Database
 
-![db-instance-detail-db-delete](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-db-delete-en.png)
+![db-instance-detail-db-delete](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-db-delete-en.png)
 
 ❶ If select the database you want to delete and click on **Delete**, the Delete confirmation pop-up window appears.
 ❷ You can request deletion by clicking on **Delete**.
 
 #### Create a User
 
-![db-instance-detail-user-create](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-user-create-en.png)
+![db-instance-detail-user-create](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-user-create-en.png)
 
 ❶ Click on **+ Create** to see the **Add User** pop-up window.
 ❷ Enter user ID.
@@ -268,7 +268,7 @@ Password has the following restrictions.
 
 #### Edit a User
 
-![db-instance-detail-user-modify](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-user-modify-en.png)
+![db-instance-detail-user-modify](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-user-modify-en.png)
 
 ❶ When you click on **Modify** in the row of users that you want to edit, a pop-up window appears where you can edit information.
 ❷ If you do not enter a password, it will not be edited.
@@ -276,14 +276,14 @@ Password has the following restrictions.
 
 #### Synchronize User
 
-![db-instance-detail-user-sync](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-user-sync-en.png)
+![db-instance-detail-user-sync](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-user-sync-en.png)
 
 ❶ Click **Synchronization** and a **Confirm Synchronization** pop-up window will appear.
 ❷ Click **Confirm** to request synchronization.
 
 #### Delete a User
 
-![db-instance-detail-user-delete](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-user-delete-en.png)
+![db-instance-detail-user-delete](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-user-delete-en.png)
 
 ❶ Select the user that you want to delete and click on the drop-down menu.
 ❷ When **Delete** is clicked, **Delete Confirmation** pop-up window appears. You can request deletion by clicking on **Confirm**.
@@ -292,7 +292,7 @@ Password has the following restrictions.
 
 **Access Control** tab of the DB instance allows you to query and control DB Engine access rules for specific databases and users. The rules set here apply to file `pg_hba.conf`.
 
-![db-instance-detail-hba](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-hba-en.png)
+![db-instance-detail-hba](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-hba-en.png)
 
 ❶ You can view the application status for access control rules.
 ❷ If there is any work in progress, a spinner will appear.
@@ -314,7 +314,7 @@ The status of access control consists of the following values, which change depe
 
 #### Add Access Control Rules
 
-![db-instance-detail-hba-create](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-hba-create-en.png)
+![db-instance-detail-hba-create](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-hba-create-en.png)
 
 ❶ When you click on **+ Create**, add **Access Control Rule** pop-up window appears.
 ❷ You can specify the full target of the rule or select a specific database or user.
@@ -337,14 +337,14 @@ The status of access control consists of the following values, which change depe
 
 #### Modify Access Control Rules
 
-![db-instance-detail-hba-modify](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-hba-modify-en.png)
+![db-instance-detail-hba-modify](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-hba-modify-en.png)
 
 ❶ When click **Modify** in the row of access control rules to modify, a pop-up window appears where you can modify existing information.
 ❷ Modified rules must apply access control settings to DB instances by clicking on **Apply Changes**.
 
 #### Delete Access Control Rules
 
-![db-instance-detail-hba-delete](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-hba-delete-en.png)
+![db-instance-detail-hba-delete](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-hba-delete-en.png)
 
 ❶ If you select the user you want to delete and click on **Delete**, the **Delete confirmation** pop-up window appears.
 ❷ Deleted rules must apply access control settings to DB instances by clicking on **Apply Changes**.
@@ -357,7 +357,7 @@ DB 인스턴스의 **확장 관리** 탭에서는 SUPERUSER 권한이 필요한 
 
 #### 확장 설치
 
-![db-instance-detail-extension-install](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-install-en.png)
+![db-instance-detail-extension-install](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20250415/db-instance-detail-extension-install-en.png)
 
 ❶ **설치**를 클릭하면 선택한 확장을 설치할 데이터베이스를 선택할 수 있는 팝업 창이 나타납니다.
 ❷ **강제 설치**를 체크하면 의존 관계에 있는 확장들을 강제 설치합니다.
@@ -367,7 +367,7 @@ DB 인스턴스의 **확장 관리** 탭에서는 SUPERUSER 권한이 필요한 
 
 #### 확장 삭제
 
-![db-instance-detail-extension-delete](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-delete-en.png)
+![db-instance-detail-extension-delete](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20250415/db-instance-detail-extension-delete-en.png)
 
 ❸ 삭제할 데이터베이스 행에서 **삭제**를 클릭하면 **삭제 확인** 팝업 창이 나타납니다.
 ❷ **강제 삭제**를 체크하면 의존 관계에 있는 확장들을 강제 삭제합니다.
@@ -377,7 +377,7 @@ DB 인스턴스의 **확장 관리** 탭에서는 SUPERUSER 권한이 필요한 
 
 #### 확장 동기화
 
-![db-instance-detail-extension-sync](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-sync-en.png)
+![db-instance-detail-extension-sync](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20250415/db-instance-detail-extension-sync-en.png)
 
 ❶ **동기화**를 클릭하면 **동기화 확인** 팝업 창이 나타납니다.
 ❷ **확인**을 클릭하여 동기화를 요청할 수 있습니다.
@@ -410,7 +410,7 @@ You can easily change various items in DB instance created through the console. 
 
 For high-availability DB instances, we provide a failover restart feature to increase reliability and reduce net time when there is a change to something that requires a restart.
 
-![modify-ha-popup](https://static.toastoven.net/prod_rds/24.11.12/modify-ha-popup-en.png)
+![modify-ha-popup](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds/24.11.12/modify-ha-popup-en.png)
 
 If you do not use restart with failover, the changes are applied sequentially to the master and candidate master, and then the DB instance is restarted. For more information, see [Manual Failover Items](db-instance/#_7) in High Availability DB Instances.
 
@@ -440,19 +440,19 @@ Even though the settings of the parameter groups connected to the DB instance ch
 
 You can apply changes to a parameter group to a DB instance using one of the following methods.
 
-![db-instance-list-apply-parameter-group](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-apply-parameter-group-en.png)
+![db-instance-list-apply-parameter-group](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-apply-parameter-group-en.png)
 
 ❶ Click **Parameter** for destination DB instance, or
 ❷ Select a destination DB instance and click on **Apply Parameter Group Changes** menu from the drop-down menu.
 
 If the parameters that require restart in the parameter group are changed, such DB instance is restarted in the process of applying the changes.
 
-![db-instance-list-apply-parameter-group-popup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-apply-parameter-group-popup-en.png)
+![db-instance-list-apply-parameter-group-popup](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-apply-parameter-group-popup-en.png)
 
 ❶ Click **Compare Chnages** to check the changed parameters.
 ❷ Click **Confirm** after checking the changes to apply the changed parameters to DB instances.
 
-![db-instance-list-apply-parameter-group-compare-popup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-apply-parameter-group-compare-popup-en.png)
+![db-instance-list-apply-parameter-group-compare-popup](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-apply-parameter-group-compare-popup-en.png)
 
 ## Export Backup Files to Object Storage after Backup
 
@@ -485,7 +485,7 @@ Backup storage charges can be incurred for the amount of data storage required f
 
 To create a read replica from the console,
 
-![db-instance-list-replica-create](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-replica-create-en.png)
+![db-instance-list-replica-create](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-replica-create-en.png)
 
 ❶ After selecting the source DB instance, click **Create Read Replica** to go to the page for creating a read replica.
 
@@ -550,7 +550,7 @@ Force promotion based on current point-in-time data on the read replica, regardl
 
 To end the wait operation, when you are waiting for replication delays to resolve during a read replica promotion or force promotion,
 
-![db-instance-list-stop-wait-replication-lag](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-list-stop-wait-replication-lag-en.png)
+![db-instance-list-stop-wait-replication-lag](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20250415/db-instance-list-stop-wait-replication-lag-en.png)
 
 ❶ Click **Replication Waiting** brings up a popup window that allows you to end the waiting task.
 ❷ Click **Confirm** to end the waiting task.
@@ -572,7 +572,7 @@ If you want to restart PostgreSQL, you can restart a DB instance. To minimize re
 
 To restart a DB instance, use console
 
-![db-instance-list-restart](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-restart-en.png)
+![db-instance-list-restart](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-restart-en.png)
 
 ❶ Select DB instance that you want to restart and click **Restart DB Instance** from the drop-down menu.
 
@@ -585,7 +585,7 @@ If PostgreSQL of a DB instance is not working properly, you can force a restart.
 
 To force a DB instance restart from console
 
-![db-instance-list-force-restart](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-force-restart-en.png)
+![db-instance-list-force-restart](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-force-restart-en.png)
 
 ❶ Select the DB instance that you want to force restart and click on **Force Restart DB Instance** menu from the drop-down menu.
 
@@ -593,11 +593,11 @@ To force a DB instance restart from console
 
 Enabling deletion protection secures DB instances from accidental deletion. You will not be able to delete that DB instance until you disable the feature. To change the deletion protection settings
 
-![db-instance-deletion-protection](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-deletion-protection-en.png)
+![db-instance-deletion-protection](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-deletion-protection-en.png)
 
 ❶ After selecting the DB instance for which you want to change the deletion protection settings, click **Change Deletion Protection Settings** from the drop-down menu, and a pop-up window will appear.
 
-![deletion-protection-popup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-deletion-protection-popup-en.png)
+![deletion-protection-popup](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-deletion-protection-popup-en.png)
 
 ❷ Click **Confrim** after changing the deletion protection settings.
 
@@ -635,7 +635,7 @@ If the consistency of the data was not broken during the failover process and th
 
 To recover a failed master, run the
 
-![db-instance-ha-failover-repair](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-repair-en.png)
+![db-instance-ha-failover-repair](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-ha-failover-repair-en.png)
 
 ❶ Select the failed master you want to recover, and then click the **Recover Failed Master** menu from the drop-down menu.
 
@@ -653,7 +653,7 @@ If no DB instance meets the criteria, the request to rebuild the failed master f
 > For DB instances that are backed up, there might be a drop in storage I/O performance during the rebuilding of the failed master.
 > To rebuild a failed master, in the console, run the
 
-![db-instance-ha-failover-rebuild](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-rebuild-en.png)
+![db-instance-ha-failover-rebuild](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-ha-failover-rebuild-en.png)
 
 ❶ Select the failed master you want to rebuild, and then click the **Rebuild Failed Master** menu from the drop-down menu.
 
@@ -663,7 +663,7 @@ If the failed master recovery fails and data correction is required, you can dis
 
 To detach a failed master, go to the Console
 
-![db-instance-ha-failover-split](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-failover-split-en.png)
+![db-instance-ha-failover-split](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-ha-failover-split-en.png)
 
 ❶ Select the failed master you want to detach, and then click the **Detach Failed Master** menu from the drop-down menu.
 
@@ -693,7 +693,7 @@ You can proceed with a manual backup immediately after the restart with failover
 
 You can either apply the changes to the spare master first and observe how they evolve, or you can control the timing of the failover directly from the console if you want to execute the failover at a precise time. If you choose to manually control failover, a **failover** button appears in the console ❶ after the spare master restarts. Clicking this button triggers a failover, which can wait up to five days to execute. If you do not run the failover within 5 days, the action is automatically canceled.
 
-![db-instance-ha-wait-manual-failover](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-ha-wait-manual-failover-en.png)
+![db-instance-ha-wait-manual-failover](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-ha-wait-manual-failover-en.png)
 
 > [Caution]
 > There is no automatic failover while waiting for failover.
@@ -766,11 +766,11 @@ Navigate to the project that contains the DB instance that you specify to mainte
 
 Those with the migration button next to name are the maintenance targets.
 
-![db-instance-planned-migration](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-planned-migration-en.png)
+![db-instance-planned-migration](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-planned-migration-en.png)
 
 You can check the detailed schedule of maintenance by putting the mouse pointer over the migration button.
 
-![db-instance-planned-migration-popup](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-planned-migration-popup-en.png)
+![db-instance-planned-migration-popup](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-planned-migration-popup-en.png)
 
 #### 2. You have to end the application that is connecting to the DB instance for maintenance targets.
 
@@ -779,13 +779,13 @@ If you have no choice but to affect the service, please contact NHN Cloud Custom
 
 #### 3. Select the DB instance to be checked, click on Migration button and when a window appears asking for confirmation of the DB instance migration, click on the OK button.
 
-![db-instance-planned-migration-confirm](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-planned-migration-confirm-en.png)
+![db-instance-planned-migration-confirm](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-planned-migration-confirm-en.png)
 
 #### 4. Wait for DB instance migration to finish.
 
 If the DB instance status does not change, 'refresh'.
 
-![db-instance-planned-migration-status](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-planned-migration-status-en.png)
+![db-instance-planned-migration-status](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-planned-migration-status-en.png)
 
 No action is allowed while the DB instance is being migrated.
 If DB instance migration does not complete successfully, it will be reported to the administrator automatically, and NHN Cloud will contact you separately.

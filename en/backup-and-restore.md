@@ -17,7 +17,7 @@ RDS for PostgreSQL uses the pg_basebackup tool to back up databases. To restore 
 | 17.6               | 17.6                  |
 
 * For more information about installing pg_basebackup, refer to the PostgreSQL website.
-  * https://www.postgresql.org/docs/14/app-pgbasebackup.html
+  * https://www.postgresql.org/docs/17/app-pgbasebackup.html
 
 The following settings are applied to backup and it applies to both auto and manual backups.
 

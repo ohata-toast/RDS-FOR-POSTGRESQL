@@ -17,7 +17,7 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 | 17.6            | 17.6               |
 
 * pg_basebackupのインストールに関する詳しい説明はPostgreSQL Webサイトを参照してください。
-    * https://www.postgresql.org/docs/14/app-pgbasebackup.html
+    * https://www.postgresql.org/docs/17/app-pgbasebackup.html
 
 バックアップ時に適用される設定項目は下記の通りで、自動バックアップと手動バックアップの両方に適用されます。
 

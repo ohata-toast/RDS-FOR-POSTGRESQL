@@ -217,7 +217,7 @@ On the Logs tab of the DB instance, you can view or download various log files. 
 Database names have the following restrictions.
 
 * Only characters between 1 and 63 characters, except quotes (','), can be used.
-* `postgres` `information_schema` `performance_schema` `repmgr` `db_helper` `sys` `mysql` `rds_maintenance` `pgpool` `nsight` `watchdog` `barman` `rman` are not allowed to use as database names.
+* `postgres` `information_schema` `performance_schema` `repmgr` `db_helper` `sys` `mysql` `rds_maintenance` `pgpool` `nsight` `watchdog` `barman` `rman` are not allowed to use as database names. 
 
 #### Modify Database
 
@@ -318,7 +318,7 @@ The status of access control consists of the following values, which change depe
 
 ❶ When you click on **+ Create**, add **Access Control Rule** pop-up window appears.
 ❷ You can specify the full target of the rule or select a specific database or user.
-- When **Custom** is selected, a drop-down menu for selecting the database and user is displayed on the **Database & User** tab.
+    - When **Custom** is selected, a drop-down menu for selecting the database and user is displayed on the **Database & User** tab.
 ❸ Enter the connection address to which the rule applies in CIDR format.
 ❹ Select authentication method. The following authentication methods are supported by RDS for PostgreSQL.
 
@@ -329,9 +329,9 @@ The status of access control consists of the following values, which change depe
 | password (SCRAM-SHA-256)      | scram-sha-256              | Ensure that SCRAM-SHA-256 is authenticated with the password set on **Database & User** tab. |
 
 ❺ Adjust the order in which the rules are applied with the up/down arrow buttons.
-- Access control rules are applied sequentially from above and the first applied rule takes priority.
-- If the access permission rule registered at the top is applied first, access is allowed even if there is an access blocking rule at the bottom.
-- Conversely, even if there is an access permission rule at the bottom, access is not allowed if the access blocking rule registered at the top is applied first.
+    - Access control rules are applied sequentially from above and the first applied rule takes priority.
+    - If the access permission rule registered at the top is applied first, access is allowed even if there is an access blocking rule at the bottom.
+    - Conversely, even if there is an access permission rule at the bottom, access is not allowed if the access blocking rule registered at the top is applied first.
 ❻ After finish setting, click **Apply Changes** to apply the access control settings to DB instance.
 ❼ When applied to DB instance, the status changes to **Applied**.
 

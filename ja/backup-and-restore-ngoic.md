@@ -17,17 +17,17 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 | 17.6            | 17.6               |
 
 * pg_basebackupのインストールに関する詳しい説明はPostgreSQL Webサイトを参照してください。
-    * https://www.postgresql.org/docs/14/app-pgbasebackup.html
+    * https://www.postgresql.org/docs/17/app-pgbasebackup.html
 
 バックアップ時に適用される設定項目は下記の通りで、自動バックアップと手動バックアップの両方に適用されます。
 
-![backup-config](https://static.toastoven.net/prod_rds_postgres/20241210/backup-config-ja.png)
+![backup-config](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/backup-config-ja.png)
 
 ### 手動バックアップ
 
 特定の時点のデータベースを永続的に保存するには、コンソールで手動バックアップを行います。手動バックアップは、自動バックアップと違って、明示的にバックアップを削除しない限り、DBインスタンスが削除される時に一緒に削除されません。 コンソールで手動バックアップを実行するには
 
-![db-instance-detail-backup](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-backup-ja.png)
+![db-instance-detail-backup](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20240813/db-instance-detail-backup-ja.png)
 
 ❶バックアップするDBインスタンスを選択した後、**バックアップ**をクリックすると、**バックアップ作成** ポップアップウィンドウが表示されます。
 - DBインスタンスを選択せずに**バックアップ**をクリックすると、**バックアップ作成**ポップアップウィンドウ内のドロップダウンメニューからDBインスタンスを選択できます。
@@ -38,7 +38,7 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 または**バックアップ**タブで
 
-![backup-create](https://static.toastoven.net/prod_rds_postgres/20241210/backup-create-ja.png)
+![backup-create](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/backup-create-ja.png)
 
 ❶ **+ バックアップ作成**をクリックすると、**バックアップ作成**ポップアップウィンドウが表示されます。
 ❷バックアップを実行するDBインスタンスを選択します。
@@ -48,7 +48,7 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 手動でバックアップを実行する場合以外にも、復元作業のために必要な場合、または自動バックアップスケジュールの設定により、自動バックアップが実行されることがあります。DBインスタンスのバックアップ保管期間を1日以上に設定すると、自動バックアップが有効になり、指定された時間にバックアップが実行されます。自動バックアップはDBインスタンスとライフサイクルが同じです。DBインスタンスが削除されると、保管された自動バックアップはすべて削除されます。自動バックアップでサポートする設定項目は次の通りです。
 
-![backup-config](https://static.toastoven.net/prod_rds_postgres/20240611/backup-config-ja.png)
+![backup-config](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20240611/backup-config-ja.png)
 
 **バックアップ保管期間**
 
@@ -77,9 +77,9 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 バックアップ後にバックアップファイルをユーザーのオブジェクトストレージにエクスポートできます。
 
-![db-instance-list-export-obs](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-ja.png)
+![db-instance-list-export-obs](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-export-obs-ja.png)
 
-![db-instance-list-export-obs-modal](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-list-export-obs-modal-ja.png)
+![db-instance-list-export-obs-modal](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-list-export-obs-modal-ja.png)
 
 ❶バックアップするDBインスタンスを選択後、ドロップダウンメニューで**バックアップ後オブジェクトストレージにバックアップファイルをエクスポート**をクリックすると、設定のポップアップ画面が表示されます。
 ❷バックアップが保存されるオブジェクトストレージのテナントIDを入力します。テナントIDはAPIエンドポイント設定で確認できます。
@@ -92,11 +92,11 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 内部バックアップストレージに保存されたバックアップファイルをユーザーオブジェクトストレージにエクスポートできます。
 
-![db-instance-detail-backup-export](https://static.toastoven.net/prod_rds_postgres/20241210/db-instance-detail-backup-export-ja.png)
+![db-instance-detail-backup-export](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/db-instance-detail-backup-export-ja.png)
 
 ❶バックアップを実行した原本のDBインスタンスの詳細タブでエクスポートするバックアップファイルを選択し、**オブジェクトストレージにバックアップをエクスポート**をクリックすると、バックアップをエクスポートするためのポップアップ画面が表示されます。
 
-![backup-export](https://static.toastoven.net/prod_rds_postgres/20241210/backup-export-ja.png)
+![backup-export](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/backup-export-ja.png)
 
 ❷または**バックアップ**タブでエクスポートするバックアップファイルを選択し、**オブジェクトストレージにバックアップをエクスポート**をクリックします。
 
@@ -115,13 +115,13 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 バックアップファイルだけで復元するため、バックアップを実行した元のDBインスタンスが必要ありません。コンソールでバックアップを復元するには
 
-![db-instance-detail-backup-restore](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-detail-backup-restore-ja.png)
+![db-instance-detail-backup-restore](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20240813/db-instance-detail-backup-restore-ja.png)
 
 ❶DBインスタンスの詳細タブで復元するバックアップファイルを選択した後、**バックアップ復元**をクリックすると、DBインスタンスの復元画面に移動します。
 
 または
 
-![backup-restore](https://static.toastoven.net/prod_rds_postgres/20241210/backup-restore-ja.png)
+![backup-restore](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/backup-restore-ja.png)
 
 ❶バックアップタブで復元するバックアップファイルを選択した後、**バックアップ復元**をクリックします。
 
@@ -135,7 +135,7 @@ RDS for PostgreSQLではpg_basebackupツールを利用してデータベース�
 
 Webコンソールで時点復元を行うには
 
-![db-instance-pitr](https://static.toastoven.net/prod_rds_postgres/20240813/db-instance-pitr-ja.png)
+![db-instance-pitr](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20240813/db-instance-pitr-ja.png)
 
 ❶時点復元するDBインスタンスを選択した後、**時点復元**をクリックすると、時点復元を設定できるページに移動します。
 
@@ -143,11 +143,11 @@ Webコンソールで時点復元を行うには
 
 Timestampを使用した復元の場合は、選択した時点と最も近いバックアップファイルを基準に復元を行った後、希望する時点までのWALログを適用します。
 
-![db-instance-pitr-01](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-01-ja.png)
+![db-instance-pitr-01](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20240611/db-instance-pitr-01-ja.png)
 
 ❶復元方法を選択します。
 
-![db-instance-pitr-02](https://static.toastoven.net/prod_rds_postgres/20240611/db-instance-pitr-02-ja.png)
+![db-instance-pitr-02](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20240611/db-instance-pitr-02-ja.png)
 
 ❷復元時刻を選択します。最も最近の時点に復元するか、希望する特定の時点を直接入力できます。
 
@@ -160,7 +160,7 @@ RDS for PostgreSQLからオブジェクトストレージにエクスポート�
 
 (2)復元するプロジェクトのコンソールに接続して、DBインスタンスタブで**オブジェクトストレージにあるバックアップで復元**ボタンをクリックします。
 
-![backup-obs-restore](https://static.toastoven.net/prod_rds_postgres/20241210/backup-obs-restore-ja.png)
+![backup-obs-restore](https://static-station.ngoic.com/v1/AUTH_c8bd5293535a46f8bc6705b349f67ea3/cdn/prod_rds_postgres/20241210/backup-obs-restore-ja.png)
 
 ❶バックアップが保存されたオブジェクトストレージのテナントIDを入力します。テナントIDはAPIエンドポイント設定で確認できます。
 ❷バックアップが保存されたオブジェクトストレージのNHN CloudアカウントまたはIAMアカウントを入力します。
