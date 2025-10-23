@@ -7,11 +7,17 @@
 RDS for PostgreSQLではpg_basebackupツールを利用してデータベースをバックアップします。外部PostgreSQLのバックアップに復元したり、RDS for PostgreSQLのバックアップに復元するためには、RDS for PostgreSQLで使うpg_basebackupと同じバージョンを使う必要があります。DBエンジンのバージョンに基づくpg_basebackupのバージョンは次のとおりです。
 
 | PostgreSQLバージョン | pg_basebackupバージョン |
-|---------------|------------------|
-| 14.6          | 14.6             |
+|-----------------|--------------------|
+| 14.6            | 14.6               |
+| 14.15           | 14.15              |
+| 14.17           | 14.17              |
+| 14.19           | 14.19              |
+| 17.2            | 17.2               |
+| 17.4            | 17.4               |
+| 17.6            | 17.6               |
 
 * pg_basebackupのインストールに関する詳しい説明はPostgreSQL Webサイトを参照してください。
-    * https://www.postgresql.org/docs/14/app-pgbasebackup.html
+    * https://www.postgresql.org/docs/17/app-pgbasebackup.html
 
 バックアップ時に適用される設定項目は下記の通りで、自動バックアップと手動バックアップの両方に適用されます。
 
