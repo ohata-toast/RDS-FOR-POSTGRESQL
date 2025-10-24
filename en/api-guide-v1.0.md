@@ -515,46 +515,46 @@ This API does not require a request body.
 </details>
 
 
-## DB 인스턴스 그룹 > 확장 관리
+## DB Instance Group > Manage Extensions
 
-### 확장 목록 보기
+### View Extension List
 
 ```http
 GET /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions
 ```
 
-#### 필요 권한
+#### Required Permission
 
-| 권한명                                            | 설명       |
+| Permission name                                            | Description       |
 |------------------------------------------------|----------|
-| RDSforPostgreSQL:DbInstanceGroupExtension.List | 확장 목록 조회 |
+| RDSforPostgreSQL:DbInstanceGroupExtension.List | View extension lists |
 
-#### 요청
+#### Request
 
-이 API는 요청 본문을 요구하지 않습니다.
+This API does not require a request body.
 
-| 이름                | 종류  | 형식   | 필수 | 설명              |
+| Name                | Type  | Format   | Required | Description              |
 |-------------------|-----|------|----|-----------------|
-| dbInstanceGroupId | URL | UUID | O  | DB 인스턴스 그룹의 식별자 |
+| dbInstanceGroupId | URL | UUID | O  | Identifier of DB instance group |
 
-#### 응답
+#### Response
 
-| 이름                                                  | 종류   | 형식      | 설명                                                                                                                                                                                              |
+| Name                                                  | Type   | Format      | Description                                                                                                                                                                                              |
 |-----------------------------------------------------|------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| extensions                                          | Body | Array   | 확장 목록                                                                                                                                                                                           |
-| extensions.extensionId                              | Body | UUID    | 확장의 식별자                                                                                                                                                                                         |
-| extensions.extensionName                            | Body | String  | 확장 이름                                                                                                                                                                                           |
-| extensions.extensionStatus                          | Body | ENUM    | 확장 상태<br/>- `AVAILABLE`: 사용 가능<br/>- `NEED_TO_APPLY`: 적용 필요<br/>- `APPLYING`: 적용 중                                                                                                               |
-| extensions.databases                                | Body | Array   | 확장이 설치된 데이터베이스 정보                                                                                                                                                                               |
-| extensions.databases.dbInstanceGroupExtensionId     | Body | UUID    | DB 인스턴스 그룹 내 확장의 식별자                                                                                                                                                                            |
-| extensions.databases.dbInstanceGroupExtensionStatus | Body | ENUM    | DB 인스턴스 그룹 내 확장 상태<br/>- `CREATED`: 생성됨<br/>- `INSTALLED`: 설치됨<br/>- `INSTALLING`: 설치 중<br/>- `INSTALL_ERROR`: 설치 오류<br/>- `DELETED`: 삭제됨<br/>- `DELETING`: 삭제 중<br/>- `DELETE_ERROR`: 삭제 오류 |
-| extensions.databases.databaseId                     | Body | UUID    | 데이터베이스의 식별자                                                                                                                                                                                     |
-| extensions.databases.databaseName                   | Body | String  | 데이터베이스 이름                                                                                                                                                                                       |
-| extensions.databases.reservedAction                 | Body | ENUM    | 예약 작업<br/>- `NONE`: 없음<br/>- `INSTALL`: 설치 예약(적용 필요)<br/>- `INSTALL_WITH_CASCADE`: 강제 설치 예약(적용 필요)<br/>- `DELETE`: 삭제 예약(적용 필요)<br/>- `DELETE_WITH_CASCADE`: 강제 삭제 예약(적용 필요)                |
-| extensions.databases.errorReason                    | Body | String  | 오류 원인                                                                                                                                                                                           |
-| isNeedToApply                                       | Body | Boolean | 변경 사항 적용 필요 여부                                                                                                                                                                                  |
+| extensions                                          | Body | Array   | Extension list                                                                                                                                                                                           |
+| extensions.extensionId                              | Body | UUID    | Identifier of the extension                                                                                                                                                                                         |
+| extensions.extensionName                            | Body | String  | Extension name                                                                                                                                                                                           |
+| extensions.extensionStatus                          | Body | ENUM    | Extension status<br/>- `AVAILABLE`: available<br/>- `NEED_TO_APPLY`: need to apply<br/>- `APPLYING`: applying                                                                                                               |
+| extensions.databases                                | Body | Array   | Database information with installed extensions                                                                                                                                                                               |
+| extensions.databases.dbInstanceGroupExtensionId     | Body | UUID    | Identifier of an extension within a DB instance group                                                                                                                                                                            |
+| extensions.databases.dbInstanceGroupExtensionStatus | Body | ENUM    | Extension status within a DB instance group<br/>- `CREATED`: created<br/>- `INSTALLED`: installed<br/>- `INSTALLING`: installing<br/>- `INSTALL_ERROR`: installation error<br/>- `DELETED`: deleted<br/>- `DELETING`: deleting<br/>- `DELETE_ERROR`: deletion error |
+| extensions.databases.databaseId                     | Body | UUID    | Identifier of the database                                                                                                                                                                                     |
+| extensions.databases.databaseName                   | Body | String  | Database name                                                                                                                                                                                       |
+| extensions.databases.reservedAction                 | Body | ENUM    | Scheduled Task<br/>- `NONE`: none<br/>- `INSTALL`: scheduled installation (need to apply)<br/>- `INSTALL_WITH_CASCADE`: scheduled forced installation (need to apply)<br/>- `DELETE`: scheduled deletion (need to apply)<br/>- `DELETE_WITH_CASCADE`: scheduled forced deletion (need to apply)                |
+| extensions.databases.errorReason                    | Body | String  | Reason for Error                                                                                                                                                                                           |
+| isNeedToApply                                       | Body | Boolean | Whether to apply changes                                                                                                                                                                                  |
 
-<details><summary>예시</summary>
+<details><summary>Example</summary>
 
 ```json
 {
@@ -586,35 +586,35 @@ GET /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions
 </details>
 
 
-### 확장 설치
+### Install Extensions
 
 ```http
 POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/{extensionId}
 ```
 
-#### 필요 권한
+#### Required Permission
 
-| 권한명                                               | 설명    |
+| Permission name                                               | Description    |
 |---------------------------------------------------|-------|
-| RDSforPostgreSQL:DbInstanceGroupExtension.Install | 확장 설치 |
+| RDSforPostgreSQL:DbInstanceGroupExtension.Install | Install extensions |
 
-#### 요청
+#### Request
 
-이 API는 요청 본문을 요구하지 않습니다.
+This API does not require a request body.
 
-| 이름                | 종류   | 형식      | 필수 | 설명                |
+| Name                | Type   | Format      | Required | Description                |
 |-------------------|------|---------|----|-------------------|
-| dbInstanceGroupId | URL  | UUID    | O  | DB 인스턴스 그룹의 식별자   |
-| extensionId       | URL  | UUID    | O  | 확장의 식별자           |
-| databaseId        | Body | UUID    | O  | 설치 대상 데이터베이스의 식별자 |
-| schemaName        | Body | String  | O  | 설치 대상 스키마 이름      |
-| withCascade       | Body | Boolean | X  | 의존 정보 강제 설치 여부    |
+| dbInstanceGroupId | URL  | UUID    | O  | Identifier of DB instance group   |
+| extensionId       | URL  | UUID    | O  | Identifier of the extension           |
+| databaseId        | Body | UUID    | O  | Identifier of the database to be installed |
+| schemaName        | Body | String  | O  | Name of the schema to be installed      |
+| withCascade       | Body | Boolean | X  | Whether to force installation of dependency information    |
 
-#### 응답
+#### Response
 
-이 API는 응답 본문을 반환하지 않습니다.
+This API does not return a response body.
 
-<details><summary>예시</summary>
+<details><summary>Example</summary>
 
 ```json
 {
@@ -628,33 +628,33 @@ POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/{extensionId}
 </details>
 
 
-### 확장 삭제(취소)
+### Delete Extensions (Cancel)
 
 ```http
 DELETE /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/{dbInstanceGroupExtensionId}
 ```
 
-#### 필요 권한
+#### Required Permission
 
-| 권한명                                              | 설명        |
+| Permission name                                              | Description        |
 |--------------------------------------------------|-----------|
-| RDSforPostgreSQL:DbInstanceGroupExtension.Delete | 확장 삭제(취소) |
+| RDSforPostgreSQL:DbInstanceGroupExtension.Delete | Delete extensions (cancel) |
 
-#### 요청
+#### Request
 
-이 API는 요청 본문을 요구하지 않습니다.
+This API does not require a request body.
 
-| 이름                         | 종류    | 형식      | 필수 | 설명                   |
+| Name                         | Type    | Format      | Required | Description                   |
 |----------------------------|-------|---------|----|----------------------|
-| dbInstanceGroupId          | URL   | UUID    | O  | DB 인스턴스 그룹의 식별자      |
-| dbInstanceGroupExtensionId | URL   | UUID    | O  | DB 인스턴스 그룹 내 확장의 식별자 |
-| withCascade                | Query | Boolean | O  | 의존 정보 강제 삭제 여부       |
+| dbInstanceGroupId          | URL   | UUID    | O  | Identifier of DB instance group      |
+| dbInstanceGroupExtensionId | URL   | UUID    | O  | Identifier of the extension within the DB instance group |
+| withCascade                | Query | Boolean | O  | Whether to force installation of dependency information       |
 
-#### 응답
+#### Response
 
-이 API는 응답 본문을 반환하지 않습니다.
+This API does not return a response body.
 
-<details><summary>예시</summary>
+<details><summary>Example</summary>
 
 ```json
 {
@@ -668,33 +668,33 @@ DELETE /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/{dbInstanceGroupE
 </details>
 
 
-### 확장 변경 사항 적용
+### Apply Extension Changes
 
 ```http
 POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/apply
 ```
 
-#### 필요 권한
+#### Required Permission
 
-| 권한명                                             | 설명         |
+| Permission name                                             | Description         |
 |-------------------------------------------------|------------|
-| RDSforPostgreSQL:DbInstanceGroupExtension.Apply | 확장 변경 사항 적용 |
+| RDSforPostgreSQL:DbInstanceGroupExtension.Apply | Apply extension changes |
 
-#### 요청
+#### Request
 
-이 API는 요청 본문을 요구하지 않습니다.
+This API does not require a request body.
 
-| 이름                         | 종류    | 형식      | 필수 | 설명                   |
+| Name                         | Type    | Format      | Required | Description                   |
 |----------------------------|-------|---------|----|----------------------|
-| dbInstanceGroupId          | URL   | UUID    | O  | DB 인스턴스 그룹의 식별자      |
+| dbInstanceGroupId          | URL   | UUID    | O  | Identifier of DB instance group      |
 
-#### 응답
+#### Response
 
-| 이름    | 종류   | 형식   | 설명          |
+| Name    | Type   | Format   | Description          |
 |-------|------|------|-------------|
-| jobId | Body | UUID | 요청한 작업의 식별자 |
+| jobId | Body | UUID | Identifier of the requested task |
 
-<details><summary>예시</summary>
+<details><summary>Example</summary>
 
 ```json
 {
@@ -709,33 +709,33 @@ POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/apply
 </details>
 
 
-### 확장 동기화
+### Synchronize Extensions
 
 ```http
 POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/sync
 ```
 
-#### 필요 권한
+#### Required Permission
 
-| 권한명                                            | 설명     |
+| Permission name                                            | Description     |
 |------------------------------------------------|--------|
-| RDSforPostgreSQL:DbInstanceGroupExtension.Sync | 확장 동기화 |
+| RDSforPostgreSQL:DbInstanceGroupExtension.Sync | Synchronize Extensions |
 
-#### 요청
+#### Request
 
-이 API는 요청 본문을 요구하지 않습니다.
+This API does not require a request body.
 
-| 이름                         | 종류    | 형식      | 필수 | 설명                   |
+| Name                         | Type    | Format      | Required | Description                   |
 |----------------------------|-------|---------|----|----------------------|
-| dbInstanceGroupId          | URL   | UUID    | O  | DB 인스턴스 그룹의 식별자      |
+| dbInstanceGroupId          | URL   | UUID    | O  | Identifier of DB instance group      |
 
-#### 응답
+#### Response
 
-| 이름    | 종류   | 형식   | 설명          |
+| Name    | Type   | Format   | Description          |
 |-------|------|------|-------------|
-| jobId | Body | UUID | 요청한 작업의 식별자 |
+| jobId | Body | UUID | Identifier of the requested task |
 
-<details><summary>예시</summary>
+<details><summary>Example</summary>
 
 ```json
 {
@@ -773,7 +773,7 @@ POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/sync
 |---------------------------------|----------------|
 | `APPLYING_DB_INSTANCE_HBA_RULE` | Applying an access control rule  |
 | `APPLYING_PARAMETER_GROUP`      | Parameter group is being applied   |
-| `APPLYING_EXTENSION`            | 확장 적용 중        |
+| `APPLYING_EXTENSION`            | Applying an extension        |
 | `BACKING_UP`                    | Backing up           |
 | `CANCELING`                     | Canceling           |
 | `CREATING`                      | Creating           |
@@ -782,7 +782,7 @@ POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/sync
 | `DELETING`                      | Deleting           |
 | `DELETING_DATABASE`             | Deleting a database    |
 | `DELETING_USER`                 | Deleting user       |
-| `EXPORTING_BACKUP`              | 백업을 내보내는 중     |
+| `EXPORTING_BACKUP`              | Exporting a backup     |
 | `FAILING_OVER`                  | Under failover        |
 | `MIGRATING`                     | Under migration       |
 | `MODIFYING`                     | Under modification           |
@@ -800,7 +800,7 @@ POST /v1.0/db-instance-groups/{dbInstanceGroupId}/extensions/sync
 | `STOPPING`                      | Stopping           |
 | `SYNCING_DATABASE`              | Synchronizing the database   |
 | `SYNCING_USER`                  | Synchronizing user	     |
-| `SYNCING_EXTENSION`             | 확장 동기화 중	      |
+| `SYNCING_EXTENSION`             | Synchronizing extensions	      |
 | `UPDATING_USER`                 | Modifying user	      |
 | `UPDATING_DATABASE`             | Modifying the database	   |
 | `WAIT_MANUAL_CONTROL`           | Waiting for manual failover	 |
@@ -1897,7 +1897,7 @@ GET /v1.0/db-instances/{dbInstanceId}/maintenance-info
 | useAutoStorageCleanup | Body | Boolean | Whether to enable automatic storage cleanup                                                                                          |
 | maintWndBgnTime       | Body | String  | Automatic maintenance start time <br/>- Example: `00:00:00`                                                                          |
 | maintWndDuration      | Body | ENUM    | Maintenance window <br/> Examples: `half_an_hour`, `one_hour`, `one_hour_and_half`, `two_hours`, `two_hours_and_half`, `three_hours` |
-| logRetentionPeriod    | Body | Number  | 로그 보관 기간(일)                                                                                                                          |
+| logRetentionPeriod    | Body | Number  | Log retention period (days)                                                                                                                          |
 
 <details><summary>Example</summary>
 
@@ -1939,7 +1939,7 @@ PUT /v1.0/db-instances/{dbInstanceId}/maintenance-info
 | useAutoStorageCleanup | Body | Boolean | O        | Whether to enable automatic storage cleanup                                                                                          |
 | maintWndBgnTime       | Body | String  | O        | Automatic maintenance start time <br/>- Example: `00:00:00`                                                                          |
 | maintWndDuration      | Body | ENUM    | O        | Maintenance window <br/> Examples: `half_an_hour`, `one_hour`, `one_hour_and_half`, `two_hours`, `two_hours_and_half`, `three_hours` |
-| logRetentionPeriod    | Body | Number  | X        | 로그 보관 기간(일)                                                                                                                          |
+| logRetentionPeriod    | Body | Number  | X        | Log retention period (days)                                                                                                                          |
 
 <details><summary>Example</summary>
 
