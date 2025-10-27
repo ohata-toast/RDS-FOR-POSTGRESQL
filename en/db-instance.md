@@ -28,9 +28,12 @@ NHN Cloud has divided the entire system into multiple availability areas to prep
 
 The versions specified below are available.
 
-| Version                   | Note |
-|----------------------|----|
-| PostgreSQL 14.6      |    |
+| Version          | Note |
+|------------------|------|
+| PostgreSQL 14.17 |      |
+| PostgreSQL 14.19 |      |
+| PostgreSQL 17.4  |      |
+| PostgreSQL 17.6  |      |
 
 
 ### DB instance type
@@ -38,12 +41,12 @@ The versions specified below are available.
 DB instances have different CPU cores and different memory capacities, depending on the type.
 When you create a DB instance, you must select the appropriate DB instance type according to the database workload.
 
-| Type | Description                                                        |
-|----|-----------------------------------------------------------|
-| m2 | This is a type that balances CPU and memory.                                |
-| c2 | This is an Instance type with high CPU performance.                               |
-| r2 | It can be used when memory is used more than other resources.                     |
-| x1 | It is a type that supports high-specification CPU and memory. It can be used for services or applications that require high performance. |
+| Type | Description                                                                                                                              |
+|------|------------------------------------------------------------------------------------------------------------------------------------------|
+| m2   | This is a type that balances CPU and memory.                                                                                             |
+| c2   | This is an Instance type with high CPU performance.                                                                                      |
+| r2   | It can be used when memory is used more than other resources.                                                                            |
+| x1   | It is a type that supports high-specification CPU and memory. It can be used for services or applications that require high performance. |
 
 The type of DB instance that you have already created can be easily changed through the console.
 
@@ -348,36 +351,36 @@ The status of access control consists of the following values, which change depe
 
 
 <a id="extension"></a>
-### 확장 관리
+### Manage Extensions
 
-DB 인스턴스의 **확장 관리** 탭에서는 SUPERUSER 권한이 필요한 확장을 조회 및 제어할 수 있습니다.
+You can get and control the extensions that require SUPERUSER permission from **Manage Extensions** tab of the DB instance.
 
-#### 확장 설치
+#### Install Extensions
 
 ![db-instance-detail-extension-install](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-install-en.png)
 
-❶ **설치**를 클릭하면 선택한 확장을 설치할 데이터베이스를 선택할 수 있는 팝업 창이 나타납니다.
-❷ **강제 설치**를 체크하면 의존 관계에 있는 확장들을 강제 설치합니다.
-❸ 설치할 데이터베이스를 선택 후 **확인**을 클릭하면 설치 작업이 예약됩니다.
-❹ **취소**를 클릭하면 예약된 작업을 취소할 수 있습니다.
-❺ **변경 사항 적용**을 클릭하여 DB 인스턴스에 확장을 설치합니다.
+❶ Click **Install** to display a pop-up window that allows you to select the database on which to install the selected extension.
+❷ Check **Force Install** to force installation of dependent extensions.
+❸ After selecting the installed database, click **Confirm** to schedule the installation task.
+❹ Click **Cancel** to cancel the scheduled task.
+❺ Click **Apply Changes** to install the extension in the DB instance.
 
-#### 확장 삭제
+#### Delete Extensions
 
 ![db-instance-detail-extension-delete](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-delete-en.png)
 
-❸ 삭제할 데이터베이스 행에서 **삭제**를 클릭하면 **삭제 확인** 팝업 창이 나타납니다.
-❷ **강제 삭제**를 체크하면 의존 관계에 있는 확장들을 강제 삭제합니다.
-❸ **삭제**를 클릭하면 삭제 작업이 예약됩니다.
-❹ **취소**를 클릭하면 예약된 작업을 취소할 수 있습니다.
-❺ **변경 사항 적용**을 클릭하여 DB 인스턴스에 설치된 확장을 삭제합니다.
+❸ Click **Delete** from the database row to be deleted to display a **Confirm Delete** pop-up window.
+❷ Check **Force Install** to force deletion of dependent extensions.
+❸ Click **Delete** to schedule the deletion task.
+❹ Click **Cancel** to cancel the scheduled task.
+❺ Click **Apply Changes** to delete the installed extension in the DB instance.
 
-#### 확장 동기화
+#### Synchronize Extensions
 
 ![db-instance-detail-extension-sync](https://static.toastoven.net/prod_rds_postgres/20250415/db-instance-detail-extension-sync-en.png)
 
-❶ **동기화**를 클릭하면 **동기화 확인** 팝업 창이 나타납니다.
-❷ **확인**을 클릭하여 동기화를 요청할 수 있습니다.
+❶ If you click **Synchronize**, a **Confirm Synchronization** pop-up window will appear.
+❷ Click **Confirm** to request synchronization.
 
 
 ## Modify DB Instance
