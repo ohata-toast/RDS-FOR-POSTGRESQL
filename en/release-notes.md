@@ -1,22 +1,34 @@
 ## Database > RDS for PostgreSQL > Release Notes
 
-### 2025. 4. 15.
+### October 28, 2025
 
-#### 기능 추가
+#### Added Features
 
-- DB 엔진 신규 버전 추가
-    - PostgreSQL 14.17, 17.4 버전을 추가했습니다.
-- 확장 관리 기능 추가
-    - 콘솔에서 SUPERUSER 권한이 필요한 확장을 설치하거나 삭제하는 기능을 추가했습니다.
-    - 데이터베이스 & 사용자 목록과 동일하게 확장 목록을 동기화할 수 있습니다.
-- 유지보수 설정에 로그 보관 기간 추가
-    - 자동 스토리지 정리 기능 사용 시 보관 기간이 지난 PostgreSQL 로그를 삭제하는 기능을 추가했습니다.
+- Added new DB engine version
+    - Added PostgreSQL 14.19, 17.6 versions.
 
-#### 기능 변경
+#### Bug Fixes
 
-- DB 엔진 신규 생성 제한
-    - PostgreSQL 14.15, 17.2 버전에서 보안 취약점이 발견돼 최신 버전으로의 업그레이드가 [권고](https://www.postgresql.org/support/security/CVE-2025-1094/)됩니다.
-    - 기존 DB 인스턴스를 고가용성으로 변경하거나 백업으로 복원하는 경우에만 제한적으로 허용합니다.
+- Fixed an issue for exposure capacity within free-up capacity modal
+    - Fixed an issue that the capacity exposed within the free-up capacity modal is less than the actual capacity secured.
+
+### April 15, 2025
+
+#### Added Features
+
+- Added new DB engine version
+    - Added PostgreSQL 14.17, 17.4 versions.
+- Added the feature to manage extension
+    - Added the feature to install or remove extensions requiring SUPERUSER permissions from the console.
+    - You can now synchronize the extension list with the database and user list.
+- Added the log retention period to the maintenance setting
+    - Added the feature to delete the PostgreSQL logs that have exceeded their retention period when using the automatic storage cleanup feature.
+
+#### Feature Updates
+
+- Restrict new DB engine creation
+    - A security vulnerability has been detected in version PostgreSQL 14.15, 17.2, so upgrading to the latest version is [recommended](https://www.postgresql.org/support/security/CVE-2025-1094/).
+    - It is only allowed in limited cases, such as when changing an existing DB instance to high availability or restoring from a backup.
 
 ### Feb 11, 2025
 
