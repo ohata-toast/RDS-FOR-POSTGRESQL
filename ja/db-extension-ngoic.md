@@ -5,7 +5,7 @@
 
 ### PostgreSQL基本提供機能
 
-`auto_explain`拡張はパラメータグループの`shared_preload_libraries`パラメータに追加して、セッション全体に適用できます。残りの拡張機能はSUPERUSER権限が必要な場合、[拡張管理](db-instance/#extension)項目を参考にして制御したり、[CREATE EXTENSION](https://www.postgresql.org/docs/17/sql-createextension.html)構文で必要な拡張機能をインストールできます。
+`auto_explain`拡張はパラメータグループの`shared_preload_libraries`パラメータに追加して、セッション全体に適用できます。残りの拡張機能はSUPERUSER権限が必要な場合、[拡張管理](db-instance-ngoic/#extension)項目を参考にして制御したり、[CREATE EXTENSION](https://www.postgresql.org/docs/17/sql-createextension.html)構文で必要な拡張機能をインストールできます。
 
 | 拡張機能名              | PostgreSQL14提供バージョン | PostgreSQL17提供バージョン | SUPERUSER権限 | 備考           | Webサイト                                                   |
 |--------------------|---------------------|---------------------|-------------|--------------|----------------------------------------------------------|

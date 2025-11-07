@@ -5,7 +5,7 @@
 
 ### PostgreSQL 기본 제공 기능
 
-`auto_explain` 확장은 파라미터 그룹의 `shared_preload_libraries` 파라미터에 추가해서 전체 세션에 적용시킬 수 있습니다. 나머지 확장 기능들은 SUPERUSER 권한이 필요한 경우 [확장 관리](db-instance/#extension) 항목을 참고해 제어하거나  [CREATE EXTENSION](https://www.postgresql.org/docs/17/sql-createextension.html) 구문으로 필요한 확장 기능을 설치할 수 있습니다.
+`auto_explain` 확장은 파라미터 그룹의 `shared_preload_libraries` 파라미터에 추가해서 전체 세션에 적용시킬 수 있습니다. 나머지 확장 기능들은 SUPERUSER 권한이 필요한 경우 [확장 관리](db-instance-ngovc/#extension) 항목을 참고해 제어하거나  [CREATE EXTENSION](https://www.postgresql.org/docs/17/sql-createextension.html) 구문으로 필요한 확장 기능을 설치할 수 있습니다.
 
 | 확장 기능 이름           | PostgreSQL 14 제공 버전 | PostgreSQL 17 제공 버전 | SUPERUSER 권한 | 비고         | 홈페이지                                                     |
 |--------------------|---------------------|---------------------|--------------|------------|----------------------------------------------------------|
