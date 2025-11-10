@@ -5,7 +5,7 @@ You can extend functionality by installing pre-built extensions into PostgreSQL.
 
 ### PostgreSQL Built-in Features
 
-The auto_explain module can be applied to the entire session by adding it to the shared_preload_libraries parameter in the parameter group, or separately for each session with the LOAD syntax. For the remaining extensions, you can install the required extensions with the CREATE EXTENSION syntax.
+The `auto_explain` extension can be applied to the entire session by adding it to the `shared_preload_libraries` parameter in the parameter group. For the remaining extensions, if you need SUPERUSER permission, you can control it by referring to the [Extension Management](db-instance-ngoic/#extension) item or install the required extensions with the [CREATE EXTENSION](https://www.postgresql.org/docs/17/sql-createextension.html) syntax.
 
 | Extension name     | PostgreSQL 14 Version | PostgreSQL 17 Version | SUPERUSER | Remarks                    | Homepage                                                 |
 |--------------------|-----------------------|-----------------------|-----------|----------------------------|----------------------------------------------------------|
