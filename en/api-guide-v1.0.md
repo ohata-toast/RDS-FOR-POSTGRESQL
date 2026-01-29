@@ -10,7 +10,7 @@
 
 ### Authentication and Authorization
 
-RDS for PostgreSQL uses User Access Key tokens for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](docs.nhncloud.com/en/nhncloud/en/public-api/user-access-key-token).
+RDS for PostgreSQL uses User Access Key tokens for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](/nhncloud/en/public-api/user-access-key-token).
 The issued token must be included in the request header along with the Appkey.
 
 | Name                | Type   | Format | Required | Description                                                         |
